@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dokqaqwb1ej8m"]
+
+[ext_resource type="Script" uid="uid://nhpsoarq1ym7" path="res://wave.gd" id="1_8asc4"]
+
+[node name="Wave" type="Node2D" unique_id=1715293201]
+script = ExtResource("1_8asc4")
+
+[node name="Timer" type="Timer" parent="." unique_id=606370196 groups=["Enemy"]]

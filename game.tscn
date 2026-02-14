@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b20qmhdm8umvl"]
+
+[ext_resource type="PackedScene" uid="uid://hyaky5wvg7rp" path="res://hisami.tscn" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://bb3eh2nbw0o1y" path="res://game.gd" id="1_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://b3r732oir1wnb" path="res://ui.tscn" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://c7kvml80iuap" path="res://edge_flash.png" id="4_fc0e3"]
+
+[node name="Game" type="Node2D" unique_id=146712216]
+script = ExtResource("1_e2o6t")
+
+[node name="Hisami" parent="." unique_id=1429502819 instance=ExtResource("1_80nbo")]
+position = Vector2(292, 450)
+
+[node name="UI" parent="." unique_id=269059150 instance=ExtResource("3_feb5d")]
+offset_left = 3.0
+offset_top = 14.0
+offset_right = 3.0
+offset_bottom = 14.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1788955542]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=466799284]
+visible = false
+offset_right = 540.0
+offset_bottom = 540.0
+texture = ExtResource("4_fc0e3")

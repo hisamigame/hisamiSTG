@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://bfrc808706cdo"]
+
+[ext_resource type="Shader" uid="uid://hobky4kdwwgd" path="res://charge_attack.gdshader" id="1_oac34"]
+[ext_resource type="Script" uid="uid://bi4tc17ih7oxh" path="res://death_effect.gd" id="1_p1lmi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5l07o"]
+shader = ExtResource("1_oac34")
+shader_parameter/start_time = 0.0
+shader_parameter/start_coord = Vector2(0, 0)
+shader_parameter/wave_speed = 0.0
+shader_parameter/time = 0.0
+shader_parameter/width = 0.0
+shader_parameter/pixel_size = Vector2(0, 0)
+shader_parameter/max_time = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1lmi"]
+
+[sub_resource type="Shader" id="Shader_p1lmi"]
+code = "shader_type canvas_item;
+
+uniform float start_time;
+uniform vec2 start_coord;
+uniform float wave_speed;
+uniform float time;
+uniform float width;
+uniform vec2 pixel_size;
+uniform float max_time;
+
+float circle(in vec2 _st, in vec2 center, in float _radius, in float _width){
+    float dist = sqrt(dot(_st - center, _st - center));
+	float fuzzy = _width/2.0;
+	float ret1 = smoothstep(_radius-_width/2.0 - fuzzy/2.0,
+                         _radius - _width/2.0,
+                         dist);
+	float ret2 = smoothstep(_radius + _width/2.0,
+                         _radius+ _width/2.0 + fuzzy/2.0,
+                         dist);
+	return ret1 - ret2;
+}
+
+float disk(in vec2 _st, in vec2 center, in float _radius){
+    float dist = sqrt(dot(_st - center, _st - center));
+	float ret1 = step(_radius, dist);
+	return 1.0 - ret1;
+}
+
+void fragment() {
+	vec2 st = UV.xy/TEXTURE_PIXEL_SIZE;
+	vec4 color = vec4(0.738, 0.722, 0.0, 0.0);
+	float radius = (time - start_time) * wave_speed;
+	float ease = sqrt(1.0 - (time/max_time)*(time/max_time));
+	color.a = color.a + circle(st, start_coord, radius, width/pixel_size[0]) *ease;
+	color.a = color.a + 0.5*disk(st, start_coord, radius) * ease;
+	COLOR = color;
+	// Called for every pixel the material is visible on.
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oac34"]
+resource_local_to_scene = true
+shader = SubResource("Shader_p1lmi")
+shader_parameter/start_time = 0.0
+shader_parameter/start_coord = Vector2(0, 0)
+shader_parameter/wave_speed = 0.0
+shader_parameter/time = 0.0
+shader_parameter/width = 1.0
+shader_parameter/pixel_size = Vector2(0, 0)
+shader_parameter/max_time = 0.0
+
+[node name="DeathEffect" type="Area2D" unique_id=331745061]
+material = SubResource("ShaderMaterial_5l07o")
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_p1lmi")
+damage = 10.0
+clear_bullets = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1752457636]
+shape = SubResource("CircleShape2D_p1lmi")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=589273658]
+material = SubResource("ShaderMaterial_oac34")
+custom_minimum_size = Vector2(512, 512)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2

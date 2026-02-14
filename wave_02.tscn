@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ca3xr21c5nf1u"]
+
+[ext_resource type="PackedScene" uid="uid://dokqaqwb1ej8m" path="res://wave.tscn" id="1_6kpil"]
+[ext_resource type="PackedScene" uid="uid://b4c47k3f6j5lf" path="res://wisp.tscn" id="2_0a1yk"]
+
+[node name="Wave01" unique_id=1715293201 instance=ExtResource("1_6kpil")]
+
+[node name="Wisp" parent="." index="1" unique_id=335368161 instance=ExtResource("2_0a1yk")]
+position = Vector2(443, 72)

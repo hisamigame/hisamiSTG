@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://2ehemhjkp0do"]
+
+[ext_resource type="PackedScene" uid="uid://dokqaqwb1ej8m" path="res://wave.tscn" id="1_uo2h0"]
+[ext_resource type="Script" uid="uid://msuyyy4lbvgh" path="res://wave_final_boss.gd" id="2_pa1un"]
+[ext_resource type="PackedScene" uid="uid://cyq1m636aqykj" path="res://zanmu.tscn" id="3_nh0ef"]
+
+[node name="WaveFinalBoss" unique_id=1715293201 instance=ExtResource("1_uo2h0")]
+script = ExtResource("2_pa1un")
+
+[node name="Zanmu" parent="." index="1" unique_id=1810475383 instance=ExtResource("3_nh0ef")]
+position = Vector2(223, 129)

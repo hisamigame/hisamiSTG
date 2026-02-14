@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://wyof5rth8fdu"]
+
+[ext_resource type="Script" uid="uid://bmwf2mdcm7jgo" path="res://results_screen.gd" id="1_fulpf"]
+[ext_resource type="FontFile" uid="uid://dot455lf8pisy" path="res://alphbeta.ttf" id="3_nnhxl"]
+[ext_resource type="Theme" uid="uid://cegr2r2u3pjgm" path="res://pixel_ui_theme.tres" id="5_f01ui"]
+
+[sub_resource type="Animation" id="Animation_qohh1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jlpf8"]
+resource_name = "fadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6rhv"]
+_data = {
+&"RESET": SubResource("Animation_qohh1"),
+&"fadeOut": SubResource("Animation_jlpf8")
+}
+
+[node name="UI" type="Control" unique_id=256314526]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fulpf")
+
+[node name="SubViewport" type="CanvasLayer" parent="." unique_id=164382059]
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport" unique_id=1897053444]
+offset_right = 540.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport" unique_id=295227099]
+offset_right = 540.0
+offset_bottom = 411.0
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/CenterContainer" unique_id=1489716807]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="SubViewport/CenterContainer/MarginContainer" unique_id=296383641]
+custom_minimum_size = Vector2(148, 128)
+layout_mode = 2
+draw_center = false
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/CenterContainer/MarginContainer" unique_id=1958852248]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer" unique_id=1924963642]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer" unique_id=253640359]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer" unique_id=998182857]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_nnhxl")
+theme_override_font_sizes/font_size = 24
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer" unique_id=456208487]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer" unique_id=133109293]
+layout_mode = 2
+theme = ExtResource("5_f01ui")
+text = "Score"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer" unique_id=1500042895]
+layout_mode = 2
+theme = ExtResource("5_f01ui")
+text = "99999999"
+horizontal_alignment = 2
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer" unique_id=909161812]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer2" unique_id=135693332]
+layout_mode = 2
+theme = ExtResource("5_f01ui")
+text = "Time left"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer2" unique_id=435998202]
+layout_mode = 2
+theme = ExtResource("5_f01ui")
+text = "120"
+horizontal_alignment = 2
+
+[node name="HSplitContainer3" type="HSplitContainer" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer" unique_id=1010055045]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer3" unique_id=1590141184]
+layout_mode = 2
+theme = ExtResource("5_f01ui")
+text = "Live left"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer3" unique_id=693046435]
+layout_mode = 2
+theme = ExtResource("5_f01ui")
+text = "99"
+horizontal_alignment = 2
+
+[node name="HSplitContainer4" type="HSplitContainer" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer" unique_id=1450217772]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer4" unique_id=1106443176]
+layout_mode = 2
+theme = ExtResource("5_f01ui")
+text = "Bonus"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer4" unique_id=175633849]
+layout_mode = 2
+theme = ExtResource("5_f01ui")
+text = "0"
+horizontal_alignment = 2
+
+[node name="HSplitContainer5" type="HSplitContainer" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer" unique_id=780059477]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer5" unique_id=700863162]
+layout_mode = 2
+theme = ExtResource("5_f01ui")
+text = "Total"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer5" unique_id=2029599623]
+layout_mode = 2
+theme = ExtResource("5_f01ui")
+text = "999999999"
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=320858279]
+libraries/ = SubResource("AnimationLibrary_t6rhv")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

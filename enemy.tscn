@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b33q4a2yiwxk1"]
+
+[ext_resource type="Script" uid="uid://cf3t40jo80gq0" path="res://enemy.gd" id="1_7k104"]
+[ext_resource type="Script" uid="uid://bfin0v5wfjh05" path="res://hitbox.gd" id="2_qi2p4"]
+[ext_resource type="Script" uid="uid://c0148w36m323f" path="res://hurtbox.gd" id="3_iifgy"]
+
+[node name="Enemy" type="Node2D" unique_id=335368161]
+script = ExtResource("1_7k104")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=833150868]
+script = ExtResource("2_qi2p4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1241795471]
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1538443469]
+script = ExtResource("3_iifgy")
+metadata/_custom_type_script = "uid://c0148w36m323f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1904068724]

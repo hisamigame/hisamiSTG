@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://8tolhhdl0oix"]
+
+[ext_resource type="Script" uid="uid://dmecofgrwrklc" path="res://item.gd" id="2_kg5e7"]
+[ext_resource type="Texture2D" uid="uid://u1mlf8vke5w0" path="res://item.png" id="2_ttk8k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys7tt"]
+atlas = ExtResource("2_ttk8k")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_unjj8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys7tt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Item" type="AnimatedSprite2D" unique_id=1031354751]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_unjj8")
+script = ExtResource("2_kg5e7")
+
+[node name="Timer" type="Timer" parent="." unique_id=12955267]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

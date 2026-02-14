@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dnh2rs3gsch7w"]
+
+[ext_resource type="Script" uid="uid://c4uamncv18rwp" path="res://title_screen.gd" id="1_v6p8y"]
+
+[sub_resource type="Gradient" id="Gradient_1s85s"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v6p8y"]
+gradient = SubResource("Gradient_1s85s")
+
+[node name="TitleScreen" type="TextureRect" unique_id=1045298283]
+offset_right = 541.0
+offset_bottom = 544.0
+texture = SubResource("GradientTexture1D_v6p8y")
+script = ExtResource("1_v6p8y")
+
+[node name="Label" type="Label" parent="." unique_id=1169009511]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.028
+anchor_bottom = 0.033
+offset_top = 30.0
+offset_right = 476.852
+offset_bottom = 535.048
+theme_override_font_sizes/font_size = 64
+text = "TITLE SCREEN"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=1892730606]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

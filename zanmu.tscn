@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cyq1m636aqykj"]
+
+[ext_resource type="Texture2D" uid="uid://bm23f0m6pwrlt" path="res://zanmu.png" id="1_e7hus"]
+[ext_resource type="Script" uid="uid://cg4ufba1bmw5" path="res://zanmu.gd" id="1_fj3wy"]
+[ext_resource type="Script" uid="uid://c0148w36m323f" path="res://hurtbox.gd" id="2_0bf80"]
+[ext_resource type="Script" uid="uid://bfin0v5wfjh05" path="res://hitbox.gd" id="3_fj3wy"]
+[ext_resource type="Texture2D" uid="uid://8nq0f3x5ibwi" path="res://ammo_bar_fill.png" id="5_n12pi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5xoy"]
+atlas = ExtResource("1_e7hus")
+region = Rect2(0, 0, 80, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0bf80"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5xoy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n12pi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7s7qw"]
+size = Vector2(80, 80)
+
+[node name="Zanmu" type="Node2D" unique_id=1810475383]
+script = ExtResource("1_fj3wy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=241979405]
+sprite_frames = SubResource("SpriteFrames_0bf80")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1904810238]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("2_0bf80")
+metadata/_custom_type_script = "uid://c0148w36m323f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=815702355]
+shape = SubResource("RectangleShape2D_n12pi")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=2032260778]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("3_fj3wy")
+metadata/_custom_type_script = "uid://bfin0v5wfjh05"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1033203406]
+shape = SubResource("RectangleShape2D_7s7qw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1989206518]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1258268085]
+offset_left = 526.0
+offset_right = 543.0
+offset_bottom = 532.0
+texture_progress = ExtResource("5_n12pi")
+
+[connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
+[connection signal="took_damage" from="Hitbox" to="." method="_on_hitbox_took_damage"]
