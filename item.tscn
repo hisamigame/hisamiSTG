@@ -1,28 +1,36 @@
 [gd_scene format=3 uid="uid://8tolhhdl0oix"]
 
+[ext_resource type="Texture2D" uid="uid://cv5lviajlqrx1" path="res://life_icon.png" id="1_ttk8k"]
 [ext_resource type="Script" uid="uid://dmecofgrwrklc" path="res://item.gd" id="2_kg5e7"]
-[ext_resource type="Texture2D" uid="uid://u1mlf8vke5w0" path="res://item.png" id="2_ttk8k"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ys7tt"]
-atlas = ExtResource("2_ttk8k")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttk8k"]
+atlas = ExtResource("1_ttk8k")
+region = Rect2(0, 0, 8, 8)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_unjj8"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_kg5e7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ys7tt")
+"texture": SubResource("AtlasTexture_ttk8k")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Item" type="AnimatedSprite2D" unique_id=1031354751]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttk8k"]
+size = Vector2(8, 8)
+
+[node name="Item" type="Area2D" unique_id=223066609]
 z_index = -1
-sprite_frames = SubResource("SpriteFrames_unjj8")
+collision_layer = 32
+collision_mask = 16
 script = ExtResource("2_kg5e7")
 
-[node name="Timer" type="Timer" parent="." unique_id=12955267]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=165017389]
+sprite_frames = SubResource("SpriteFrames_kg5e7")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=80890410]
+shape = SubResource("RectangleShape2D_ttk8k")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

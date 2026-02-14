@@ -31,8 +31,8 @@ global="*uid://b36sycbuhhuuk"
 [display]
 
 window/size/viewport_width=540
-window/size/viewport_height=540
-window/size/no_focus=true
+window/size/viewport_height=500
+window/size/sharp_corners=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
@@ -81,6 +81,7 @@ focus={
 2d_physics/layer_2="EnemyHurtbox"
 2d_physics/layer_3="EnemyHitbox"
 2d_physics/layer_4="PlayerHurtbox"
+2d_physics/layer_5="PlayerCollectionBox"
 2d_physics/layer_6="Items"
 
 [physics]

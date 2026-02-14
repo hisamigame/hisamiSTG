@@ -1,11 +1,12 @@
 extends Node
 
+var rng = RandomNumberGenerator.new()
 @onready var scene_switcher: Node
 
 const target_FPS = 60.0
 
 const field_width : int = 540 # total width of playfield
-const field_height : int = 540 # total height of playfield
+const field_height : int = 500 # total height of playfield
 
 signal lives_changed
 signal score_changed
@@ -31,6 +32,8 @@ var boss_spawn_time = 30
 var fire = false
 var hyper = false
 var focus = false
+
+var item_value = 100
 
 var has_score_changed
 var has_ammo_changed
@@ -66,6 +69,9 @@ func play_enemy_hurt():
 	
 func play_enemy_dead():
 	$EnemyDead.play()
+	
+func play_item():
+	$ItemGet.play()
 
 func default_hiscores():
 	# Default hiscore list

@@ -3,8 +3,6 @@ class_name Bullet
 
 @export var direction: Vector2
 @export var speed = 4.0
-@export var can_graze = true
-@export var graze_value = 5
 @export var value = 20
 
 @export var clearable = true

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dc1h5ei0k32xv"]
+
+[ext_resource type="Script" uid="uid://dtag1oeue27hs" path="res://restore_scale.gd" id="1_3rmnp"]
+
+[node name="RestoreScale" type="Node" unique_id=791556577]
+script = ExtResource("1_3rmnp")

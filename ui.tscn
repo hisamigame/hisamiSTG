@@ -20,9 +20,9 @@ script = ExtResource("1_fyqef")
 [node name="SubViewport" type="CanvasLayer" parent="." unique_id=997361781]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="SubViewport" unique_id=822975136]
-offset_top = 520.0
+offset_top = 478.0
 offset_right = 118.0
-offset_bottom = 538.0
+offset_bottom = 496.0
 texture = ExtResource("3_27fn8")
 region_rect = Rect2(0, 0, 64, 64)
 patch_margin_left = 5
@@ -34,9 +34,9 @@ axis_stretch_vertical = 1
 
 [node name="AmmoBar" type="TextureProgressBar" parent="SubViewport" unique_id=496641144]
 offset_left = 27.0
-offset_top = 525.0
+offset_top = 483.0
 offset_right = 73.0
-offset_bottom = 533.0
+offset_bottom = 491.0
 max_value = 48.0
 value = 2.0
 nine_patch_stretch = true
@@ -45,9 +45,9 @@ texture_progress = ExtResource("3_y4yjw")
 
 [node name="Score" type="Label" parent="SubViewport" unique_id=280786330]
 offset_left = 73.0
-offset_top = 525.0
+offset_top = 483.0
 offset_right = 113.0
-offset_bottom = 534.0
+offset_bottom = 492.0
 theme = ExtResource("4_ibotj")
 text = "9999999999"
 horizontal_alignment = 2
@@ -60,15 +60,15 @@ offset_right = 40.0
 offset_bottom = 354.0
 
 [node name="LifeIcon" type="Sprite2D" parent="SubViewport/Lives" unique_id=587962102]
-position = Vector2(10, 216)
+position = Vector2(10, 174)
 texture = ExtResource("5_n5ude")
 
 [node name="Label" type="Label" parent="SubViewport/Lives" unique_id=1485734067]
 layout_mode = 0
 offset_left = 15.0
-offset_top = 211.0
+offset_top = 169.0
 offset_right = 27.0
-offset_bottom = 220.0
+offset_bottom = 178.0
 theme = ExtResource("4_ibotj")
 text = "x29"
 
@@ -76,9 +76,9 @@ text = "x29"
 layout_mode = 3
 anchors_preset = 0
 offset_left = 120.0
-offset_top = 525.0
+offset_top = 483.0
 offset_right = 133.0
-offset_bottom = 534.0
+offset_bottom = 492.0
 
 [node name="Label" type="Label" parent="SubViewport/TimeDisplay" unique_id=2115863164]
 layout_mode = 0

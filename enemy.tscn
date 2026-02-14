@@ -8,11 +8,15 @@
 script = ExtResource("1_7k104")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=833150868]
+collision_layer = 4
+collision_mask = 8
 script = ExtResource("2_qi2p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1241795471]
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1538443469]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("3_iifgy")
 metadata/_custom_type_script = "uid://c0148w36m323f"
 

@@ -3,22 +3,15 @@
 [ext_resource type="Script" uid="uid://ve7jcwmwecs3" path="res://bullet.gd" id="1_v7oki"]
 [ext_resource type="Texture2D" uid="uid://b7kgyg5xt683p" path="res://bullet.png" id="2_v8qja"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t4vbm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8qja"]
 atlas = ExtResource("2_v8qja")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2b2rl"]
-atlas = ExtResource("2_v8qja")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(0, 0, 22, 22)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b7duk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t4vbm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2b2rl")
+"texture": SubResource("AtlasTexture_v8qja")
 }],
 "loop": true,
 "name": &"default",
@@ -29,7 +22,6 @@ animations = [{
 radius = 2.0
 
 [node name="Bullet" type="Area2D" unique_id=1653350336]
-modulate = Color(0.8980392, 0.88235295, 0.7019608, 1)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_v7oki")

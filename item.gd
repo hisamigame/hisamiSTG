@@ -1,4 +1,5 @@
-extends AnimatedSprite2D
+extends Area2D
+class_name Item
 
 enum {SPAWN, WAIT, SUCK}
 var state = SPAWN
@@ -8,17 +9,20 @@ var threshold = 20.0*2
 
 var value = global.item_value
 var time = 0.0
-var spawn_time = 0.5
-var jump_height = 15.0
-var initial_y : float
+var spawn_time = 0.25
+var jump_distance = 15.0
+var initial_position : Vector2
 var collect_time = -1
 var combo_time = 0.15
+var fall_speed = 3.0
+var jump_direction = Vector2.UP
 
 func die():
 	queue_free()
 	
 func _ready():
-	initial_y = position.y
+	initial_position = position
+	jump_direction = Vector2.from_angle(global.rng.randf_range(0,-PI))
 	if collect_time > 0.0:
 		$Timer.start(collect_time)
 
@@ -27,8 +31,9 @@ func start_collect():
 	
 func collect():
 	global.set_score(global.score + value)
-	global.combo = global.combo + 1
-	global.combo_timer = combo_time
+	#global.combo = global.combo + 1
+	#global.combo_timer = combo_time
+	global.set_ammo(global.ammo + 1)
 	global.play_item()
 	die()
 
@@ -36,17 +41,16 @@ func _physics_process(delta: float) -> void:
 	match state:
 		SPAWN:
 			time = time + delta
-			position.y = initial_y - jump_height * (1 - (1 - time/spawn_time)**2)
+			position = initial_position + jump_distance * jump_direction *(2*(time/spawn_time) - (time/spawn_time)**2)
 			if time > spawn_time:
 				state = WAIT
 		WAIT:
-			pass
+			position.y = position.y + fall_speed * delta * global.target_FPS
 		SUCK:
 			direction = position.direction_to(global.player_position)
 			position = position + speed * delta * global.target_FPS * direction
 			if position.distance_squared_to(global.player_position) < threshold:
 				collect()
 
-
-func _on_timer_timeout() -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	start_collect()

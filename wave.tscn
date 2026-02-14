@@ -5,4 +5,6 @@
 [node name="Wave" type="Node2D" unique_id=1715293201]
 script = ExtResource("1_8asc4")
 
-[node name="Timer" type="Timer" parent="." unique_id=606370196 groups=["Enemy"]]
+[node name="Timer" type="Timer" parent="." unique_id=606370196]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

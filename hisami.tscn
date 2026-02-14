@@ -21,6 +21,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wejl"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_del5l"]
+radius = 100.0
+
 [node name="Hisami" type="Node2D" unique_id=1429502819]
 script = ExtResource("1_w4aru")
 
@@ -32,7 +35,7 @@ sprite_frames = SubResource("SpriteFrames_8wejl")
 one_shot = true
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1834568935]
-collision_mask = 2
+collision_mask = 34
 script = ExtResource("3_del5l")
 metadata/_custom_type_script = "uid://bfin0v5wfjh05"
 
@@ -40,6 +43,13 @@ metadata/_custom_type_script = "uid://bfin0v5wfjh05"
 shape = SubResource("RectangleShape2D_8wejl")
 
 [node name="ShotTimer" type="Timer" parent="." unique_id=263025841]
+
+[node name="CollectionBox" type="Area2D" parent="." unique_id=358303626]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionBox" unique_id=112805162]
+shape = SubResource("CircleShape2D_del5l")
 
 [connection signal="timeout" from="InvulTimer" to="." method="_on_invul_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
