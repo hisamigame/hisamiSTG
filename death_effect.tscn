@@ -1,19 +1,6 @@
 [gd_scene format=3 uid="uid://bfrc808706cdo"]
 
-[ext_resource type="Shader" uid="uid://hobky4kdwwgd" path="res://charge_attack.gdshader" id="1_oac34"]
 [ext_resource type="Script" uid="uid://bi4tc17ih7oxh" path="res://death_effect.gd" id="1_p1lmi"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5l07o"]
-shader = ExtResource("1_oac34")
-shader_parameter/start_time = 0.0
-shader_parameter/start_coord = Vector2(0, 0)
-shader_parameter/wave_speed = 0.0
-shader_parameter/time = 0.0
-shader_parameter/width = 0.0
-shader_parameter/pixel_size = Vector2(0, 0)
-shader_parameter/max_time = 0.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_p1lmi"]
 
 [sub_resource type="Shader" id="Shader_p1lmi"]
 code = "shader_type canvas_item;
@@ -66,16 +53,12 @@ shader_parameter/width = 1.0
 shader_parameter/pixel_size = Vector2(0, 0)
 shader_parameter/max_time = 0.0
 
-[node name="DeathEffect" type="Area2D" unique_id=331745061]
-material = SubResource("ShaderMaterial_5l07o")
-collision_layer = 8
-collision_mask = 4
-script = ExtResource("1_p1lmi")
-damage = 10.0
-clear_bullets = true
+[sub_resource type="CircleShape2D" id="CircleShape2D_oac34"]
+radius = 22.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1752457636]
-shape = SubResource("CircleShape2D_p1lmi")
+[node name="Hurtbox" type="Area2D" unique_id=2136290639]
+script = ExtResource("1_p1lmi")
+metadata/_custom_type_script = "uid://c0148w36m323f"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=589273658]
 material = SubResource("ShaderMaterial_oac34")
@@ -87,3 +70,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=345364051]
+shape = SubResource("CircleShape2D_oac34")

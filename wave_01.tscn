@@ -3,18 +3,265 @@
 [ext_resource type="PackedScene" uid="uid://dokqaqwb1ej8m" path="res://wave.tscn" id="1_l7qx7"]
 [ext_resource type="PackedScene" uid="uid://b4c47k3f6j5lf" path="res://wisp.tscn" id="2_hbb3b"]
 [ext_resource type="PackedScene" uid="uid://wfp4fq6a5uok" path="res://shoot_aimed.tscn" id="3_kmty8"]
-[ext_resource type="PackedScene" uid="uid://cgotu23gkuq17" path="res://linear_movement.tscn" id="3_rg46r"]
 [ext_resource type="PackedScene" uid="uid://bw4duwrirbarn" path="res://bobbing.tscn" id="3_xc0hh"]
+[ext_resource type="PackedScene" uid="uid://dmtalsa3xwxjt" path="res://move_in_out.tscn" id="4_xc0hh"]
 
 [node name="Wave01" unique_id=1715293201 instance=ExtResource("1_l7qx7")]
 
-[node name="Wisp" parent="." index="1" unique_id=335368161 instance=ExtResource("2_hbb3b")]
-position = Vector2(125, 77)
+[node name="Wisp1" parent="." index="1" unique_id=2022896290 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 113)
 
-[node name="Shoot" parent="Wisp" index="0" unique_id=1496199230 instance=ExtResource("3_kmty8")]
+[node name="Bobbing" parent="Wisp1" index="3" unique_id=1892046889 instance=ExtResource("3_xc0hh")]
 
-[node name="Bobbing" parent="Wisp" index="1" unique_id=302112819 instance=ExtResource("3_xc0hh")]
-amplitude = 4
-direction = Vector2(1, 0)
+[node name="Movement" parent="Wisp1" index="4" unique_id=37601087 instance=ExtResource("4_xc0hh")]
+position = Vector2(-416, 2)
+wait_time = 3.0
+enter_direction = Vector2(1, -0.5)
+exit_direction = Vector2(-0.5, 1)
 
-[node name="Movement" parent="Wisp" index="5" unique_id=1635703868 instance=ExtResource("3_rg46r")]
+[node name="Shoot" parent="Wisp1" index="5" unique_id=1496199230 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp2" parent="." index="2" unique_id=335368161 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 113)
+
+[node name="Bobbing" parent="Wisp2" index="3" unique_id=302112819 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp2" index="4" unique_id=478085822 instance=ExtResource("4_xc0hh")]
+position = Vector2(-171, 2)
+wait_time = 3.0
+enter_direction = Vector2(-1, -0.5)
+exit_direction = Vector2(0.5, 1)
+
+[node name="Shoot" parent="Wisp2" index="5" unique_id=310375873 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp3" parent="." index="3" unique_id=1032488218 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 113)
+
+[node name="Bobbing" parent="Wisp3" index="3" unique_id=1113920527 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp3" index="4" unique_id=351281795 instance=ExtResource("4_xc0hh")]
+position = Vector2(-366, -51)
+wait_time = 3.0
+enter_direction = Vector2(1, -0.5)
+exit_direction = Vector2(-0.5, 1)
+
+[node name="Shoot" parent="Wisp3" index="5" unique_id=52874688 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp4" parent="." index="4" unique_id=973100585 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 113)
+
+[node name="Bobbing" parent="Wisp4" index="3" unique_id=1806365198 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp4" index="4" unique_id=50630780 instance=ExtResource("4_xc0hh")]
+position = Vector2(-211, -53)
+wait_time = 3.0
+enter_direction = Vector2(-1, -0.5)
+exit_direction = Vector2(0.5, 1)
+
+[node name="Shoot" parent="Wisp4" index="5" unique_id=1745544509 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp5" parent="." index="5" unique_id=1606231633 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 113)
+
+[node name="Bobbing" parent="Wisp5" index="3" unique_id=265540440 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp5" index="4" unique_id=180431947 instance=ExtResource("4_xc0hh")]
+position = Vector2(-458, 44)
+enter_speed = 3.0
+wait_time = 3.0
+enter_direction = Vector2(1, -0.5)
+exit_direction = Vector2(-0.5, 1)
+
+[node name="Shoot" parent="Wisp5" index="5" unique_id=1448372371 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp6" parent="." index="6" unique_id=839932311 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 113)
+
+[node name="Bobbing" parent="Wisp6" index="3" unique_id=633626703 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp6" index="4" unique_id=1923218275 instance=ExtResource("4_xc0hh")]
+position = Vector2(-117, 52)
+enter_speed = 3.0
+wait_time = 3.0
+enter_direction = Vector2(-1, -0.5)
+exit_direction = Vector2(0.5, 1)
+
+[node name="Shoot" parent="Wisp6" index="5" unique_id=729958959 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp7" parent="." index="7" unique_id=2092303833 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 227)
+
+[node name="Bobbing" parent="Wisp7" index="3" unique_id=650483584 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp7" index="4" unique_id=1158939154 instance=ExtResource("4_xc0hh")]
+position = Vector2(-411, -5)
+wait_time = 2.0
+enter_direction = Vector2(1, -0.5)
+exit_direction = Vector2(-0.5, 1)
+
+[node name="Shoot" parent="Wisp7" index="5" unique_id=1845986016 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp8" parent="." index="8" unique_id=43453751 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 227)
+
+[node name="Bobbing" parent="Wisp8" index="3" unique_id=1206765326 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp8" index="4" unique_id=1839254509 instance=ExtResource("4_xc0hh")]
+position = Vector2(-205, -43)
+wait_time = 2.0
+enter_direction = Vector2(-1, -0.5)
+exit_direction = Vector2(0.5, 1)
+
+[node name="Shoot" parent="Wisp8" index="5" unique_id=430792365 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp9" parent="." index="9" unique_id=953716750 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 227)
+
+[node name="Bobbing" parent="Wisp9" index="3" unique_id=536283059 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp9" index="4" unique_id=1170562063 instance=ExtResource("4_xc0hh")]
+position = Vector2(-349, -60)
+wait_time = 2.0
+enter_direction = Vector2(1, -0.5)
+exit_direction = Vector2(-0.5, 1)
+
+[node name="Shoot" parent="Wisp9" index="5" unique_id=2105926654 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp10" parent="." index="10" unique_id=1178433908 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 227)
+
+[node name="Bobbing" parent="Wisp10" index="3" unique_id=539162495 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp10" index="4" unique_id=1738216072 instance=ExtResource("4_xc0hh")]
+position = Vector2(-279, -87)
+wait_time = 2.0
+enter_direction = Vector2(-1, -0.5)
+exit_direction = Vector2(0.5, 1)
+
+[node name="Shoot" parent="Wisp10" index="5" unique_id=1926093426 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp11" parent="." index="11" unique_id=2140810565 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 227)
+
+[node name="Bobbing" parent="Wisp11" index="3" unique_id=1473961700 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp11" index="4" unique_id=1333061810 instance=ExtResource("4_xc0hh")]
+position = Vector2(-473, 14)
+enter_speed = 3.0
+wait_time = 2.0
+enter_direction = Vector2(1, -0.5)
+exit_direction = Vector2(-0.5, 1)
+
+[node name="Shoot" parent="Wisp11" index="5" unique_id=1661964142 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp12" parent="." index="12" unique_id=1805885853 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 227)
+
+[node name="Bobbing" parent="Wisp12" index="3" unique_id=842496324 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp12" index="4" unique_id=1248169684 instance=ExtResource("4_xc0hh")]
+position = Vector2(-134, -8)
+enter_speed = 3.0
+wait_time = 2.0
+enter_direction = Vector2(-1, -0.5)
+exit_direction = Vector2(0.5, 1)
+
+[node name="Shoot" parent="Wisp12" index="5" unique_id=118313224 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp13" parent="." index="13" unique_id=528461754 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 327)
+
+[node name="Bobbing" parent="Wisp13" index="3" unique_id=2128376203 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp13" index="4" unique_id=428979329 instance=ExtResource("4_xc0hh")]
+position = Vector2(-460, -260)
+wait_time = 4.0
+enter_direction = Vector2(1, -0.5)
+exit_direction = Vector2(-0.5, 1)
+
+[node name="Shoot" parent="Wisp13" index="5" unique_id=1155498836 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp14" parent="." index="14" unique_id=2098449007 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 327)
+
+[node name="Bobbing" parent="Wisp14" index="3" unique_id=792748098 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp14" index="4" unique_id=1864699993 instance=ExtResource("4_xc0hh")]
+position = Vector2(-111, -277)
+wait_time = 4.0
+enter_direction = Vector2(-1, -0.5)
+exit_direction = Vector2(0.5, 1)
+
+[node name="Shoot" parent="Wisp14" index="5" unique_id=870274853 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp15" parent="." index="15" unique_id=1407930544 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 327)
+
+[node name="Bobbing" parent="Wisp15" index="3" unique_id=1711324972 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp15" index="4" unique_id=731999108 instance=ExtResource("4_xc0hh")]
+position = Vector2(-409, -293)
+wait_time = 4.0
+enter_direction = Vector2(1, -0.5)
+exit_direction = Vector2(-0.5, 1)
+
+[node name="Shoot" parent="Wisp15" index="5" unique_id=1618609396 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp16" parent="." index="16" unique_id=498961659 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 327)
+
+[node name="Bobbing" parent="Wisp16" index="3" unique_id=985588924 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp16" index="4" unique_id=6392077 instance=ExtResource("4_xc0hh")]
+position = Vector2(-169, -291)
+wait_time = 4.0
+enter_direction = Vector2(-1, -0.5)
+exit_direction = Vector2(0.5, 1)
+
+[node name="Shoot" parent="Wisp16" index="5" unique_id=510314477 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp17" parent="." index="17" unique_id=353046410 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 327)
+
+[node name="Bobbing" parent="Wisp17" index="3" unique_id=206994907 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp17" index="4" unique_id=1384545783 instance=ExtResource("4_xc0hh")]
+position = Vector2(-520, -233)
+enter_speed = 3.0
+wait_time = 4.0
+enter_direction = Vector2(1, -0.5)
+exit_direction = Vector2(-0.5, 1)
+
+[node name="Shoot" parent="Wisp17" index="5" unique_id=899809201 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0
+
+[node name="Wisp18" parent="." index="18" unique_id=1237216030 instance=ExtResource("2_hbb3b")]
+position = Vector2(573, 327)
+
+[node name="Bobbing" parent="Wisp18" index="3" unique_id=977068515 instance=ExtResource("3_xc0hh")]
+
+[node name="Movement" parent="Wisp18" index="4" unique_id=566841106 instance=ExtResource("4_xc0hh")]
+position = Vector2(-53, -246)
+enter_speed = 3.0
+wait_time = 4.0
+enter_direction = Vector2(-1, -0.5)
+exit_direction = Vector2(0.5, 1)
+
+[node name="Shoot" parent="Wisp18" index="5" unique_id=361508719 instance=ExtResource("3_kmty8")]
+fire_interval = 3.0

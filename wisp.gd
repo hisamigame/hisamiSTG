@@ -4,6 +4,13 @@ func _ready() -> void:
 	super._ready()
 	if get_node_or_null('Movement'):
 		$Movement.position = position
+	$AnimatedSprite2D.play('default')
+	
+	
+func die():
+	super.die()
+	for i in 8:
+		spawn_item(position)
 
 func _physics_process(delta: float) -> void:
 	
@@ -11,7 +18,9 @@ func _physics_process(delta: float) -> void:
 		process_seen()
 		if has_been_seen:
 			can_fire = true
-			
+	else:
+		if check_oob():
+			die_no_nothing()	
 	
 	if has_node('Movement'):
 		$Movement.advance(self, delta)
@@ -25,6 +34,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			sealed = false
 		$Shoot.advance(self,delta)
-	if check_oob():
-		die_no_nothing()
+		
+	
 		

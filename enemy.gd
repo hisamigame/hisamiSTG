@@ -28,9 +28,7 @@ signal died(int)
 
 func process_seen():
 	if not has_been_seen:
-		if position.x < global.field_width and position.x > 0:
-			has_been_seen = true
-		if  position.y < global.field_height and position.y > 0:
+		if position.x < global.field_width and position.x > 0 and position.y < global.field_height and position.y > 0:
 			has_been_seen = true
 	return has_been_seen
 	
@@ -58,7 +56,6 @@ func check_edge_seal():
 func die_no_bonus():
 	var tmp = death_effect.instantiate()
 	tmp.position = position
-	tmp.clear_bullets = true
 	add_sibling.call_deferred(tmp)
 	global.play_enemy_dead()
 	die_no_nothing()

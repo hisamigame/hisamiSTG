@@ -7,10 +7,10 @@ var t = 0.0
 @export var fire_interval = 1.0
 @export var speed = 3.0
 @export var fire_spread = 1.0
-@export var oneshoot = false
 var this_fire_interval: float
+@export var direction = Vector2.DOWN
+@export var oneshoot = false
 @export var randomize_phase = false
-
 
 
 func random_interval():
@@ -33,7 +33,7 @@ func fire(node):
 	var tmp = bullet.instantiate()
 	tmp.speed = speed
 	tmp.position = node.position
-	tmp.direction = tmp.position.direction_to(global.player_position)
+	tmp.direction = direction
 	node.add_sibling(tmp)
 	if oneshoot:
 		queue_free()

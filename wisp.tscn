@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b33q4a2yiwxk1" path="res://enemy.tscn" id="1_x1w8r"]
 [ext_resource type="Script" uid="uid://cxcbuuxx7f4f0" path="res://wisp.gd" id="2_1i22p"]
 [ext_resource type="Texture2D" uid="uid://bnvbgeukfq5uh" path="res://spirit.png" id="3_d4p23"]
+[ext_resource type="Texture2D" uid="uid://jn2ccwdwkgi" path="res://spirit_2.png" id="4_x60hi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1i22p"]
 
@@ -12,19 +13,27 @@
 atlas = ExtResource("3_d4p23")
 region = Rect2(0, 0, 54, 54)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5yo2"]
+atlas = ExtResource("4_x60hi")
+region = Rect2(0, 0, 54, 54)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h5yo2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x60hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5yo2")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [node name="Wisp" unique_id=335368161 instance=ExtResource("1_x1w8r")]
 script = ExtResource("2_1i22p")
+hp = 1
 
 [node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(833150868) index="0" unique_id=1241795471]
 shape = SubResource("RectangleShape2D_1i22p")

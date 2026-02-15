@@ -1,8 +1,8 @@
 extends Hurtbox
 
 var expand_speed = 2.0 # pixel per frame
-var default_radius = 16.0
-var radius = 16.0 # start radius
+#var default_radius = 16.0
+var radius = 22.0 # start radius
 var lifetime = 0.0
 var max_lifetime = 0.1
 var pure_death = false

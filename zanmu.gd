@@ -25,6 +25,7 @@ func enter_phase(i):
 func _ready():
 	#modulate.a = 0.0
 	enter_phase(0)
+	global.emit_clear_enemies()
 
 func switch_phase():
 	#play_serious_hurt()

@@ -3,25 +3,34 @@ extends Enemy
 enum STATE{ENTER,LINGER,LEAVE}
 var state = STATE.ENTER
 
-@onready var avg_position = position
-@export var speed = 1.0
-@export var direction = Vector2.ZERO
 
 func _ready():
 	super._ready()
-	$EnterMovement.position = position
-	$EnterMovement.direction = direction
 
 func die():
-	init_revenge_bullet()
-	global.set_score(global.score + value)
-	die_no_bonus()
+	super.die()
 
 func _physics_process(delta: float) -> void:
+	if not has_been_seen:
+		process_seen()
+		if has_been_seen:
+			can_fire = true
+	else:
+		if check_oob():
+			die_no_nothing()	
 	
-	match state:
-		STATE.ENTER:
-			$EnterMovement.advance(self,delta)
-			$Bobbing.advance(self,delta)
-			position = $EnterMovement.position
-			position = position + $Bobbing.position
+	if has_node('Movement'):
+		$Movement.advance(self, delta)
+		position = $Movement.position
+	if has_node('Bobbing'):
+		$Bobbing.advance(self,delta)
+		position = position + $Bobbing.position
+	if has_node('Shoot'):
+		if can_fire and check_edge_seal() or position.distance_squared_to(global.player_position) < seal_distance2:
+			sealed = true
+		else:
+			sealed = false
+		$Shoot.advance(self,delta)
+		
+	
+		

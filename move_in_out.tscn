@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dmtalsa3xwxjt"]
+
+[ext_resource type="Script" uid="uid://csowf2fwwxeta" path="res://move_in_out.gd" id="1_dv5tm"]
+
+[node name="Movement" type="Node2D" unique_id=478085822]
+script = ExtResource("1_dv5tm")

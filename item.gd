@@ -10,12 +10,14 @@ var threshold = 20.0*2
 var value = global.item_value
 var time = 0.0
 var spawn_time = 0.25
-var jump_distance = 15.0
+var jump_distance = 25.0
 var initial_position : Vector2
 var collect_time = -1
 var combo_time = 0.15
-var fall_speed = 3.0
+var fall_speed = 4.0
 var jump_direction = Vector2.UP
+
+var will_collect = false
 
 func die():
 	queue_free()
@@ -27,8 +29,10 @@ func _ready():
 		$Timer.start(collect_time)
 
 func start_collect():
-	state = SUCK
-	
+	if state == WAIT:
+		state = SUCK
+	elif state == SPAWN:
+		will_collect = true
 func collect():
 	global.set_score(global.score + value)
 	#global.combo = global.combo + 1
@@ -43,7 +47,10 @@ func _physics_process(delta: float) -> void:
 			time = time + delta
 			position = initial_position + jump_distance * jump_direction *(2*(time/spawn_time) - (time/spawn_time)**2)
 			if time > spawn_time:
-				state = WAIT
+				if will_collect:
+					state = SUCK
+				else:
+					state = WAIT
 		WAIT:
 			position.y = position.y + fall_speed * delta * global.target_FPS
 		SUCK:

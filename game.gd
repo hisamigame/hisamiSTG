@@ -4,7 +4,7 @@ enum {SPAWN_WAVE, NORMAL, BOSS}
 var state = SPAWN_WAVE
 
 
-const wave_order = [1, 2]
+const wave_order = [1,2,1,2]#
 var nwaves: int
 var substages = Dictionary()
 var wave_index = -1
@@ -123,9 +123,3 @@ func wave_cleared():
 	# kind of redundant state right now
 	if not global.stop_timer:
 		spawn_next_wave()
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == 'bossStart':
-		clear_bullets(false)
-		clear_enemies()
