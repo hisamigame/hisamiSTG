@@ -4,7 +4,7 @@ enum {SPAWN_WAVE, NORMAL, BOSS}
 var state = SPAWN_WAVE
 
 
-const wave_order = [1,2,1,2]#
+const wave_order = [1,2,3,4]#
 var nwaves: int
 var substages = Dictionary()
 var wave_index = -1
@@ -14,7 +14,7 @@ const wave_index_loop = 0
 
 var next_wave: PackedScene
 
-var debug_boss = true
+var debug_boss = false
 
 var boss_kill = 1
 
@@ -63,7 +63,7 @@ func spawn_boss():
 	trigger_boss()
 	print('Spawning boss')
 	var tmp = next_wave.instantiate()
-	tmp.wave_done.connect(wave_cleared)
+	#tmp.wave_done.connect(wave_cleared)
 	add_child.call_deferred(tmp)
 
 func _ready():

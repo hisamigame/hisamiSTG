@@ -4,8 +4,8 @@ class_name Enemy
 
 @export var bullet : PackedScene
 @export var revenge_bullet : PackedScene
-var death_effect = preload('res://death_effect.tscn')
-var item = preload('res://item.tscn')
+const death_effect = preload('res://death_effect.tscn')
+const item = preload('res://item.tscn')
 
 @export var hp = 10
 @export var value= 100

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b20qmhdm8umvl"]
 
 [ext_resource type="PackedScene" uid="uid://hyaky5wvg7rp" path="res://hisami.tscn" id="1_80nbo"]
-[ext_resource type="Script" uid="uid://ctlv53ak26grg" path="res://game.gd" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://bb3eh2nbw0o1y" path="res://game.gd" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://b3r732oir1wnb" path="res://ui.tscn" id="3_feb5d"]
 [ext_resource type="Texture2D" uid="uid://c7kvml80iuap" path="res://edge_flash.png" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://i16mvimcbd0q" path="res://bg_mist.png" id="5_ryrav"]
@@ -33,21 +33,21 @@ modulate = Color(0.6796651, 0.2995533, 0.7838891, 1)
 [node name="ParallaxMist" type="Parallax2D" parent="Node" unique_id=896642493]
 z_index = -2
 scroll_offset = Vector2(1, 0)
-repeat_size = Vector2(1620, 500)
+repeat_size = Vector2(1620, 2000)
 autoscroll = Vector2(30, 500)
 ignore_camera_scroll = true
 
 [node name="TextureRect" type="TextureRect" parent="Node/ParallaxMist" unique_id=791151255]
 z_index = 1
 offset_top = -261.0
-offset_right = 540.0
-offset_bottom = 739.0
+offset_right = 1620.0
+offset_bottom = 1739.0
 texture = ExtResource("5_ryrav")
 stretch_mode = 1
 
 [node name="ParallaxBG" type="Parallax2D" parent="Node" unique_id=808321982]
 z_index = -3
-repeat_size = Vector2(0, 500)
+repeat_size = Vector2(0, 2500)
 autoscroll = Vector2(0, 500)
 ignore_camera_scroll = true
 

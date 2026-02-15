@@ -3,6 +3,7 @@ extends Node2D
 @export var enter_speed = 4.0
 @export var exit_speed = 4.0
 @export var wait_time = 1.0
+@export var enter_wait_time = 0.0
 var enter_time: float
 var exit_time: float
 var t = 0
@@ -14,37 +15,36 @@ var t = 0
 var target_position : Vector2
 var enter_position : Vector2
 var exit_position : Vector2
+var buffer = 60
 
 var d = 4.0**2
 
-enum {ENTER, WAIT, EXIT}
-var state = ENTER
+enum {ENTERWAIT, ENTER, WAIT, EXIT}
+var state = ENTERWAIT
 
 func calculate_initial_position(direction):
 	var s1: float
 	var s2: float
-	var buffer = 40.0
 	var thresh = 0.01
-	if direction.y < thresh:
+	if direction.y < -thresh:
 		s1 = (target_position.y - global.field_height - buffer)/direction.y
 	elif direction.y > thresh:
 		s1 = (target_position.y + buffer)/direction.y
 	else:
 		s1 = INF
-	if direction.x < thresh:
+	if direction.x < -thresh:
 		s2 = (target_position.x - global.field_width - buffer)/direction.x
 	elif direction.x > thresh:
 		s2 = (target_position.x + buffer)/direction.x
 	else:
 		s2 = INF
-	print('s11111')
-	print(s2)
-	print(s1)
 	var s = min(s1,s2)
-	print(s)
 	return target_position - direction * s
 
 func _ready():
+	if enter_wait_time == 0:
+		state = ENTER
+	
 	enter_direction = enter_direction.normalized()
 	exit_direction = exit_direction.normalized()
 	target_position = global_position
@@ -55,16 +55,17 @@ func _ready():
 		enter_position = calculate_initial_position(enter_direction)
 	
 	exit_position =  calculate_initial_position(-exit_direction)
-	position = enter_direction
+	position.y = -666
 	enter_time = target_position.distance_to(enter_position)/enter_speed/global.target_FPS
 	exit_time =  target_position.distance_to(exit_position)/exit_speed/global.target_FPS
-	print(target_position)
-	print(enter_position)
-	print(enter_time)
-	print(enter_direction)
 
 func advance(_node, delta):
 	match state:
+		ENTERWAIT:
+			t = t + delta
+			if t > enter_wait_time:
+				t = 0.0
+				state = ENTER
 		ENTER:
 			t = t + delta
 			position.x = Tween.interpolate_value(enter_position.x,target_position.x-enter_position.x,t,enter_time,transition_x,Tween.EASE_OUT)

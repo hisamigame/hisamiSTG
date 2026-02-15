@@ -21,8 +21,9 @@ signal clear_enemies
 signal spawn_boss
 
 const ui_hide_margin = 20
-const charge_cost = 100
-const max_ammo = 250
+#const hyper_cost = 1000
+const hyper_cost = 100
+const max_ammo = 1500
 var ui_visible = true
 var stop_timer: bool
 var time_left = 0.0

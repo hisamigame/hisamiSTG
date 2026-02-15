@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://oj7cfkfr1s3q"]
+
+[ext_resource type="PackedScene" uid="uid://dokqaqwb1ej8m" path="res://wave.tscn" id="1_w0ohu"]
+[ext_resource type="PackedScene" uid="uid://d2mrvwbjlqhde" path="res://sin_sack.tscn" id="2_blmug"]
+[ext_resource type="PackedScene" uid="uid://dmtalsa3xwxjt" path="res://move_in_out.tscn" id="3_dlf1m"]
+[ext_resource type="PackedScene" uid="uid://bw4duwrirbarn" path="res://bobbing.tscn" id="4_ak6xt"]
+[ext_resource type="PackedScene" uid="uid://b4c47k3f6j5lf" path="res://wisp.tscn" id="5_dlf1m"]
+[ext_resource type="PackedScene" uid="uid://cgotu23gkuq17" path="res://linear_movement.tscn" id="6_ak6xt"]
+
+[node name="Wave04" unique_id=1715293201 instance=ExtResource("1_w0ohu")]
+
+[node name="SinSack" parent="." index="1" unique_id=335368161 instance=ExtResource("2_blmug")]
+position = Vector2(232, -156)
+
+[node name="Movement" parent="SinSack" index="0" unique_id=478085822 instance=ExtResource("3_dlf1m")]
+position = Vector2(-71, 278)
+wait_time = 3.0
+enter_wait_time = 0.3
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Bobbing" parent="SinSack" index="4" unique_id=302112819 instance=ExtResource("4_ak6xt")]
+
+[node name="SinSack2" parent="." index="2" unique_id=241860345 instance=ExtResource("2_blmug")]
+position = Vector2(232, -156)
+
+[node name="Movement" parent="SinSack2" index="0" unique_id=1619644047 instance=ExtResource("3_dlf1m")]
+position = Vector2(125, 276)
+wait_time = 3.0
+enter_wait_time = 4.0
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Bobbing" parent="SinSack2" index="4" unique_id=965198156 instance=ExtResource("4_ak6xt")]
+
+[node name="Wisp26" parent="." index="3" unique_id=1092465930 instance=ExtResource("5_dlf1m")]
+position = Vector2(136, -558)
+
+[node name="Bobbing" parent="Wisp26" index="0" unique_id=1593728521 instance=ExtResource("4_ak6xt")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp26" index="4" unique_id=1635703868 instance=ExtResource("6_ak6xt")]
+speed = 7.0
+
+[node name="Wisp27" parent="." index="4" unique_id=1865462568 instance=ExtResource("5_dlf1m")]
+position = Vector2(188, -691)
+
+[node name="Bobbing" parent="Wisp27" index="0" unique_id=1004862611 instance=ExtResource("4_ak6xt")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp27" index="4" unique_id=1515445964 instance=ExtResource("6_ak6xt")]
+speed = 7.0
+
+[node name="Wisp28" parent="." index="5" unique_id=1871778155 instance=ExtResource("5_dlf1m")]
+position = Vector2(269, -828)
+
+[node name="Bobbing" parent="Wisp28" index="0" unique_id=743733450 instance=ExtResource("4_ak6xt")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp28" index="4" unique_id=192211828 instance=ExtResource("6_ak6xt")]
+speed = 7.0

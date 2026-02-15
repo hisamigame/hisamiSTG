@@ -12,6 +12,7 @@ position = Vector2(232, -156)
 
 [node name="Movement" parent="SinSack" index="0" unique_id=478085822 instance=ExtResource("3_0injf")]
 position = Vector2(19, 276)
+wait_time = 3.0
 enter_direction = Vector2(0, 1)
 exit_direction = Vector2(0, -1)
 

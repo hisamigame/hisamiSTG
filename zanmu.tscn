@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bm23f0m6pwrlt" path="res://zanmu.png" id="1_e7hus"]
 [ext_resource type="Script" uid="uid://cg4ufba1bmw5" path="res://zanmu.gd" id="1_fj3wy"]
 [ext_resource type="Script" uid="uid://c0148w36m323f" path="res://hurtbox.gd" id="2_0bf80"]
+[ext_resource type="Texture2D" uid="uid://ekumwnb2u45v" path="res://zanmu_2.png" id="3_7s7qw"]
 [ext_resource type="Script" uid="uid://bfin0v5wfjh05" path="res://hitbox.gd" id="3_fj3wy"]
 [ext_resource type="Texture2D" uid="uid://8nq0f3x5ibwi" path="res://ammo_bar_fill.png" id="5_n12pi"]
 
@@ -10,11 +11,18 @@
 atlas = ExtResource("1_e7hus")
 region = Rect2(0, 0, 80, 120)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lookm"]
+atlas = ExtResource("3_7s7qw")
+region = Rect2(0, 0, 80, 120)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0bf80"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e5xoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lookm")
 }],
 "loop": true,
 "name": &"default",
@@ -31,6 +39,7 @@ script = ExtResource("1_fj3wy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=241979405]
 sprite_frames = SubResource("SpriteFrames_0bf80")
+frame_progress = 0.013020325
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1904810238]
 collision_layer = 2

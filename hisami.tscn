@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://c2xpksl3xo3r7" path="res://hisami.gd" id="1_w4aru"]
 [ext_resource type="Texture2D" uid="uid://c58eajkryrh13" path="res://hisami.png" id="2_dgy2n"]
+[ext_resource type="Texture2D" uid="uid://c54g484vh7d8h" path="res://hisami_move.png" id="3_8wejl"]
 [ext_resource type="Script" uid="uid://bfin0v5wfjh05" path="res://hitbox.gd" id="3_del5l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_del5l"]
 atlas = ExtResource("2_dgy2n")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v350"]
+atlas = ExtResource("3_8wejl")
 region = Rect2(0, 0, 54, 54)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8wejl"]
@@ -16,6 +21,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v350")
+}],
+"loop": true,
+"name": &"move",
 "speed": 5.0
 }]
 

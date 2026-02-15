@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://ncl44bwxjmjh"]
+
+[ext_resource type="Script" uid="uid://cs8ipr3ufr56d" path="res://fallen_sack.gd" id="1_5xdlr"]
+[ext_resource type="Texture2D" uid="uid://dew1unsv3025s" path="res://sinsack_fall.png" id="2_pfkg6"]
+[ext_resource type="Texture2D" uid="uid://cv66l27lsyvup" path="res://sinsack_fire_fall.png" id="3_kkhkx"]
+[ext_resource type="Texture2D" uid="uid://dqbagsf0hmx1d" path="res://sinsack_thunder_fall.png" id="4_f5ebp"]
+[ext_resource type="Texture2D" uid="uid://bk3rpkojeu3gj" path="res://sinsack_water_fall.png" id="5_jrsg8"]
+[ext_resource type="Texture2D" uid="uid://dr25nuflulxqk" path="res://sinsack_wind_fall.png" id="6_wiury"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sik0t"]
+atlas = ExtResource("2_pfkg6")
+region = Rect2(0, 0, 108, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkudk"]
+atlas = ExtResource("3_kkhkx")
+region = Rect2(0, 0, 108, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0b8s"]
+atlas = ExtResource("4_f5ebp")
+region = Rect2(0, 0, 108, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gumpl"]
+atlas = ExtResource("5_jrsg8")
+region = Rect2(0, 0, 108, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btmw8"]
+atlas = ExtResource("6_wiury")
+region = Rect2(0, 0, 108, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qdt6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sik0t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkudk")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0b8s")
+}],
+"loop": true,
+"name": &"lightning",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gumpl")
+}],
+"loop": true,
+"name": &"water",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btmw8")
+}],
+"loop": true,
+"name": &"wind",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xdlr"]
+size = Vector2(70, 50)
+
+[node name="FallenSack" type="Node2D" unique_id=213677023]
+script = ExtResource("1_5xdlr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=76867056]
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_0qdt6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=909647811]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1504967514]
+shape = SubResource("RectangleShape2D_5xdlr")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

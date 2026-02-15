@@ -1,14 +1,24 @@
 extends Enemy
 
-enum STATE{ENTER,LINGER,LEAVE}
-var state = STATE.ENTER
+var damage_position: Vector2
 
+const fallen_sack = preload("res://fallen_sack.tscn")
 
 func _ready():
 	super._ready()
 
 func die():
-	super.die()
+	global.set_score(global.score + value)
+	die_no_bonus()
+	
+func die_no_bonus():
+	global.play_enemy_dead()
+	var tmp = fallen_sack.instantiate()
+	tmp.fired_position = damage_position
+	tmp.position = position
+	add_sibling.call_deferred(tmp)
+	super.die_no_nothing()
+	
 
 func _physics_process(delta: float) -> void:
 	if not has_been_seen:
@@ -33,4 +43,6 @@ func _physics_process(delta: float) -> void:
 		$Shoot.advance(self,delta)
 		
 	
-		
+func take_damage(hurtbox: Hurtbox):
+	damage_position = hurtbox.fired_position
+	super.take_damage(hurtbox)
