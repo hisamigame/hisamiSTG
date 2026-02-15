@@ -32,6 +32,7 @@ autoscroll = Vector2(0, 500)
 ignore_camera_scroll = true
 
 [node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=2142303972]
+self_modulate = Color(0.39215687, 0.23529412, 0.23137255, 1)
 offset_top = -261.0
 offset_right = 540.0
 offset_bottom = 739.0

@@ -64,6 +64,7 @@ func die():
 func unfocused_shot(spread):
 	var shot_direction: Vector2
 	var xoffset: float
+	var yoffset
 	for i in n_shots:
 		var tmp = attack.instantiate()
 		shot_direction = Vector2.UP
@@ -78,8 +79,8 @@ func unfocused_shot(spread):
 		
 		
 		if i == 0 or i == n_shots - 1:
-			tmp.offset.y = tmp.offset.y * 2.0
-			xoffset = xoffset * 0.9
+			yoffset = tmp.offset.y * 0.5
+			#xoffset = xoffset * 0.9
 			if spread:
 				if shot_parity == 0:
 					if i == 0:
@@ -91,11 +92,16 @@ func unfocused_shot(spread):
 					shot_direction.x = 0.05
 				else:
 					shot_direction.x = -0.05
+		else:
+			yoffset = tmp.offset.y
 			
 		tmp.position = position# + tmp.offset
-		tmp.position.x = tmp.position.x +  xoffset
-		if i > 1:
-			tmp.z_index = 2		
+		tmp.position.x = tmp.position.x + xoffset
+		tmp.position.y = tmp.position.y + yoffset
+		print(i)
+		#if i == 0:
+		#	tmp.position.x = tmp.position.x - 10
+		print(shot_direction.x)
 		tmp.direction = shot_direction
 		add_sibling(tmp)
 
