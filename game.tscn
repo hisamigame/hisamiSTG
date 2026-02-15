@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://bb3eh2nbw0o1y" path="res://game.gd" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://b3r732oir1wnb" path="res://ui.tscn" id="3_feb5d"]
 [ext_resource type="Texture2D" uid="uid://c7kvml80iuap" path="res://edge_flash.png" id="4_fc0e3"]
-[ext_resource type="Texture2D" uid="uid://xygyxj70ij5h" path="res://bg.png" id="5_7jktm"]
+[ext_resource type="Texture2D" uid="uid://i16mvimcbd0q" path="res://bg_mist.png" id="5_ryrav"]
+[ext_resource type="Texture2D" uid="uid://dka4bq8qi3x30" path="res://bg_ground.png" id="6_eow3j"]
 
 [node name="Game" type="Node2D" unique_id=146712216]
 script = ExtResource("1_e2o6t")
@@ -26,15 +27,33 @@ offset_right = 540.0
 offset_bottom = 540.0
 texture = ExtResource("4_fc0e3")
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=808321982]
+[node name="Node" type="Node2D" parent="." unique_id=1422345061]
+modulate = Color(0.39215687, 0.23529412, 0.23137255, 1)
+
+[node name="ParallaxMist" type="Parallax2D" parent="Node" unique_id=896642493]
+z_index = -2
+scroll_offset = Vector2(1, 0)
+repeat_size = Vector2(1620, 500)
+autoscroll = Vector2(30, 500)
+ignore_camera_scroll = true
+
+[node name="TextureRect" type="TextureRect" parent="Node/ParallaxMist" unique_id=791151255]
+z_index = 1
+offset_top = -261.0
+offset_right = 540.0
+offset_bottom = 739.0
+texture = ExtResource("5_ryrav")
+stretch_mode = 1
+
+[node name="ParallaxBG" type="Parallax2D" parent="Node" unique_id=808321982]
+z_index = -3
 repeat_size = Vector2(0, 500)
 autoscroll = Vector2(0, 500)
 ignore_camera_scroll = true
 
-[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=2142303972]
-self_modulate = Color(0.39215687, 0.23529412, 0.23137255, 1)
+[node name="TextureRect" type="TextureRect" parent="Node/ParallaxBG" unique_id=2142303972]
 offset_top = -261.0
 offset_right = 540.0
-offset_bottom = 739.0
-texture = ExtResource("5_7jktm")
+offset_bottom = 1239.0
+texture = ExtResource("6_eow3j")
 stretch_mode = 1

@@ -98,10 +98,8 @@ func unfocused_shot(spread):
 		tmp.position = position# + tmp.offset
 		tmp.position.x = tmp.position.x + xoffset
 		tmp.position.y = tmp.position.y + yoffset
-		print(i)
 		#if i == 0:
 		#	tmp.position.x = tmp.position.x - 10
-		print(shot_direction.x)
 		tmp.direction = shot_direction
 		add_sibling(tmp)
 
