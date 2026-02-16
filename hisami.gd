@@ -16,10 +16,7 @@ enum {NORMAL, ENTERING, HYPER}
 var hyperstate = NORMAL
 var enter_hyper_time = 1.2
 var t = 0
-var hyperlevel = 0
-const default_hypertime = 10.0
-var hypertime = default_hypertime
-var hyper_t = 0
+
 
 var n_shots = 4
 var n_hyper_shots = 8
@@ -34,6 +31,7 @@ signal got_hurt
 
 const attack = preload("res://normal_shot.tscn")
 const hyper_attack = preload("res://hyper_shot.tscn")
+const bomb_effect = preload('res://bomb_effect.tscn')
 
 const damage_invul_time = 3.5
 var can_take_damage = true
@@ -60,12 +58,16 @@ func enter_hyper():
 	print('enter hyper')
 	print(hyperstate)
 	global.set_ammo(global.ammo - global.hyper_cost)
+	var tmp = bomb_effect.instantiate()
+	tmp.player = self
+	add_sibling(tmp)
+	global.hyper_t = global.default_hypertime
+	global.set_hyperlevel(global.hyperlevel + 1)
 	if hyperstate == NORMAL:
 		hyperstate = ENTERING
 		$InvulTimer.start(enter_hyper_time)
 		damage_invul()
 	elif hyperstate == HYPER:
-		hyperlevel = hyperlevel + 1
 		hyperstate = ENTERING
 		$InvulTimer.start(enter_hyper_time)
 		damage_invul()
@@ -130,8 +132,8 @@ func _physics_process(delta: float) -> void:
 				hyperstate = HYPER
 				t = 0
 		HYPER:
-			hyper_t = hyper_t + delta
-			if hyper_t > hypertime:
+			global.hyper_t = global.hyper_t - delta
+			if global.hyper_t < 0:
 				leave_hyper()
 			if global.fire:
 				fire()
@@ -140,9 +142,9 @@ func _physics_process(delta: float) -> void:
 			
 	
 func leave_hyper():
-	hypertime = default_hypertime
+	global.hypertime = global.default_hypertime
 	hyperstate = NORMAL
-	hyper_t = 0.0
+	global.set_hyperlevel(0)
 	
 	
 func take_damage(_hurtbox: Hurtbox):
@@ -176,7 +178,6 @@ func hyper_unfocused_shot(spread):
 	for i in n_hyper_shots:
 		var tmp = hyper_attack.instantiate()
 		var angle =  -PI/2 + step * i - opening
-		print(angle/PI)
 		shot_direction = Vector2.from_angle(angle)
 		tmp.fired_position = global_position
 		tmp.direction = shot_direction	

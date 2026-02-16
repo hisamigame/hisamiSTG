@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dxj2ndgcuu18q"]
+
+[ext_resource type="Script" uid="uid://p6f2oeachca5" path="res://bomb_effect.gd" id="1_x1t2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1t2m"]
+size = Vector2(540, 468)
+
+[node name="BombEffect" type="Area2D" unique_id=491282796]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_x1t2m")
+clear_bullets = true
+metadata/_custom_type_script = "uid://c0148w36m323f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=282376523]
+position = Vector2(270, 266)
+shape = SubResource("RectangleShape2D_x1t2m")

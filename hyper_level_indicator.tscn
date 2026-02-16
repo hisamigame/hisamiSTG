@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c4fo2mlqmpl3e"]
+
+[ext_resource type="Material" uid="uid://fw7tf4c2m0in" path="res://full_love_shader.tres" id="1_cikgo"]
+[ext_resource type="Theme" uid="uid://cegr2r2u3pjgm" path="res://pixel_ui_theme.tres" id="1_tt3nv"]
+[ext_resource type="Script" uid="uid://ck5ccekvyu4wm" path="res://hyper_level_indicator.gd" id="1_xghys"]
+
+[node name="HyperLevelIndicator" type="Control" unique_id=1358365748]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xghys")
+metadata/_edit_lock_ = true
+
+[node name="BGLevel" type="Label" parent="." unique_id=129287913]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 136.0
+offset_bottom = 36.0
+theme = ExtResource("1_tt3nv")
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 5
+text = "5"
+horizontal_alignment = 2
+
+[node name="BGCountdown" type="Label" parent="." unique_id=992321906]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 36.0
+theme = ExtResource("1_tt3nv")
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 5
+text = "10.00"
+
+[node name="Level" type="Label" parent="." unique_id=2088279515]
+material = ExtResource("1_cikgo")
+layout_mode = 0
+offset_left = 80.0
+offset_right = 136.0
+offset_bottom = 36.0
+theme = ExtResource("1_tt3nv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "5"
+horizontal_alignment = 2
+
+[node name="Countdown" type="Label" parent="." unique_id=314333406]
+material = ExtResource("1_cikgo")
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 36.0
+theme = ExtResource("1_tt3nv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "10.00"

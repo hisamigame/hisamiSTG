@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cijhxftak4v7q"]
+
+[ext_resource type="Texture2D" uid="uid://drmpj6yc8v7ne" path="res://bomb_effect1.png" id="1_ti1x1"]
+[ext_resource type="Script" uid="uid://b1litutrpo8ir" path="res://bomb_visuals.gd" id="2_uleit"]
+
+[node name="BombVisuals" type="Sprite2D" unique_id=277071418]
+texture = ExtResource("1_ti1x1")
+script = ExtResource("2_uleit")

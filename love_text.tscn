@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dwnwssvyh0avj"]
+
+[ext_resource type="Script" uid="uid://cxw2khw2f3fuv" path="res://love_text.gd" id="1_w6ubi"]
+[ext_resource type="FontFile" uid="uid://dot455lf8pisy" path="res://alphbeta.ttf" id="2_sdb1o"]
+[ext_resource type="Texture2D" uid="uid://co4b3e1o4j4bk" path="res://love_text_gradient.tres" id="3_alhqe"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sdb1o"]
+blend_mode = 3
+
+[node name="LoveText" type="Node2D" unique_id=1754981307]
+script = ExtResource("1_w6ubi")
+
+[node name="LabelLeft" type="Node2D" parent="." unique_id=161299476]
+position = Vector2(271, 128)
+
+[node name="LabelLeft" type="Label" parent="LabelLeft" unique_id=435946479]
+clip_children = 2
+offset_left = -153.0
+offset_bottom = 58.0
+pivot_offset_ratio = Vector2(1, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_sdb1o")
+theme_override_font_sizes/font_size = 64
+text = "OVER"
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="Coloring" type="TextureRect" parent="LabelLeft/LabelLeft" unique_id=535673500]
+material = SubResource("CanvasItemMaterial_sdb1o")
+layout_mode = 0
+offset_left = -95.0
+offset_top = 9.0
+offset_right = 444.0
+offset_bottom = 57.0
+texture = ExtResource("3_alhqe")
+stretch_mode = 1
+
+[node name="LabelRight" type="Node2D" parent="." unique_id=1859950269]
+position = Vector2(272, 128)
+
+[node name="LabelRight" type="Label" parent="LabelRight" unique_id=1825773049]
+clip_children = 2
+offset_right = 153.0
+offset_bottom = 58.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_sdb1o")
+theme_override_font_sizes/font_size = 64
+text = "LOVE"
+metadata/_edit_lock_ = true
+
+[node name="Coloring" type="TextureRect" parent="LabelRight/LabelRight" unique_id=826830022]
+material = SubResource("CanvasItemMaterial_sdb1o")
+layout_mode = 0
+offset_left = -96.0
+offset_top = 9.0
+offset_right = 443.0
+offset_bottom = 57.0
+texture = ExtResource("3_alhqe")
+stretch_mode = 1

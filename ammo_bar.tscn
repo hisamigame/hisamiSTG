@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c3jp5scq4rje"]
+
+[ext_resource type="Texture2D" uid="uid://8nq0f3x5ibwi" path="res://ammo_bar_fill.png" id="1_drula"]
+[ext_resource type="Script" uid="uid://lb61su2rf4hd" path="res://ammo_bar.gd" id="1_xkf84"]
+[ext_resource type="Material" uid="uid://fw7tf4c2m0in" path="res://full_love_shader.tres" id="2_8nhap"]
+[ext_resource type="Texture2D" uid="uid://botom7bnr21o" path="res://ammo_bar_border.png" id="2_xkf84"]
+[ext_resource type="Texture2D" uid="uid://7i7ur2ygjpb4" path="res://x.png" id="4_1606i"]
+[ext_resource type="Theme" uid="uid://cegr2r2u3pjgm" path="res://pixel_ui_theme.tres" id="5_8nhap"]
+
+[node name="AmmoBar" type="Control" unique_id=740443925]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -348.0
+offset_bottom = -428.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xkf84")
+
+[node name="Progress" type="TextureProgressBar" parent="." unique_id=535947764]
+material = ExtResource("2_8nhap")
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 24.0
+max_value = 48.0
+value = 48.0
+nine_patch_stretch = true
+texture_progress = ExtResource("1_drula")
+
+[node name="Frame" type="TextureRect" parent="." unique_id=919590925]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 24.0
+texture = ExtResource("2_xkf84")
+
+[node name="FlashRect" type="ColorRect" parent="." unique_id=1716309569]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 24.0
+
+[node name="Prompt" type="Node2D" parent="." unique_id=2119744211]
+
+[node name="X" type="Sprite2D" parent="Prompt" unique_id=1466316377]
+position = Vector2(19, 45)
+texture = ExtResource("4_1606i")
+
+[node name="Label" type="Label" parent="Prompt" unique_id=1025871648]
+offset_left = 40.0
+offset_top = 25.0
+offset_right = 144.0
+offset_bottom = 61.0
+theme = ExtResource("5_8nhap")
+text = "READY!"

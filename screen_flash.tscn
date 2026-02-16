@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c1hmjpj2x13oa"]
+
+[ext_resource type="Script" uid="uid://bs7iftgkapsiw" path="res://screen_flash.gd" id="1_xxrr5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ksldt"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_iooll"]
+colors = PackedColorArray(1, 0.54901963, 0.80784315, 1, 1, 0.54901963, 0.80784315, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xxrr5"]
+gradient = SubResource("Gradient_iooll")
+
+[node name="ScreenFlash" type="TextureRect" unique_id=1474310988]
+material = SubResource("CanvasItemMaterial_ksldt")
+offset_right = 1080.0
+offset_bottom = 500.0
+texture = SubResource("GradientTexture1D_xxrr5")
+script = ExtResource("1_xxrr5")

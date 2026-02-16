@@ -21,18 +21,28 @@ var boss_kill = 1
 const result_screen = preload('res://results_screen.tscn')
 #const combo_display = preload('res://combo_display.tscn')
 
-func clear_bullets(turn_into_items: bool):
+func clear_bullets(turn_into_items: bool, autocollect: bool):
+	var collect_time
+	if autocollect:
+		collect_time = -1.0
+	else:
+		collect_time = global.item_collect_time
 	for c in get_children():
 		if c is Bullet:
 			if turn_into_items:
-				c.become_item(global.item_collect_time)
+				c.become_item(collect_time)
 			c.die()
 			
 func clear_enemies():
 	for c in get_children():
 		if (c is Enemy):
 			c.die_no_bonus()
-		
+
+
+func collect_items():
+	for c in get_children():
+		if (c is Item):
+			c.start_collect()
 
 func time_up():
 	var tmp = result_screen.instantiate()
@@ -74,6 +84,7 @@ func _ready():
 	global.lives_up.connect(lives_up)
 	global.you_win.connect(win)
 	global.spawn_boss.connect(spawn_boss)
+	global.collect_items.connect(collect_items)
 	nwaves = len(wave_order)
 	global.play_bgm()
 	$Hisami.got_hurt.connect(hurtflash)

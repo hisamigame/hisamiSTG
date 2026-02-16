@@ -19,6 +19,8 @@ var jump_direction = Vector2.UP
 
 var will_collect = false
 
+var buffer = 40.0
+
 func die():
 	queue_free()
 	
@@ -58,6 +60,9 @@ func _physics_process(delta: float) -> void:
 			position = position + speed * delta * global.target_FPS * direction
 			if position.distance_squared_to(global.player_position) < threshold:
 				collect()
+				
+	if position.y > global.field_height + buffer:
+		die()
 
 func _on_area_entered(_area: Area2D) -> void:
 	start_collect()

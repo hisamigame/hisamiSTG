@@ -39,7 +39,7 @@ func switch_phase():
 		die()
 
 func clear_bullets():
-	global.emit_clear_bullets(true)
+	global.emit_clear_bullets(true, false)
 	global.emit_clear_enemies()
 
 func set_hp_bar_value(val):

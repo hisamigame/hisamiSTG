@@ -51,7 +51,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/MarginContainer/MarginContainer/CenterContainer/VSplitContainer" unique_id=987912988]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 theme = ExtResource("4_ny343")
 bbcode_enabled = true

@@ -13,17 +13,22 @@ signal score_changed
 signal ammo_changed
 signal timer_changed
 signal hide_ui
-signal clear_bullets(bool)
+signal clear_bullets(turn_into_items : bool, autocollect: bool)
 signal time_up
 signal lives_up
 signal you_win
 signal clear_enemies
 signal spawn_boss
+signal flash_screen(Color)
+signal collect_items
+signal love_message(String)
+signal hyperlevel_changed
+signal hypertime_changed
 
-const ui_hide_margin = 20
+const ui_hide_margin = 60
 #const hyper_cost = 1000
 const hyper_cost = 100
-const max_ammo = 1500
+const max_ammo = 100
 var ui_visible = true
 var stop_timer: bool
 var time_left = 0.0
@@ -33,8 +38,15 @@ var boss_spawn_time = 30
 var fire = false
 var hyper = false
 var focus = false
+var hyperlevel = 0
+const max_hyperlevel = 4
 
+const item_collect_time = 0.7
 var item_value = 100
+
+const default_hypertime = 10.0
+var hypertime = default_hypertime
+var hyper_t = 0.0
 
 var has_score_changed
 var has_ammo_changed
@@ -73,6 +85,9 @@ func play_enemy_dead():
 	
 func play_item():
 	$ItemGet.play()
+
+func flash_love_message(s: String):
+	love_message.emit(s)
 
 func default_hiscores():
 	# Default hiscore list
@@ -146,13 +161,22 @@ func set_ammo(val):
 	#ammo_changed.emit()
 	has_ammo_changed = true
 	
-func emit_clear_bullets(turn_into_items: bool):
-	clear_bullets.emit(turn_into_items)
+func set_hyperlevel(val):
+	global.hyperlevel = min(val, global.max_hyperlevel)
+	hyperlevel_changed.emit()
+	
+func emit_clear_bullets(turn_into_items: bool, autocollect: bool):
+	clear_bullets.emit(turn_into_items, autocollect)
 	
 func emit_clear_enemies():
 	clear_enemies.emit()
+	
+func emit_collect_items():
+	collect_items.emit()
 
 
+func screen_flash():
+	flash_screen.emit(Color("ff8cceff"))
 
 var verticalMovementPressOrder = [Vector2.ZERO] 
 var horizontalMovementPressOrder = [Vector2.ZERO]
@@ -249,12 +273,15 @@ func _physics_process(delta: float) -> void:
 			ammo_changed.emit()
 			has_ammo_changed = false
 			
+		if hyper_t > 0:
+			hypertime_changed.emit()
+			
 func set_player_position(v):
 	global.player_position = v
-	if (global.player_position.y > field_height - ui_hide_margin) and ui_visible:
+	if (global.player_position.y < ui_hide_margin) and ui_visible:
 		hide_ui.emit(true)
 		ui_visible = false
-	elif (global.player_position.y < field_height - ui_hide_margin) and not ui_visible:
+	elif (global.player_position.y > ui_hide_margin) and not ui_visible:
 		hide_ui.emit(false)
 		ui_visible = true
 		
