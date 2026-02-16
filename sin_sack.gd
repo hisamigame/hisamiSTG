@@ -3,12 +3,18 @@ extends Enemy
 var damage_position: Vector2
 
 const fallen_sack = preload("res://fallen_sack.tscn")
+const enemy_hit_material = preload("res://enemy_hit_shader.tres")
 
 enum FLAVOR{DEFAULT, FIRE, WATER, LIGHTNING, WIND}
 @export var flavor: FLAVOR = FLAVOR.DEFAULT
 
+var enemy_flash_timer := Timer.new()
+
 func _ready():
 	super._ready()
+	enemy_flash_timer.wait_time = 0.05
+	enemy_flash_timer.one_shot = true
+	add_child(enemy_flash_timer)
 
 func die():
 	global.set_score(global.score + value)
@@ -60,3 +66,10 @@ func _physics_process(delta: float) -> void:
 func take_damage(hurtbox: Hurtbox):
 	damage_position = hurtbox.fired_position
 	super.take_damage(hurtbox)
+	
+	$AnimatedSprite2D.material = enemy_hit_material
+	enemy_flash_timer.start()
+	enemy_flash_timer.timeout.connect(unset_enemy_material)
+
+func unset_enemy_material():
+	$AnimatedSprite2D.material = null
