@@ -47,10 +47,10 @@ texture = ExtResource("3_nltto")
 
 [node name="Label" type="Label" parent="SubViewport/Lives" unique_id=1485734067]
 layout_mode = 0
-offset_left = -28.0
+offset_left = -24.0
 offset_top = -217.0
-offset_right = 20.0
-offset_bottom = -181.0
+offset_right = 34.0
+offset_bottom = -179.0
 theme = ExtResource("4_ibotj")
 text = "x29"
 
@@ -63,9 +63,9 @@ metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="SubViewport/TimeDisplay" unique_id=2115863164]
 layout_mode = 0
-offset_left = 120.0
-offset_right = 168.0
-offset_bottom = 36.0
+offset_left = 129.0
+offset_right = 191.0
+offset_bottom = 38.0
 theme = ExtResource("4_ibotj")
 text = "999"
 
