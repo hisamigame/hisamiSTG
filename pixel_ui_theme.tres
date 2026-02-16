@@ -1,7 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://cegr2r2u3pjgm"]
 
-[ext_resource type="FontFile" uid="uid://bx2l7x1a1fcw6" path="res://Tiny5-Regular.ttf" id="1_ngjj0"]
+[ext_resource type="FontFile" uid="uid://bsjpu7jack7jw" path="res://DigitalDisco.ttf" id="1_ngjj0"]
 
 [resource]
 default_font = ExtResource("1_ngjj0")
-default_font_size = 32
+default_font_size = 37
