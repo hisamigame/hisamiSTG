@@ -4,6 +4,9 @@ var damage_position: Vector2
 
 const fallen_sack = preload("res://fallen_sack.tscn")
 
+enum FLAVOR{DEFAULT, FIRE, WATER, LIGHTNING, WIND}
+@export var flavor: FLAVOR = FLAVOR.DEFAULT
+
 func _ready():
 	super._ready()
 
@@ -16,6 +19,17 @@ func die_no_bonus():
 	var tmp = fallen_sack.instantiate()
 	tmp.fired_position = damage_position
 	tmp.position = position
+	match flavor:
+		FLAVOR.DEFAULT:
+			tmp.set_flavor('default')
+		FLAVOR.FIRE:
+			tmp.set_flavor('fire')
+		FLAVOR.WATER:
+			tmp.set_flavor('water')
+		FLAVOR.LIGHTNING:
+			tmp.set_flavor('ligtning')
+		FLAVOR.WIND:
+			tmp.set_flavor('wind')
 	add_sibling.call_deferred(tmp)
 	super.die_no_nothing()
 	

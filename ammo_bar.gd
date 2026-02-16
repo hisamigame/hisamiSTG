@@ -23,7 +23,6 @@ func set_progress_material():
 	$Progress.material = full_love_material
 		
 func to_max():
-	print('to max')
 	$Prompt.visible = true
 	
 	var my_tween = self.create_tween()

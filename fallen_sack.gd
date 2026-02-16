@@ -43,7 +43,9 @@ func apply_knockback():
 		var angle = fired_position.angle_to_point(position)
 		velocity = Vector2.from_angle(angle) * knockspeed
 	
-		
+
+func set_flavor(flavorname: String):
+	$AnimatedSprite2D.play(flavorname)
 
 func _ready() -> void:
 	apply_knockback()

@@ -2,8 +2,6 @@ extends Node2D
 class_name Enemy
 
 
-@export var bullet : PackedScene
-@export var revenge_bullet : PackedScene
 const death_effect = preload('res://death_effect.tscn')
 const item = preload('res://item.tscn')
 
@@ -15,7 +13,6 @@ const item = preload('res://item.tscn')
 @export var edge_seal_distance = 60
 var sealed = false
 @export var spawn_delay = 0.0
-@export var bullet_speed = 1.0
 @export var clear_margin = 40
 var can_die = true
 var has_been_seen = false

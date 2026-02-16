@@ -43,6 +43,8 @@ const max_hyperlevel = 4
 
 const item_collect_time = 0.7
 var item_value = 100
+var mid_item_value = 500
+var big_item_value = 10000
 
 const default_hypertime = 10.0
 var hypertime = default_hypertime
@@ -163,6 +165,8 @@ func set_ammo(val):
 	
 func set_hyperlevel(val):
 	global.hyperlevel = min(val, global.max_hyperlevel)
+	if global.hyperlevel == 1:
+		Item.reset_n_items()
 	hyperlevel_changed.emit()
 	
 func emit_clear_bullets(turn_into_items: bool, autocollect: bool):
