@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d4du8p1w1lk4g"]
+
+[ext_resource type="Script" uid="uid://cd1ogojgo42iv" path="res://shoot_fire.gd" id="1_vutnh"]
+[ext_resource type="PackedScene" uid="uid://cgasrdfmn671d" path="res://shoot_fire_subshot.tscn" id="2_ni0wo"]
+
+[node name="Shoot" type="Node" unique_id=1496199230]
+script = ExtResource("1_vutnh")
+fire_spread = 0.0
+
+[node name="Shoot1" parent="." unique_id=1978732931 instance=ExtResource("2_ni0wo")]
+offset = Vector2(40, -10)
+
+[node name="Shoot2" parent="." unique_id=1956882915 instance=ExtResource("2_ni0wo")]
+start_angle = 3.142
+offset = Vector2(-40, -10)

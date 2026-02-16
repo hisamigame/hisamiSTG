@@ -53,7 +53,7 @@ var hyper_t = 0.0
 var has_score_changed
 var has_ammo_changed
 
-var player_position
+var player_position = Vector2.ZERO
 
 var hiscores : Array
 const data_file = 'user://data.json'

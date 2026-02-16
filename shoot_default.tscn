@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://wn02qi6xtk8h"]
+
+[ext_resource type="Script" uid="uid://bmie22cit0phj" path="res://shoot_default.gd" id="1_4tlo5"]
+
+[node name="Shoot" type="Node" unique_id=1496199230]
+script = ExtResource("1_4tlo5")
+fire_spread = 0.0
