@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ky1ewuecwsja"]
+
+[ext_resource type="Texture2D" uid="uid://cvnspidrxwqo2" path="res://sinsack_explode.png" id="1_yv7dl"]
+[ext_resource type="Script" uid="uid://d4gx1hvdbwct7" path="res://big_impact.gd" id="2_advjh"]
+
+[node name="BigImpact" type="Sprite2D" unique_id=1185791991]
+texture = ExtResource("1_yv7dl")
+script = ExtResource("2_advjh")

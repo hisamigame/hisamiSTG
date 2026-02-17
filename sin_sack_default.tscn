@@ -4,6 +4,5 @@
 [ext_resource type="PackedScene" uid="uid://wn02qi6xtk8h" path="res://shoot_default.tscn" id="2_cs1v3"]
 
 [node name="SinSackDefault" unique_id=335368161 instance=ExtResource("1_iqde8")]
-flavor = 0
 
 [node name="Shoot" parent="." index="0" unique_id=1496199230 instance=ExtResource("2_cs1v3")]

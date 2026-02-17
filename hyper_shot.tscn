@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d1qxdsmxhd6w6"]
 
 [ext_resource type="Script" uid="uid://bk83vdepnvjnc" path="res://normal_shot.gd" id="1_8piqw"]
-[ext_resource type="Texture2D" uid="uid://b4tm34niuyu3c" path="res://bullet_hyper.png" id="2_q7eso"]
+[ext_resource type="Texture2D" uid="uid://00s1y31nd2wx" path="res://bullet_hyper.png" id="2_q7eso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7hu6"]
 size = Vector2(22, 8)
@@ -26,8 +26,7 @@ particles_anim_loop = true
 [sub_resource type="Gradient" id="Gradient_y7hu6"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
-[node name="NormalShot" type="Area2D" unique_id=1007986334]
-z_index = 2
+[node name="HyperShot" type="Area2D" unique_id=1007986334]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_8piqw")

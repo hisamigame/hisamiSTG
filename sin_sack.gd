@@ -4,17 +4,16 @@ var damage_position: Vector2
 
 const fallen_sack = preload("res://fallen_sack.tscn")
 const enemy_hit_material = preload("res://enemy_hit_shader.tres")
+const big_impact = preload('res://big_impact.tscn')
 
 enum FLAVOR{DEFAULT, FIRE, WATER, LIGHTNING, WIND}
 @export var flavor: FLAVOR = FLAVOR.DEFAULT
 
-var enemy_flash_timer := Timer.new()
+var flashed_frames = 0
+var flashing = false
 
 func _ready():
 	super._ready()
-	enemy_flash_timer.wait_time = 0.05
-	enemy_flash_timer.one_shot = true
-	add_child(enemy_flash_timer)
 
 func die():
 	global.set_score(global.score + value)
@@ -24,7 +23,7 @@ func die_no_bonus():
 	global.play_enemy_dead()
 	var tmp = fallen_sack.instantiate()
 	tmp.fired_position = damage_position
-	tmp.position = position
+	tmp.position = position	
 	match flavor:
 		FLAVOR.DEFAULT:
 			tmp.set_flavor('default')
@@ -37,6 +36,9 @@ func die_no_bonus():
 		FLAVOR.WIND:
 			tmp.set_flavor('wind')
 	add_sibling.call_deferred(tmp)
+	var tmp2 = big_impact.instantiate()
+	tmp2.position = position
+	add_sibling.call_deferred(tmp2)
 	super.die_no_nothing()
 	
 
@@ -62,14 +64,20 @@ func _physics_process(delta: float) -> void:
 			sealed = false
 		$Shoot.advance(self,delta)
 		
+	if flashing:
+		if flashed_frames >= 1:
+			unset_enemy_material()
+			flashing = false
+		flashed_frames = flashed_frames + 1
 	
 func take_damage(hurtbox: Hurtbox):
 	damage_position = hurtbox.fired_position
 	super.take_damage(hurtbox)
 	
 	$AnimatedSprite2D.material = enemy_hit_material
-	enemy_flash_timer.start()
-	enemy_flash_timer.timeout.connect(unset_enemy_material)
+	flashed_frames = 0
+	flashing = true
+	#enemy_flash_timer.start()
 
 func unset_enemy_material():
 	$AnimatedSprite2D.material = null
