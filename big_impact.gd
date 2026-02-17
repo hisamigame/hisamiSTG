@@ -1,6 +1,6 @@
 extends Sprite2D
 
-var lifetime_frames : int= 1
+var lifetime_frames : int= 2
 var f : int = 0
 
 
