@@ -4,7 +4,7 @@ enum {SPAWN_WAVE, NORMAL, BOSS}
 var state = SPAWN_WAVE
 
 
-const wave_order = [1,2,3,4,5,6, 7,8,9,10, 11, 12, 13, 14]  #[14]
+const wave_order = [ 18]#[1,2,3,4,5,6, 7,8,9,10, 11, 12, 13, 14, 15, 16, 17, 18, 19]  #[14]
 var nwaves: int
 var substages = Dictionary()
 var wave_index = -1
@@ -22,15 +22,17 @@ const result_screen = preload('res://results_screen.tscn')
 #const combo_display = preload('res://combo_display.tscn')
 
 func clear_bullets(turn_into_items: bool, autocollect: bool):
-	var collect_time
+	var will_collect
 	if autocollect:
-		collect_time = -1.0
+		#collect_time = -1.0
+		will_collect = true
 	else:
-		collect_time = global.item_collect_time
+		will_collect = false
+		#collect_time = global.item_collect_time
 	for c in get_children():
 		if c is Bullet:
 			if turn_into_items:
-				c.become_item(collect_time)
+				c.become_item(will_collect)
 			c.die()
 			
 func clear_enemies():

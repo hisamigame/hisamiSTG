@@ -12,8 +12,15 @@ enum FLAVOR{DEFAULT, FIRE, WATER, LIGHTNING, WIND}
 var flashed_frames = 0
 var flashing = false
 
+var movement_node = null
+
 func _ready():
 	super._ready()
+	if has_node('Movement'):
+		# needed movement node as a propety for a dirty hack fix
+		# in one place in the codebase
+		movement_node = $Movement 
+		$Movement.position = position
 
 func die():
 	global.set_score(global.score + value)
@@ -32,7 +39,7 @@ func die_no_bonus():
 		FLAVOR.WATER:
 			tmp.set_flavor('water')
 		FLAVOR.LIGHTNING:
-			tmp.set_flavor('ligtning')
+			tmp.set_flavor('lightning')
 		FLAVOR.WIND:
 			tmp.set_flavor('wind')
 	add_sibling.call_deferred(tmp)
@@ -50,8 +57,6 @@ func _physics_process(delta: float) -> void:
 			can_die = true
 	else:
 		if check_oob():
-			print('I am oob')
-			print(enemy_index)
 			die_no_nothing()
 	
 	if has_node('Movement'):

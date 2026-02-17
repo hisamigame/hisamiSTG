@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dv4o2jrgrd3s1"]
+
+[ext_resource type="PackedScene" uid="uid://b0ngviwa1xqo2" path="res://sin_sack_abstract.tscn" id="1_syqpr"]
+[ext_resource type="PackedScene" uid="uid://dl1w3j5axyseb" path="res://shoot_water.tscn" id="2_qyqom"]
+[ext_resource type="Script" uid="uid://ov37rr1hlo2x" path="res://shoot_water.gd" id="3_uwy1b"]
+
+[node name="SinSackWater" unique_id=335368161 instance=ExtResource("1_syqpr")]
+hp = 10
+
+[node name="Shoot" parent="." index="0" unique_id=1496199230 instance=ExtResource("2_qyqom")]
+script = ExtResource("3_uwy1b")
+fire_spread = 1.0
+
+[node name="AnimatedSprite2D" parent="." index="3" unique_id=1123142510]
+animation = &"water"

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dijb8mkxysrq4"]
+
+[ext_resource type="PackedScene" uid="uid://b0ngviwa1xqo2" path="res://sin_sack_abstract.tscn" id="1_x1ks1"]
+[ext_resource type="PackedScene" uid="uid://qp2p3xh72r5t" path="res://shoot_lightning.tscn" id="2_x1ks1"]
+
+[node name="SinSackLightning" unique_id=335368161 instance=ExtResource("1_x1ks1")]
+flavor = 3
+hp = 80
+seal_distance2 = 0.0
+
+[node name="Shoot" parent="." index="0" unique_id=1496199230 instance=ExtResource("2_x1ks1")]
+
+[node name="AnimatedSprite2D" parent="." index="3" unique_id=1123142510]
+animation = &"lightning"

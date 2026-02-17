@@ -18,6 +18,7 @@ var can_die = false
 var has_been_seen = false
 var can_damage = true
 var seen_margin = 10
+@export var optional = false
 
 var enemy_index: int
 signal died(int)

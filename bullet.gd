@@ -40,11 +40,15 @@ func die():
 	#add_sibling.call_deferred(tmp)
 	just_die()
 	
-func become_item(collect_time: float = -1):
+func become_item(will_collect: bool = true):
 	var tmp = item.instantiate()
 	tmp.position = position
-	tmp.collect_time = collect_time
+	tmp.will_collect = will_collect
 	add_sibling.call_deferred(tmp)
+	
+func become_item_and_die(_id):
+	become_item()
+	just_die()
 	
 func _on_area_entered(area: Area2D) -> void:
 	if area is Hurtbox:

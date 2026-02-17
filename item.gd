@@ -14,7 +14,7 @@ var time = 0.0
 var spawn_time = 0.25
 var jump_distance = 25.0
 var initial_position : Vector2
-var collect_time = -1
+var collect_time = -1.0
 var combo_time = 0.15
 var fall_speed = 4.0
 var jump_direction = Vector2.UP
@@ -43,16 +43,13 @@ func _ready():
 		0:
 			pass
 		1:
-			if n_items % 128 == 0:
-				turn_mid()
-		2:
 			if n_items % 64 == 0:
 				turn_mid()
-		3:
+		2:
 			if n_items % 32 == 0:
 				turn_mid()
-		4:
-			if n_items % 32 == 0:
+		3:
+			if n_items % 16 == 0:
 				turn_mid()
 			if n_items % 128 == 0:
 				turn_big()

@@ -7,7 +7,7 @@ func set_time(t):
 	
 func set_level(t):
 	var text
-	if t == 4:
+	if t == global.max_hyperlevel:
 		text = 'MAX!!'
 	else:
 		text = str(t)

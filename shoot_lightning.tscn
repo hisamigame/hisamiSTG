@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://qp2p3xh72r5t"]
+
+[ext_resource type="Script" uid="uid://b0jw6wmr8rn1e" path="res://shoot_lightning.gd" id="1_pu25k"]
+
+[node name="Shoot" type="Node" unique_id=615523025]
+script = ExtResource("1_pu25k")
+fire_interval = 4.0
+speed = 5.0
+initial_phase = 4.0

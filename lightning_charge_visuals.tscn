@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b2onbyb264n64"]
+
+[ext_resource type="Texture2D" uid="uid://cse2ordryujkw" path="res://lightning_charge_effect.png" id="1_de2bw"]
+[ext_resource type="Script" uid="uid://dwupxfrixadcb" path="res://lightning_charge_visuals.gd" id="2_de2bw"]
+
+[node name="LightningChargeVisuals" type="Sprite2D" unique_id=277071418]
+texture = ExtResource("1_de2bw")
+script = ExtResource("2_de2bw")

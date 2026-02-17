@@ -58,7 +58,6 @@ func damage_not_invul():
 
 func enter_hyper():
 	print('enter hyper')
-	print(hyperstate)
 	global.set_ammo(global.ammo - global.hyper_cost)
 	var tmp = bomb_effect.instantiate()
 	tmp.player = self
@@ -159,6 +158,8 @@ func take_damage(_hurtbox: Hurtbox):
 		damage_invul()
 		got_hurt.emit()
 		if global.lives >= 0:
+			global.emit_clear_bullets(true, true)
+			global.emit_collect_items()
 			global.play_player_hurt()
 		else:
 			global.play_player_dead()

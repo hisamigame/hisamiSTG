@@ -24,6 +24,7 @@ exit_direction = Vector2(0, -1)
 [node name="Wisp26" parent="." index="2" unique_id=1960324179 instance=ExtResource("5_3f8mh")]
 position = Vector2(136, -558)
 must_fire_to_die = true
+optional = true
 
 [node name="Shoot" parent="Wisp26" index="0" unique_id=1496199230 instance=ExtResource("6_x88rv")]
 fire_spread = 0.0
@@ -45,6 +46,7 @@ exit_direction = Vector2(0, -1)
 [node name="Wisp27" parent="." index="3" unique_id=545892937 instance=ExtResource("5_3f8mh")]
 position = Vector2(136, -558)
 must_fire_to_die = true
+optional = true
 
 [node name="Shoot" parent="Wisp27" index="0" unique_id=1910778002 instance=ExtResource("6_x88rv")]
 fire_spread = 0.0
@@ -66,6 +68,7 @@ exit_direction = Vector2(0, -1)
 [node name="Wisp28" parent="." index="4" unique_id=1559181963 instance=ExtResource("5_3f8mh")]
 position = Vector2(136, -558)
 must_fire_to_die = true
+optional = true
 
 [node name="Shoot" parent="Wisp28" index="0" unique_id=998468721 instance=ExtResource("6_x88rv")]
 fire_spread = 0.0
@@ -87,6 +90,7 @@ exit_direction = Vector2(0, -1)
 [node name="Wisp29" parent="." index="5" unique_id=922856893 instance=ExtResource("5_3f8mh")]
 position = Vector2(136, -558)
 must_fire_to_die = true
+optional = true
 
 [node name="Shoot" parent="Wisp29" index="0" unique_id=514214187 instance=ExtResource("6_x88rv")]
 fire_spread = 0.0
@@ -108,6 +112,7 @@ exit_direction = Vector2(0, -1)
 [node name="Wisp30" parent="." index="6" unique_id=804667525 instance=ExtResource("5_3f8mh")]
 position = Vector2(136, -558)
 must_fire_to_die = true
+optional = true
 
 [node name="Shoot" parent="Wisp30" index="0" unique_id=1359428724 instance=ExtResource("6_x88rv")]
 fire_spread = 0.0
@@ -129,6 +134,7 @@ exit_direction = Vector2(0, -1)
 [node name="Wisp31" parent="." index="7" unique_id=1335169955 instance=ExtResource("5_3f8mh")]
 position = Vector2(136, -558)
 must_fire_to_die = true
+optional = true
 
 [node name="Shoot" parent="Wisp31" index="0" unique_id=276080386 instance=ExtResource("6_x88rv")]
 fire_spread = 0.0
@@ -150,6 +156,7 @@ exit_direction = Vector2(0, -1)
 [node name="Wisp32" parent="." index="8" unique_id=1408014670 instance=ExtResource("5_3f8mh")]
 position = Vector2(136, -558)
 must_fire_to_die = true
+optional = true
 
 [node name="Shoot" parent="Wisp32" index="0" unique_id=1164410664 instance=ExtResource("6_x88rv")]
 fire_spread = 0.0
@@ -171,6 +178,7 @@ exit_direction = Vector2(0, -1)
 [node name="Wisp33" parent="." index="9" unique_id=1045132930 instance=ExtResource("5_3f8mh")]
 position = Vector2(136, -558)
 must_fire_to_die = true
+optional = true
 
 [node name="Shoot" parent="Wisp33" index="0" unique_id=1574030888 instance=ExtResource("6_x88rv")]
 fire_spread = 0.0
@@ -191,6 +199,7 @@ exit_direction = Vector2(0, -1)
 [node name="Wisp34" parent="." index="10" unique_id=2012132756 instance=ExtResource("5_3f8mh")]
 position = Vector2(136, -558)
 must_fire_to_die = true
+optional = true
 
 [node name="Shoot" parent="Wisp34" index="0" unique_id=1648429252 instance=ExtResource("6_x88rv")]
 fire_spread = 0.0

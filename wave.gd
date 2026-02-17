@@ -19,7 +19,12 @@ func spawn_enemy(c):
 	#var original_process = c.process_mode
 	#c.position.x = -666
 	#c.process_mode = PROCESS_MODE_DISABLED
-	living_enemies.append(true)
+	if c.optional:
+		# If optional, we already have unchecked it in the list
+		# used to see if all enemies in the wave are dead
+		living_enemies.append(false)
+	else:
+		living_enemies.append(true)
 	c.reparent.call_deferred(parent,true)
 	c.died.connect(enemy_died)
 	#await get_tree().create_timer(c.spawn_delay).timeout
@@ -32,14 +37,11 @@ func start_wave():
 		if c is Enemy: # redudant check probably
 			c.enemy_index = i
 			spawn_enemy(c)
-			print(c)
-			print(c.enemy_index)
 			i = i + 1
 	can_emit = true
 
 func enemy_died(i):
 	living_enemies[i] = false
-	print(living_enemies)
 	var sum =0
 	for le in living_enemies:
 		sum = sum + int(le)
@@ -47,7 +49,6 @@ func enemy_died(i):
 		do_wave_done()
 
 func do_wave_done():
-	print('emit!!')
 	wave_done.emit()
 	queue_free()
 	

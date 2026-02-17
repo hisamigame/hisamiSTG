@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bb54euyvkqfcl" path="res://se_Hit_02.wav" id="3_2wtbm"]
 [ext_resource type="AudioStream" uid="uid://ckdpmjxkucmlw" path="res://se_Explosion_03.wav" id="4_8tbuy"]
 [ext_resource type="AudioStream" uid="uid://c052d2geteff7" path="res://se_item.wav" id="5_hhif3"]
+[ext_resource type="AudioStream" uid="uid://qfat6rj170f5" path="res://se_lifeup.wav" id="6_74nqk"]
 
 [node name="Global" type="Node" unique_id=2061416878]
 process_mode = 3
@@ -24,4 +25,8 @@ bus = &"SE"
 
 [node name="ItemGet" type="AudioStreamPlayer" parent="." unique_id=1852596710]
 stream = ExtResource("5_hhif3")
+bus = &"SE"
+
+[node name="LifeGet" type="AudioStreamPlayer" parent="." unique_id=59995645]
+stream = ExtResource("6_74nqk")
 bus = &"SE"

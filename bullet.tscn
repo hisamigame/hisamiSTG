@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ve7jcwmwecs3" path="res://bullet.gd" id="1_v7oki"]
 [ext_resource type="Texture2D" uid="uid://b7kgyg5xt683p" path="res://bullet.png" id="2_v8qja"]
 [ext_resource type="Texture2D" uid="uid://bqup4yqgu6gjw" path="res://bullet_fire.png" id="3_t4vbm"]
+[ext_resource type="Texture2D" uid="uid://dvngool3jixbn" path="res://bullet_yellow.png" id="4_2b2rl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8qja"]
 atlas = ExtResource("2_v8qja")
@@ -10,6 +11,10 @@ region = Rect2(0, 0, 22, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2b2rl"]
 atlas = ExtResource("3_t4vbm")
+region = Rect2(0, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7duk"]
+atlas = ExtResource("4_2b2rl")
 region = Rect2(0, 0, 22, 22)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b7duk"]
@@ -28,6 +33,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7duk")
+}],
+"loop": true,
+"name": &"lightning",
 "speed": 5.0
 }]
 

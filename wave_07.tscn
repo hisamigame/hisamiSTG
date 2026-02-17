@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bw4duwrirbarn" path="res://bobbing.tscn" id="4_afpny"]
 [ext_resource type="PackedScene" uid="uid://b4c47k3f6j5lf" path="res://wisp.tscn" id="5_ta2r3"]
 [ext_resource type="PackedScene" uid="uid://wfp4fq6a5uok" path="res://shoot_aimed.tscn" id="6_nleet"]
+[ext_resource type="PackedScene" uid="uid://bogcinxiqw2p3" path="res://sin_sack_default.tscn" id="6_o4k62"]
 
 [node name="Wave07" unique_id=1715293201 instance=ExtResource("1_o4k62")]
 
@@ -108,7 +109,7 @@ randomize_phase = true
 position = Vector2(299, 687)
 enter_speed = 7.0
 wait_time = 3.0
-enter_wait_time = 1.55
+enter_wait_time = 2.1
 enter_direction = Vector2(0, 1)
 exit_direction = Vector2(0, -1)
 
@@ -129,7 +130,7 @@ randomize_phase = true
 position = Vector2(261, 687)
 enter_speed = 7.0
 wait_time = 3.0
-enter_wait_time = 1.65
+enter_wait_time = 2.1
 enter_direction = Vector2(0, 1)
 exit_direction = Vector2(0, -1)
 
@@ -150,7 +151,7 @@ randomize_phase = true
 position = Vector2(284, 716)
 enter_speed = 7.0
 wait_time = 3.0
-enter_wait_time = 1.5
+enter_wait_time = 2.15
 enter_direction = Vector2(0, 1)
 exit_direction = Vector2(0, -1)
 
@@ -171,7 +172,7 @@ randomize_phase = true
 position = Vector2(134, 639)
 enter_speed = 7.0
 wait_time = 3.0
-enter_wait_time = 1.1
+enter_wait_time = 1.5
 enter_direction = Vector2(0, 1)
 exit_direction = Vector2(0, -1)
 
@@ -192,32 +193,11 @@ randomize_phase = true
 position = Vector2(156, 658)
 enter_speed = 7.0
 wait_time = 3.0
-enter_wait_time = 1.0
+enter_wait_time = 1.45
 enter_direction = Vector2(0, 1)
 exit_direction = Vector2(0, -1)
 
-[node name="Wisp36" parent="." index="10" unique_id=907561236 instance=ExtResource("5_ta2r3")]
-position = Vector2(136, -558)
-must_fire_to_die = true
-
-[node name="Shoot" parent="Wisp36" index="0" unique_id=1348490068 instance=ExtResource("6_nleet")]
-fire_spread = 0.0
-initial_phase = 0.5
-
-[node name="Bobbing" parent="Wisp36" index="1" unique_id=1290999123 instance=ExtResource("4_afpny")]
-bob_freq = 5.0
-direction = Vector2(1, 0)
-randomize_phase = true
-
-[node name="Movement" parent="Wisp36" index="5" unique_id=1942557329 instance=ExtResource("3_ups58")]
-position = Vector2(138, 677)
-enter_speed = 7.0
-wait_time = 3.0
-enter_wait_time = 0.9
-enter_direction = Vector2(0, 1)
-exit_direction = Vector2(0, -1)
-
-[node name="Wisp37" parent="." index="11" unique_id=663364954 instance=ExtResource("5_ta2r3")]
+[node name="Wisp37" parent="." index="10" unique_id=663364954 instance=ExtResource("5_ta2r3")]
 position = Vector2(136, -558)
 must_fire_to_die = true
 
@@ -234,6 +214,22 @@ randomize_phase = true
 position = Vector2(110, 658)
 enter_speed = 7.0
 wait_time = 3.0
-enter_wait_time = 0.8
+enter_wait_time = 1.3
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="SinSackDefault" parent="." index="11" unique_id=1834461729 instance=ExtResource("6_o4k62")]
+position = Vector2(476, -70)
+
+[node name="Bobbing" parent="SinSackDefault" index="4" unique_id=1290999123 instance=ExtResource("4_afpny")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="SinSackDefault" index="5" unique_id=1942557329 instance=ExtResource("3_ups58")]
+position = Vector2(-202, 189)
+enter_speed = 7.0
+wait_time = 3.0
+enter_wait_time = 1.4
 enter_direction = Vector2(0, 1)
 exit_direction = Vector2(0, -1)

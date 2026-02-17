@@ -27,7 +27,7 @@ signal hypertime_changed
 
 const ui_hide_margin = 60
 #const hyper_cost = 1000
-const hyper_cost = 1000
+const hyper_cost = 650
 const max_ammo = hyper_cost
 var ui_visible = true
 var stop_timer: bool
@@ -39,7 +39,9 @@ var fire = false
 var hyper = false
 var focus = false
 var hyperlevel = 0
-const max_hyperlevel = 4
+var awarded_extends = 0
+var extend_every = 500000 #1000000 too high. for 1M, good players get 2 extends for 3 min game.
+const max_hyperlevel = 3
 
 const item_collect_time = 0.7
 var item_value = 100
@@ -87,6 +89,9 @@ func play_enemy_dead():
 	
 func play_item():
 	$ItemGet.play()
+	
+func play_lifeget():
+	$LifeGet.play()
 
 func flash_love_message(s: String):
 	love_message.emit(s)
@@ -137,7 +142,7 @@ func load_data():
 	
 func set_defaults():
 	global.score = 0.0
-	global.lives = 1
+	global.lives = 2
 	global.wave = 0
 	global.ammo = 0
 	global.time_left = 180.0
@@ -275,6 +280,11 @@ func _physics_process(delta: float) -> void:
 		if has_score_changed:
 			score_changed.emit()
 			has_score_changed = false
+			if global.score > (awarded_extends + 1) * extend_every:
+				awarded_extends = awarded_extends + 1
+				set_lives(global.lives + 1)
+				global.play_lifeget()
+			
 		if has_ammo_changed:
 			ammo_changed.emit()
 			has_ammo_changed = false

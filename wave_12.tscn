@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bw4duwrirbarn" path="res://bobbing.tscn" id="4_mep44"]
 [ext_resource type="PackedScene" uid="uid://dmtalsa3xwxjt" path="res://move_in_out.tscn" id="5_daajv"]
 [ext_resource type="PackedScene" uid="uid://d0huti4y4hma4" path="res://sin_sack_wind.tscn" id="6_2vc0m"]
+[ext_resource type="PackedScene" uid="uid://bogcinxiqw2p3" path="res://sin_sack_default.tscn" id="7_ausdm"]
 
 [node name="Wave09" unique_id=1715293201 instance=ExtResource("1_oqbnl")]
 
@@ -204,27 +205,22 @@ enter_wait_time = 0.3
 enter_direction = Vector2(0, 1)
 exit_direction = Vector2(0, 1)
 
-[node name="Wisp29" parent="." index="11" unique_id=1303183643 instance=ExtResource("2_ausdm")]
-position = Vector2(136, -558)
-must_fire_to_die = true
+[node name="SinSackDefault" parent="." index="11" unique_id=1059185214 instance=ExtResource("7_ausdm")]
+position = Vector2(741, -44)
 
-[node name="Shoot" parent="Wisp29" index="0" unique_id=1996396240 instance=ExtResource("3_y61r0")]
-fire_spread = 0.0
-initial_phase = 0.5
-
-[node name="Bobbing" parent="Wisp29" index="1" unique_id=759143332 instance=ExtResource("4_mep44")]
-bob_freq = 5.0
-direction = Vector2(1, 0)
-randomize_phase = true
-
-[node name="Movement" parent="Wisp29" index="5" unique_id=2062810926 instance=ExtResource("5_daajv")]
-position = Vector2(139, 600)
+[node name="Movement" parent="SinSackDefault" index="4" unique_id=2007504229 instance=ExtResource("5_daajv")]
+position = Vector2(-467, 91)
 enter_speed = 7.0
 exit_speed = 3.0
 wait_time = 1.5
 enter_wait_time = 0.5
 enter_direction = Vector2(0, 1)
 exit_direction = Vector2(0, 1)
+
+[node name="Bobbing" parent="SinSackDefault" index="5" unique_id=1714555361 instance=ExtResource("4_mep44")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
 
 [node name="Wisp30" parent="." index="12" unique_id=1274606858 instance=ExtResource("2_ausdm")]
 position = Vector2(136, -558)

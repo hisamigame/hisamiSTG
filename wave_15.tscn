@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://2fjuuomn77pm"]
+
+[ext_resource type="PackedScene" uid="uid://dokqaqwb1ej8m" path="res://wave.tscn" id="1_jfi30"]
+[ext_resource type="PackedScene" uid="uid://b4c47k3f6j5lf" path="res://wisp.tscn" id="2_c5s4n"]
+[ext_resource type="PackedScene" uid="uid://bogcinxiqw2p3" path="res://sin_sack_default.tscn" id="2_onbl7"]
+[ext_resource type="PackedScene" uid="uid://dq7q1ybloirhp" path="res://sin_sack_fire.tscn" id="2_pq0w6"]
+[ext_resource type="PackedScene" uid="uid://wfp4fq6a5uok" path="res://shoot_aimed.tscn" id="3_pq0w6"]
+[ext_resource type="PackedScene" uid="uid://bw4duwrirbarn" path="res://bobbing.tscn" id="4_onbl7"]
+[ext_resource type="PackedScene" uid="uid://dmtalsa3xwxjt" path="res://move_in_out.tscn" id="5_iu3ri"]
+
+[node name="Wave15" unique_id=1715293201 instance=ExtResource("1_jfi30")]
+
+[node name="SinSackDefault" parent="." index="0" unique_id=335368161 instance=ExtResource("2_onbl7")]
+position = Vector2(435, -101)
+optional = true
+
+[node name="Bobbing" parent="SinSackDefault" index="4" unique_id=302112819 instance=ExtResource("4_onbl7")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="SinSackDefault" index="5" unique_id=478085822 instance=ExtResource("5_iu3ri")]
+position = Vector2(-18, 208)
+exit_speed = 2.0
+wait_time = 5.0
+enter_wait_time = 2.0
+exit_direction = Vector2(1, -1)
+
+[node name="SinSackFire" parent="." index="1" unique_id=1689580478 instance=ExtResource("2_pq0w6")]
+position = Vector2(157, -112)
+
+[node name="Movement" parent="SinSackFire" index="4" unique_id=1798816716 instance=ExtResource("5_iu3ri")]
+position = Vector2(-15, 230)
+wait_time = 5.0
+enter_wait_time = 0.6
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Bobbing" parent="SinSackFire" index="5" unique_id=1550342881 instance=ExtResource("4_onbl7")]
+
+[node name="Wisp26" parent="." index="3" unique_id=1123337330 instance=ExtResource("2_c5s4n")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+optional = true
+
+[node name="Shoot" parent="Wisp26" index="0" unique_id=1496199230 instance=ExtResource("3_pq0w6")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp26" index="1" unique_id=712458309 instance=ExtResource("4_onbl7")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp26" index="5" unique_id=1619926756 instance=ExtResource("5_iu3ri")]
+position = Vector2(296, 610)
+enter_speed = 7.0
+wait_time = 1.5
+enter_wait_time = 1.8
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp27" parent="." index="4" unique_id=1198195492 instance=ExtResource("2_c5s4n")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+optional = true
+
+[node name="Shoot" parent="Wisp27" index="0" unique_id=948577972 instance=ExtResource("3_pq0w6")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp27" index="1" unique_id=481501465 instance=ExtResource("4_onbl7")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp27" index="5" unique_id=514248911 instance=ExtResource("5_iu3ri")]
+position = Vector2(201, 611)
+enter_speed = 7.0
+wait_time = 1.5
+enter_wait_time = 2.0
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
