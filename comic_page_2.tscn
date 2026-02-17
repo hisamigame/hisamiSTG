@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://btia4k0psabcu"]
 
 [ext_resource type="Script" uid="uid://8vucg3muksxp" path="res://comic_page.gd" id="1_j72er"]
-[ext_resource type="PackedScene" uid="uid://b20qmhdm8umvl" path="res://game.tscn" id="2_a2n2l"]
+[ext_resource type="PackedScene" uid="uid://dnh2rs3gsch7w" path="res://title_screen.tscn" id="2_igwip"]
 [ext_resource type="Texture2D" uid="uid://bomq8dtuwj8fr" path="res://comic_panel_3.png" id="3_igwip"]
 [ext_resource type="Texture2D" uid="uid://cs2wsxukegjey" path="res://comic_panel_4.png" id="4_swyjr"]
 [ext_resource type="Texture2D" uid="uid://bseb5mptjo5lj" path="res://comic_panel_5.png" id="5_nkuf8"]
@@ -11,7 +11,7 @@
 offset_right = 540.0
 offset_bottom = 500.0
 script = ExtResource("1_j72er")
-nextScene = ExtResource("2_a2n2l")
+nextScene = ExtResource("2_igwip")
 
 [node name="Panel3" type="TextureRect" parent="." unique_id=1289908035]
 modulate = Color(1, 1, 1, 0)

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cb3ctebhekcku"]
 
 [ext_resource type="Texture2D" uid="uid://dew1unsv3025s" path="res://sinsack_fall.png" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://bjj0df3g3yc82" path="res://main.gd" id="1_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dnh2rs3gsch7w" path="res://title_screen.tscn" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://dcfhcr3v5vdo3" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://ej71qk6e4t6c" path="res://comic_page_1.tscn" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bnvbgeukfq5uh" path="res://spirit.png" id="2_h2yge"]
 
 [node name="Main" type="Control" unique_id=306247667]
@@ -56,7 +56,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(540, 500)
 render_target_update_mode = 4
 
-[node name="TitleScreen" parent="CenterContainer/ReferenceRect/SubViewportContainer/SubViewport" unique_id=1045298283 instance=ExtResource("2_1bvp3")]
+[node name="ComicPage1" parent="CenterContainer/ReferenceRect/SubViewportContainer/SubViewport" unique_id=1283768049 instance=ExtResource("2_1bvp3")]
 
 [node name="Decoration" type="Node2D" parent="CenterContainer" unique_id=1540143297]
 z_index = -1

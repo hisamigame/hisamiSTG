@@ -1,11 +1,12 @@
 extends Control
 
 @onready var viewport = $CenterContainer/ReferenceRect/SubViewportContainer/SubViewport
-@onready var current_node = $CenterContainer/ReferenceRect/SubViewportContainer/SubViewport/TitleScreen
+var current_node
 
 const flash = preload('res://screen_flash.tscn')
 
 func _ready() -> void:
+	current_node = viewport.get_child(0)
 	global.scene_switcher = self
 	global.flash_screen.connect(flash_screen)
 
