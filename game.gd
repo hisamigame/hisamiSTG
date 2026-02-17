@@ -4,7 +4,7 @@ enum {SPAWN_WAVE, NORMAL, BOSS}
 var state = SPAWN_WAVE
 
 
-const wave_order = [9]#[1,2,3,4,5,6, 7,8]
+const wave_order = [1,2,3,4,5,6, 7,8,9,10, 11, 12, 13, 14]  #[14]
 var nwaves: int
 var substages = Dictionary()
 var wave_index = -1

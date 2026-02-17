@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://jn2ccwdwkgi" path="res://spirit_2.png" id="4_x60hi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1i22p"]
+size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4p23"]
+size = Vector2(32, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x60hi"]
 atlas = ExtResource("3_d4p23")
@@ -43,4 +45,5 @@ shape = SubResource("RectangleShape2D_1i22p")
 shape = SubResource("RectangleShape2D_d4p23")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2" unique_id=1167197629]
+position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_h5yo2")

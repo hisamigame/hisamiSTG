@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://chwovqldqq4yo"]
+
+[ext_resource type="Script" uid="uid://tqc0qtktu8xk" path="res://fixed_time_wave.gd" id="1_6a7gh"]
+
+[node name="Wave" type="Node2D" unique_id=1715293201]
+script = ExtResource("1_6a7gh")
+
+[node name="Timer" type="Timer" parent="." unique_id=606370196]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

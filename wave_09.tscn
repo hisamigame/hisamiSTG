@@ -1,15 +1,14 @@
-[gd_scene format=3 uid="uid://pn3v5buai0mg"]
+[gd_scene format=3 uid="uid://r7n8pfuye0e5"]
 
-[ext_resource type="PackedScene" uid="uid://dokqaqwb1ej8m" path="res://wave.tscn" id="1_fxgdj"]
+[ext_resource type="PackedScene" uid="uid://chwovqldqq4yo" path="res://fixed_time_wave.tscn" id="1_fxgdj"]
 [ext_resource type="PackedScene" uid="uid://d0huti4y4hma4" path="res://sin_sack_wind.tscn" id="2_fyllq"]
 [ext_resource type="PackedScene" uid="uid://dmtalsa3xwxjt" path="res://move_in_out.tscn" id="3_wxu08"]
 [ext_resource type="PackedScene" uid="uid://bw4duwrirbarn" path="res://bobbing.tscn" id="4_yhsx2"]
-[ext_resource type="PackedScene" uid="uid://b4c47k3f6j5lf" path="res://wisp.tscn" id="5_wxu08"]
-[ext_resource type="PackedScene" uid="uid://wfp4fq6a5uok" path="res://shoot_aimed.tscn" id="6_yhsx2"]
 
 [node name="Wave09" unique_id=1715293201 instance=ExtResource("1_fxgdj")]
+wave_timer = 5.0
 
-[node name="SinSackWind" parent="." index="0" unique_id=335368161 instance=ExtResource("2_fyllq")]
+[node name="SinSackWind" parent="." index="1" unique_id=335368161 instance=ExtResource("2_fyllq")]
 position = Vector2(601, -52)
 
 [node name="Movement" parent="SinSackWind" index="4" unique_id=478085822 instance=ExtResource("3_wxu08")]
@@ -21,25 +20,3 @@ enter_direction = Vector2(0, 1)
 exit_direction = Vector2(0, 1)
 
 [node name="Bobbing" parent="SinSackWind" index="5" unique_id=302112819 instance=ExtResource("4_yhsx2")]
-
-[node name="Wisp34" parent="." index="2" unique_id=1639289534 instance=ExtResource("5_wxu08")]
-position = Vector2(136, -558)
-must_fire_to_die = true
-
-[node name="Shoot" parent="Wisp34" index="0" unique_id=1496199230 instance=ExtResource("6_yhsx2")]
-fire_spread = 0.0
-initial_phase = 0.5
-
-[node name="Bobbing" parent="Wisp34" index="1" unique_id=53639366 instance=ExtResource("4_yhsx2")]
-bob_freq = 5.0
-direction = Vector2(1, 0)
-randomize_phase = true
-
-[node name="Movement" parent="Wisp34" index="5" unique_id=1772529402 instance=ExtResource("3_wxu08")]
-position = Vector2(145, 699)
-enter_speed = 7.0
-exit_speed = 3.0
-wait_time = 3.0
-enter_wait_time = 1.1
-enter_direction = Vector2(0, 1)
-exit_direction = Vector2(0, 1)
