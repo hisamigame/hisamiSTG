@@ -1,7 +1,7 @@
 extends TextureRect
 
 var can_proceed = false
-@export var nextScene: PackedScene = preload("res://game.tscn")
+@export var nextScene: PackedScene = preload("res://comic_page_1.tscn")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('fire') and !event.is_echo() and can_proceed:

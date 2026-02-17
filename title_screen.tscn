@@ -1,16 +1,12 @@
 [gd_scene format=3 uid="uid://dnh2rs3gsch7w"]
 
-[ext_resource type="Script" uid="uid://c4uamncv18rwp" path="res://title_screen.gd" id="1_v6p8y"]
-
-[sub_resource type="Gradient" id="Gradient_1s85s"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_v6p8y"]
-gradient = SubResource("Gradient_1s85s")
+[ext_resource type="Texture2D" uid="uid://cfu3anj47qw2d" path="res://title_screen_art.png" id="1_ak2if"]
+[ext_resource type="Script" uid="uid://cwuy4nyle3t8g" path="res://title_screen.gd" id="1_v6p8y"]
 
 [node name="TitleScreen" type="TextureRect" unique_id=1045298283]
-offset_right = 541.0
-offset_bottom = 544.0
-texture = SubResource("GradientTexture1D_v6p8y")
+offset_right = 540.0
+offset_bottom = 500.0
+texture = ExtResource("1_ak2if")
 script = ExtResource("1_v6p8y")
 
 [node name="Label" type="Label" parent="." unique_id=1169009511]
