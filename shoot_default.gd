@@ -1,6 +1,6 @@
 extends Node
 
-const bullet = preload('res://bullet.tscn')
+const bullet = preload('res://accel_bullet.tscn')
 
 
 var t = 0.0

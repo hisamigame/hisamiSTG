@@ -1,21 +1,210 @@
 [gd_scene format=3 uid="uid://r7fi0s5thgv6"]
 
 [ext_resource type="PackedScene" uid="uid://dokqaqwb1ej8m" path="res://wave.tscn" id="1_s5l77"]
-[ext_resource type="PackedScene" uid="uid://d0huti4y4hma4" path="res://sin_sack_wind.tscn" id="2_s5l77"]
+[ext_resource type="PackedScene" uid="uid://dq7q1ybloirhp" path="res://sin_sack_fire.tscn" id="2_plafc"]
 [ext_resource type="PackedScene" uid="uid://dmtalsa3xwxjt" path="res://move_in_out.tscn" id="3_3f8mh"]
 [ext_resource type="PackedScene" uid="uid://bw4duwrirbarn" path="res://bobbing.tscn" id="4_x88rv"]
+[ext_resource type="PackedScene" uid="uid://b4c47k3f6j5lf" path="res://wisp.tscn" id="5_3f8mh"]
+[ext_resource type="PackedScene" uid="uid://wfp4fq6a5uok" path="res://shoot_aimed.tscn" id="6_x88rv"]
 
 [node name="Wave06" unique_id=1715293201 instance=ExtResource("1_s5l77")]
 
-[node name="SinSackWind" parent="." index="0" unique_id=335368161 instance=ExtResource("2_s5l77")]
-position = Vector2(601, -52)
+[node name="SinSackFire" parent="." index="1" unique_id=335368161 instance=ExtResource("2_plafc")]
+position = Vector2(157, -112)
 
-[node name="Movement" parent="SinSackWind" index="4" unique_id=478085822 instance=ExtResource("3_3f8mh")]
-position = Vector2(-339, 175)
-exit_speed = 1.0
-wait_time = 3.0
+[node name="Movement" parent="SinSackFire" index="4" unique_id=478085822 instance=ExtResource("3_3f8mh")]
+position = Vector2(244, 223)
+wait_time = 5.0
 enter_wait_time = 0.6
 enter_direction = Vector2(0, 1)
-exit_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
 
-[node name="Bobbing" parent="SinSackWind" index="5" unique_id=302112819 instance=ExtResource("4_x88rv")]
+[node name="Bobbing" parent="SinSackFire" index="5" unique_id=302112819 instance=ExtResource("4_x88rv")]
+
+[node name="Wisp26" parent="." index="2" unique_id=1960324179 instance=ExtResource("5_3f8mh")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp26" index="0" unique_id=1496199230 instance=ExtResource("6_x88rv")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp26" index="1" unique_id=558806657 instance=ExtResource("4_x88rv")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp26" index="5" unique_id=537988074 instance=ExtResource("3_3f8mh")]
+position = Vector2(28, 623)
+enter_speed = 7.0
+wait_time = 2.5
+enter_wait_time = 1.8
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp27" parent="." index="3" unique_id=545892937 instance=ExtResource("5_3f8mh")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp27" index="0" unique_id=1910778002 instance=ExtResource("6_x88rv")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp27" index="1" unique_id=1957249811 instance=ExtResource("4_x88rv")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp27" index="5" unique_id=618900333 instance=ExtResource("3_3f8mh")]
+position = Vector2(-29, 617)
+enter_speed = 7.0
+wait_time = 2.5
+enter_wait_time = 2.0
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp28" parent="." index="4" unique_id=1559181963 instance=ExtResource("5_3f8mh")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp28" index="0" unique_id=998468721 instance=ExtResource("6_x88rv")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp28" index="1" unique_id=2127258598 instance=ExtResource("4_x88rv")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp28" index="5" unique_id=1583668490 instance=ExtResource("3_3f8mh")]
+position = Vector2(-62, 605)
+enter_speed = 7.0
+wait_time = 2.5
+enter_wait_time = 2.2
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp29" parent="." index="5" unique_id=922856893 instance=ExtResource("5_3f8mh")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp29" index="0" unique_id=514214187 instance=ExtResource("6_x88rv")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp29" index="1" unique_id=429755419 instance=ExtResource("4_x88rv")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp29" index="5" unique_id=1862336767 instance=ExtResource("3_3f8mh")]
+position = Vector2(-7, 637)
+enter_speed = 7.0
+wait_time = 2.5
+enter_wait_time = 2.4
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp30" parent="." index="6" unique_id=804667525 instance=ExtResource("5_3f8mh")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp30" index="0" unique_id=1359428724 instance=ExtResource("6_x88rv")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp30" index="1" unique_id=643226880 instance=ExtResource("4_x88rv")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp30" index="5" unique_id=659215286 instance=ExtResource("3_3f8mh")]
+position = Vector2(0, 597)
+enter_speed = 7.0
+wait_time = 2.5
+enter_wait_time = 2.6
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp31" parent="." index="7" unique_id=1335169955 instance=ExtResource("5_3f8mh")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp31" index="0" unique_id=276080386 instance=ExtResource("6_x88rv")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp31" index="1" unique_id=104776718 instance=ExtResource("4_x88rv")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp31" index="5" unique_id=2139568319 instance=ExtResource("3_3f8mh")]
+position = Vector2(1, 661)
+enter_speed = 7.0
+wait_time = 2.0
+enter_wait_time = 2.7
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp32" parent="." index="8" unique_id=1408014670 instance=ExtResource("5_3f8mh")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp32" index="0" unique_id=1164410664 instance=ExtResource("6_x88rv")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp32" index="1" unique_id=297224686 instance=ExtResource("4_x88rv")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp32" index="5" unique_id=1841408205 instance=ExtResource("3_3f8mh")]
+position = Vector2(-34, 653)
+enter_speed = 7.0
+wait_time = 1.5
+enter_wait_time = 2.8
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp33" parent="." index="9" unique_id=1045132930 instance=ExtResource("5_3f8mh")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp33" index="0" unique_id=1574030888 instance=ExtResource("6_x88rv")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp33" index="1" unique_id=634331197 instance=ExtResource("4_x88rv")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp33" index="5" unique_id=1059627941 instance=ExtResource("3_3f8mh")]
+position = Vector2(21, 656)
+enter_speed = 7.0
+enter_wait_time = 3.0
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp34" parent="." index="10" unique_id=2012132756 instance=ExtResource("5_3f8mh")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp34" index="0" unique_id=1648429252 instance=ExtResource("6_x88rv")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp34" index="1" unique_id=1344408390 instance=ExtResource("4_x88rv")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp34" index="5" unique_id=385000469 instance=ExtResource("3_3f8mh")]
+position = Vector2(-63, 648)
+enter_speed = 7.0
+wait_time = 2.5
+enter_wait_time = 3.05
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)

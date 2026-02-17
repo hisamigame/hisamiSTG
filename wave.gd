@@ -32,12 +32,14 @@ func start_wave():
 		if c is Enemy: # redudant check probably
 			c.enemy_index = i
 			spawn_enemy(c)
+			print(c)
+			print(c.enemy_index)
 			i = i + 1
 	can_emit = true
 
 func enemy_died(i):
-	print(living_enemies)
 	living_enemies[i] = false
+	print(living_enemies)
 	var sum =0
 	for le in living_enemies:
 		sum = sum + int(le)

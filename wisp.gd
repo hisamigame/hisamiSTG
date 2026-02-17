@@ -2,6 +2,7 @@ extends Enemy
 
 @export var must_fire_to_die = false
 var can_really_die = true
+var marked_for_death = false
 
 func _ready() -> void:
 	super._ready()
@@ -27,6 +28,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		if check_oob():
 			print('ooob')
+			print(enemy_index)
 			die_no_nothing()
 	
 	if has_node('Movement'):
@@ -43,7 +45,10 @@ func _physics_process(delta: float) -> void:
 		$Shoot.advance(self,delta)
 		if must_fire_to_die:
 			if $Shoot.has_fired:
-				can_really_die = true
+				if marked_for_death:
+					die()
+				else:
+					can_really_die = true
 	
 		
 func take_damage(hurtbox: Hurtbox):
@@ -51,6 +56,10 @@ func take_damage(hurtbox: Hurtbox):
 		global.play_enemy_hurt()
 		hp = hp - hurtbox.damage
 		spawn_item(hurtbox.position)
-		if (hp <= 0) and can_die and can_really_die:
-			can_die = false
-			die()
+		if (hp <= 0):
+			if can_die and can_really_die:
+				can_die = false
+				die()
+			elif not can_really_die and can_die:
+				marked_for_death = true
+				can_die = false

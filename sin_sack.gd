@@ -39,7 +39,7 @@ func die_no_bonus():
 	var tmp2 = big_impact.instantiate()
 	tmp2.position = position
 	add_sibling.call_deferred(tmp2)
-	super.die_no_nothing()
+	die_no_nothing()
 	
 
 func _physics_process(delta: float) -> void:
@@ -50,7 +50,9 @@ func _physics_process(delta: float) -> void:
 			can_die = true
 	else:
 		if check_oob():
-			die_no_nothing()	
+			print('I am oob')
+			print(enemy_index)
+			die_no_nothing()
 	
 	if has_node('Movement'):
 		$Movement.advance(self, delta)

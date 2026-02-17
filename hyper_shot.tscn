@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://00s1y31nd2wx" path="res://bullet_hyper.png" id="2_q7eso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7hu6"]
-size = Vector2(22, 8)
+size = Vector2(22, 112)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mti3o"]
 animations = [{

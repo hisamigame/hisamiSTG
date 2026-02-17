@@ -21,14 +21,14 @@ func random_interval():
 	return fire_interval + global.rng.randf_range(-fire_spread,fire_spread)
 
 func _ready() -> void:
-	random_offset = global.rng.randf_range(70.0,110.0)
+	random_offset = global.rng.randf_range(-5,5)
 	this_fire_interval = random_interval()
 	if randomize_phase:
 		t = global.rng.randf_range(0,this_fire_interval)
-	cycle_directions()
 	
 
-func cycle_directions():
+func cycle_directions(node : Node2D):
+	var a = node.position.angle_to(global.player_position)
 	i_direction = i_direction + 1
 	var i = i_direction % ndirections
 	var factor
@@ -39,15 +39,15 @@ func cycle_directions():
 		factor = 1.0
 	@warning_ignore("integer_division")
 	var angle = 150.0 + (i/2) * (360.0/ndirections) * factor + (i %2) * 180
-	$Shoot1.set_direction(Vector2.from_angle(deg_to_rad(random_offset + drift * i_direction + angle + gap/2)))
-	$Shoot2.set_direction(Vector2.from_angle(deg_to_rad(random_offset + drift * i_direction + angle - gap/2)))
+	$Shoot1.set_direction(Vector2.from_angle(deg_to_rad(a + random_offset + drift * i_direction + angle + gap/2)))
+	$Shoot2.set_direction(Vector2.from_angle(deg_to_rad(a+ random_offset + drift * i_direction + angle - gap/2)))
 
 func advance(node, delta):
 	if node.can_fire and not node.sealed:
 		t = t + delta
 		if t > this_fire_interval:
+			cycle_directions(node)
 			fire(node)
-			cycle_directions()
 			this_fire_interval = random_interval()
 			t = 0.0
 			

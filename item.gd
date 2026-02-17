@@ -59,8 +59,8 @@ func _ready():
 	
 	initial_position = position
 	jump_direction = Vector2.from_angle(global.rng.randf_range(0,-PI))
-	if collect_time > 0.0:
-		$Timer.start(collect_time)
+	#if collect_time > 0.0:
+	#	$Timer.start(collect_time)
 
 func start_collect():
 	if state == WAIT:

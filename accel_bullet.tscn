@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dnacr6quwo3pg"]
+
+[ext_resource type="PackedScene" uid="uid://dbag35t1g552f" path="res://bullet.tscn" id="1_ahyqk"]
+[ext_resource type="Script" uid="uid://bk4njx1i8h0il" path="res://accel_bullet.gd" id="2_ahyqk"]
+
+[node name="Bullet" unique_id=1653350336 instance=ExtResource("1_ahyqk")]
+script = ExtResource("2_ahyqk")
+accel = 0.15

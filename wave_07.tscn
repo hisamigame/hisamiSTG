@@ -1,0 +1,239 @@
+[gd_scene format=3 uid="uid://u7k55bnd8nd7"]
+
+[ext_resource type="PackedScene" uid="uid://dokqaqwb1ej8m" path="res://wave.tscn" id="1_o4k62"]
+[ext_resource type="PackedScene" uid="uid://dmtalsa3xwxjt" path="res://move_in_out.tscn" id="3_ups58"]
+[ext_resource type="PackedScene" uid="uid://bw4duwrirbarn" path="res://bobbing.tscn" id="4_afpny"]
+[ext_resource type="PackedScene" uid="uid://b4c47k3f6j5lf" path="res://wisp.tscn" id="5_ta2r3"]
+[ext_resource type="PackedScene" uid="uid://wfp4fq6a5uok" path="res://shoot_aimed.tscn" id="6_nleet"]
+
+[node name="Wave07" unique_id=1715293201 instance=ExtResource("1_o4k62")]
+
+[node name="Wisp26" parent="." index="1" unique_id=1960324179 instance=ExtResource("5_ta2r3")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp26" index="0" unique_id=1496199230 instance=ExtResource("6_nleet")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp26" index="1" unique_id=558806657 instance=ExtResource("4_afpny")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp26" index="5" unique_id=537988074 instance=ExtResource("3_ups58")]
+position = Vector2(-21, 630)
+enter_speed = 7.0
+wait_time = 1.5
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp27" parent="." index="2" unique_id=545892937 instance=ExtResource("5_ta2r3")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp27" index="0" unique_id=1910778002 instance=ExtResource("6_nleet")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp27" index="1" unique_id=1957249811 instance=ExtResource("4_afpny")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp27" index="5" unique_id=618900333 instance=ExtResource("3_ups58")]
+position = Vector2(-1, 610)
+enter_speed = 7.0
+wait_time = 1.5
+enter_wait_time = 0.1
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp28" parent="." index="3" unique_id=335368161 instance=ExtResource("5_ta2r3")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp28" index="0" unique_id=2006642821 instance=ExtResource("6_nleet")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp28" index="1" unique_id=302112819 instance=ExtResource("4_afpny")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp28" index="5" unique_id=478085822 instance=ExtResource("3_ups58")]
+position = Vector2(-29, 600)
+enter_speed = 7.0
+wait_time = 1.5
+enter_wait_time = 0.2
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp29" parent="." index="4" unique_id=736765561 instance=ExtResource("5_ta2r3")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp29" index="0" unique_id=1819827337 instance=ExtResource("6_nleet")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp29" index="1" unique_id=1130164416 instance=ExtResource("4_afpny")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp29" index="5" unique_id=449266514 instance=ExtResource("3_ups58")]
+position = Vector2(13, 629)
+enter_speed = 7.0
+wait_time = 1.5
+enter_wait_time = 0.3
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp30" parent="." index="5" unique_id=1270590163 instance=ExtResource("5_ta2r3")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp30" index="0" unique_id=47203483 instance=ExtResource("6_nleet")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp30" index="1" unique_id=1344713366 instance=ExtResource("4_afpny")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp30" index="5" unique_id=67833213 instance=ExtResource("3_ups58")]
+position = Vector2(299, 687)
+enter_speed = 7.0
+wait_time = 3.0
+enter_wait_time = 1.55
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp31" parent="." index="6" unique_id=896567947 instance=ExtResource("5_ta2r3")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp31" index="0" unique_id=225214345 instance=ExtResource("6_nleet")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp31" index="1" unique_id=578674772 instance=ExtResource("4_afpny")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp31" index="5" unique_id=907047261 instance=ExtResource("3_ups58")]
+position = Vector2(261, 687)
+enter_speed = 7.0
+wait_time = 3.0
+enter_wait_time = 1.65
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp32" parent="." index="7" unique_id=850474050 instance=ExtResource("5_ta2r3")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp32" index="0" unique_id=2085287783 instance=ExtResource("6_nleet")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp32" index="1" unique_id=1075782397 instance=ExtResource("4_afpny")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp32" index="5" unique_id=1862747549 instance=ExtResource("3_ups58")]
+position = Vector2(284, 716)
+enter_speed = 7.0
+wait_time = 3.0
+enter_wait_time = 1.5
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp34" parent="." index="8" unique_id=1622347079 instance=ExtResource("5_ta2r3")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp34" index="0" unique_id=593367445 instance=ExtResource("6_nleet")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp34" index="1" unique_id=830032695 instance=ExtResource("4_afpny")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp34" index="5" unique_id=751158850 instance=ExtResource("3_ups58")]
+position = Vector2(134, 639)
+enter_speed = 7.0
+wait_time = 3.0
+enter_wait_time = 1.1
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp35" parent="." index="9" unique_id=521280737 instance=ExtResource("5_ta2r3")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp35" index="0" unique_id=99749948 instance=ExtResource("6_nleet")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp35" index="1" unique_id=83895875 instance=ExtResource("4_afpny")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp35" index="5" unique_id=808453247 instance=ExtResource("3_ups58")]
+position = Vector2(156, 658)
+enter_speed = 7.0
+wait_time = 3.0
+enter_wait_time = 1.0
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp36" parent="." index="10" unique_id=907561236 instance=ExtResource("5_ta2r3")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp36" index="0" unique_id=1348490068 instance=ExtResource("6_nleet")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp36" index="1" unique_id=1290999123 instance=ExtResource("4_afpny")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp36" index="5" unique_id=1942557329 instance=ExtResource("3_ups58")]
+position = Vector2(138, 677)
+enter_speed = 7.0
+wait_time = 3.0
+enter_wait_time = 0.9
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)
+
+[node name="Wisp37" parent="." index="11" unique_id=663364954 instance=ExtResource("5_ta2r3")]
+position = Vector2(136, -558)
+must_fire_to_die = true
+
+[node name="Shoot" parent="Wisp37" index="0" unique_id=1732914258 instance=ExtResource("6_nleet")]
+fire_spread = 0.0
+initial_phase = 0.5
+
+[node name="Bobbing" parent="Wisp37" index="1" unique_id=1192218873 instance=ExtResource("4_afpny")]
+bob_freq = 5.0
+direction = Vector2(1, 0)
+randomize_phase = true
+
+[node name="Movement" parent="Wisp37" index="5" unique_id=157170364 instance=ExtResource("3_ups58")]
+position = Vector2(110, 658)
+enter_speed = 7.0
+wait_time = 3.0
+enter_wait_time = 0.8
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, -1)

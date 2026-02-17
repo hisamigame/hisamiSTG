@@ -4,9 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://co3ic78lacax3" path="res://shoot_wind.tscn" id="2_0aob3"]
 
 [node name="SinSackWind" unique_id=335368161 instance=ExtResource("1_0aob3")]
-position = Vector2(250, 250)
 flavor = 4
-hp = 80
+hp = 120
 seal_distance2 = 0.0
 
 [node name="Shoot" parent="." index="0" unique_id=1496199230 instance=ExtResource("2_0aob3")]
