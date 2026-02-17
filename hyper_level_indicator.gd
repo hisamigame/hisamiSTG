@@ -24,5 +24,4 @@ func unreveal():
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func _ready() -> void:
-	if global.hyperlevel < 1:
-		unreveal()
+	unreveal()

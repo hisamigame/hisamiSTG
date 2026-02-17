@@ -2,6 +2,8 @@ extends Control
 
 const love_text = preload("res://love_text.tscn")
 
+var past_lives = global.lives
+
 func show_love_message(s: String):
 	var tmp = love_text.instantiate()
 	var ss = s.split("|")
@@ -28,10 +30,7 @@ func _ready() -> void:
 	global.timer_changed.connect(update_timer)
 	global.love_message.connect(show_love_message)
 	global.hyperlevel_changed.connect(change_hyperlevel)
-	global.hypertime_changed.connect(change_hypertime)
-	
-	print(global.max_ammo)
-	
+	global.hypertime_changed.connect(change_hypertime)	
 	
 
 func all_update():
@@ -42,16 +41,31 @@ func all_update():
 	update_timer()
 
 
+func revert_life_icon():
+	$SubViewport/Lives/LifeIcon.play('default')
+	
+func ouch_life_icon():
+	$SubViewport/Lives/LifeIcon.play('ouch')
+
 func hide_self(v):
-	# TODO FIX
 	$SubViewport.visible = !v
 
 func update_timer():
 	$SubViewport/TimeDisplay/Label.text = str(global.second)
 
-
 func update_lives():
-	$SubViewport/Lives/Label.text = 'x' + str(global.lives)
+	if global.lives < past_lives:
+		var tween = self.create_tween()
+		tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+		tween.tween_callback(ouch_life_icon)
+		tween.tween_interval(2.5)
+		tween.tween_callback(revert_life_icon)
+	past_lives = global.lives
+	if global.lives >= 0:
+		$SubViewport/Lives/Label.text = 'x' + str(global.lives)
+	else:
+		$SubViewport/Lives/Label.add_theme_font_size_override("font_size",32)
+		$SubViewport/Lives/Label.text = 'GAME\nOVER'
 
 func update_score():
 	$SubViewport/Score.text = str(int(round(global.score)))

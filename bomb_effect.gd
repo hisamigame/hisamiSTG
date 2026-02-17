@@ -26,6 +26,7 @@ func _ready():
 	fired_position = global.player_position
 	
 	tween = self.create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_callback(create_visual)
 	tween.tween_callback(collect_items)
 	tween.tween_interval(0.2)

@@ -1,6 +1,8 @@
 extends Node2D
 
-@export var speed = 8.0
+@export var unfocused_speed = 8.0
+@export var focus_speed = 5.0
+var speed = unfocused_speed
 
 @export var margin = 10
 
@@ -113,7 +115,10 @@ func process_animation(delta, direction):
 
 func _physics_process(delta: float) -> void:
 	var direction = global.get_movement_direction()
-	
+	if global.focus:
+		speed = focus_speed
+	else:
+		speed = unfocused_speed
 	process_animation(delta, direction)
 
 	

@@ -26,6 +26,7 @@ func to_max():
 	$Prompt.visible = true
 	
 	var my_tween = self.create_tween()
+	my_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	my_tween.tween_property($FlashRect,'modulate',Color(1.0, 1.0, 1.0, 1.0),flash_duration).set_trans(Tween.TRANS_SINE)
 	my_tween.tween_callback(set_progress_material)
 	my_tween.tween_property($FlashRect,'modulate',Color(1.0, 1.0, 1.0, 0.0),flash_duration).set_trans(Tween.TRANS_SINE)
@@ -51,6 +52,7 @@ func _ready() -> void:
 	max_value = global.max_ammo
 	
 	tween = self.create_tween().set_loops()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_property($Prompt,'position',Vector2(0.0,-1.0),0.1).set_trans(Tween.TRANS_SINE)
 	tween.tween_property($Prompt,'position',Vector2(0.0,0.0),0.1).set_trans(Tween.TRANS_SINE)
 	tween.stop()

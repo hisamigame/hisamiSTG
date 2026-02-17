@@ -15,6 +15,7 @@ var knockspeed = global.target_FPS * g * knockback_cooldown/2
 var edge_margin = 20
 var xupper = global.field_width - edge_margin
 var xlower = edge_margin
+var margin = 60
 
 @export var bounce_limit = 5
 var n_bounce = 0
@@ -37,6 +38,9 @@ func die():
 	global.play_enemy_dead()
 	for i in 16:
 		spawn_item(position)
+	just_die()
+
+func just_die():
 	queue_free()
 
 func apply_knockback():
@@ -87,6 +91,9 @@ func _physics_process(delta: float) -> void:
 	elif position.x < xlower:
 		position.x = 2*xlower - position.x
 		velocity.x = -velocity.x
+		
+	if position.y > global.field_height + margin:
+		just_die()
 		
 	if flashing:
 		if flashed_frames >= 1:

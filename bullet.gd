@@ -10,7 +10,7 @@ class_name Bullet
 
 const clear_margin = 50.0
 const item = preload('res://item.tscn')
-const remove_effect = preload('res://bullet_remove_effect.tscn')
+#const remove_effect = preload('res://bullet_remove_effect.tscn')
 
 func _ready() -> void:
 	$AnimatedSprite2D.play('default')
@@ -35,9 +35,9 @@ func just_die():
 	queue_free()
 	
 func die():
-	var tmp = remove_effect.instantiate()
-	tmp.position = position
-	add_sibling.call_deferred(tmp)
+	#var tmp = remove_effect.instantiate()
+	#tmp.position = position
+	#add_sibling.call_deferred(tmp)
 	just_die()
 	
 func become_item(collect_time: float = -1):

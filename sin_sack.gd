@@ -47,6 +47,7 @@ func _physics_process(delta: float) -> void:
 		process_seen()
 		if has_been_seen:
 			can_fire = true
+			can_die = true
 	else:
 		if check_oob():
 			die_no_nothing()	

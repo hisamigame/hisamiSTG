@@ -1,7 +1,5 @@
 extends Node
 
-const bullet = preload('res://bullet.tscn')
-
 
 var t = 0.0
 @export var fire_interval = 1.0

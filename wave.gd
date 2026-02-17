@@ -8,21 +8,23 @@ signal wave_done
 
 @onready var parent = get_parent()
 
+var can_emit = false
+
 func _ready():
 	start_wave()
 	$Timer.start(wave_timer)
 	
 func spawn_enemy(c):
-	var original_x = c.position.x
-	var original_process = c.process_mode
-	c.position.x = -666
-	c.process_mode = PROCESS_MODE_DISABLED
-	c.died.connect(enemy_died)
-	c.reparent.call_deferred(parent,true)
+	#var original_x = c.position.x
+	#var original_process = c.process_mode
+	#c.position.x = -666
+	#c.process_mode = PROCESS_MODE_DISABLED
 	living_enemies.append(true)
-	await get_tree().create_timer(c.spawn_delay).timeout
-	c.position.x = original_x
-	c.process_mode = original_process
+	c.reparent.call_deferred(parent,true)
+	c.died.connect(enemy_died)
+	#await get_tree().create_timer(c.spawn_delay).timeout
+	#c.position.x = original_x
+	#c.process_mode = original_process
 
 func start_wave():
 	var i : int = 0
@@ -31,8 +33,10 @@ func start_wave():
 			c.enemy_index = i
 			spawn_enemy(c)
 			i = i + 1
+	can_emit = true
 
 func enemy_died(i):
+	print(living_enemies)
 	living_enemies[i] = false
 	var sum =0
 	for le in living_enemies:
@@ -41,6 +45,7 @@ func enemy_died(i):
 		do_wave_done()
 
 func do_wave_done():
+	print('emit!!')
 	wave_done.emit()
 	queue_free()
 	

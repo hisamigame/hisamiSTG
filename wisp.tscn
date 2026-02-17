@@ -33,6 +33,7 @@ animations = [{
 
 [node name="Wisp" unique_id=335368161 instance=ExtResource("1_x1w8r")]
 script = ExtResource("2_1i22p")
+must_fire_to_die = false
 hp = 1
 
 [node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(833150868) index="0" unique_id=1241795471]

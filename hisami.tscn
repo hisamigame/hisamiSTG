@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://hyaky5wvg7rp"]
 
-[ext_resource type="Script" uid="uid://dp8woy5dko83e" path="res://hisami.gd" id="1_w4aru"]
+[ext_resource type="Script" uid="uid://c2xpksl3xo3r7" path="res://hisami.gd" id="1_w4aru"]
 [ext_resource type="Texture2D" uid="uid://c58eajkryrh13" path="res://hisami.png" id="2_dgy2n"]
 [ext_resource type="Texture2D" uid="uid://c54g484vh7d8h" path="res://hisami_move.png" id="3_8wejl"]
 [ext_resource type="Script" uid="uid://bfin0v5wfjh05" path="res://hitbox.gd" id="3_del5l"]
-[ext_resource type="Texture2D" uid="uid://dl6g7ry4qavif" path="res://hisami_2.png" id="3_vapyc"]
-[ext_resource type="Texture2D" uid="uid://crxebxbasl1cv" path="res://hisami_3.png" id="4_5pdxg"]
+[ext_resource type="Texture2D" uid="uid://bh6356s1n5iu2" path="res://hisami_2.png" id="3_vapyc"]
+[ext_resource type="Texture2D" uid="uid://dakpwusuyjwqo" path="res://hisami_3.png" id="4_5pdxg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_del5l"]
 atlas = ExtResource("2_dgy2n")
@@ -54,7 +54,6 @@ script = ExtResource("1_w4aru")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1823804009]
 z_index = 3
 sprite_frames = SubResource("SpriteFrames_8wejl")
-frame_progress = 0.15543917
 
 [node name="InvulTimer" type="Timer" parent="." unique_id=1495799990]
 one_shot = true

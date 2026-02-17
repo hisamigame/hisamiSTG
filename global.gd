@@ -27,8 +27,8 @@ signal hypertime_changed
 
 const ui_hide_margin = 60
 #const hyper_cost = 1000
-const hyper_cost = 100
-const max_ammo = 100
+const hyper_cost = 1000
+const max_ammo = hyper_cost
 var ui_visible = true
 var stop_timer: bool
 var time_left = 0.0
@@ -144,14 +144,16 @@ func set_defaults():
 	global.second = 180
 	global.stop_timer = false
 	global.boss_spawned = false
+	global.hyper_t = 0.0
+	global.hyperlevel = 0
 	
 func set_lives(val):
 	global.lives = val
+	lives_changed.emit()
 	if val < 0:
 		lives_up.emit()
 		stop_timer = true
-	else:
-		lives_changed.emit()
+	
 	
 func set_score(val):
 	global.score = val

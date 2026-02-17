@@ -13,7 +13,7 @@ position = Vector2(157, -112)
 [node name="Movement" parent="SinSackFire" index="4" unique_id=478085822 instance=ExtResource("3_fm5hq")]
 position = Vector2(105, 235)
 wait_time = 3.0
-enter_wait_time = 0.3
+enter_wait_time = 0.6
 enter_direction = Vector2(0, 1)
 exit_direction = Vector2(0, -1)
 

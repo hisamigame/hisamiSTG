@@ -14,18 +14,17 @@ const item = preload('res://item.tscn')
 var sealed = false
 @export var spawn_delay = 0.0
 @export var clear_margin = 40
-var can_die = true
+var can_die = false
 var has_been_seen = false
 var can_damage = true
-
-
+var seen_margin = 40
 
 var enemy_index: int
 signal died(int)
 
 func process_seen():
 	if not has_been_seen:
-		if position.x < global.field_width and position.x > 0 and position.y < global.field_height and position.y > 0:
+		if position.x < global.field_width and position.x > 0 and position.y < global.field_height and position.y > seen_margin:
 			has_been_seen = true
 	return has_been_seen
 	

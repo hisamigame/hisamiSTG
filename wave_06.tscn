@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://r7fi0s5thgv6"]
+
+[ext_resource type="PackedScene" uid="uid://dokqaqwb1ej8m" path="res://wave.tscn" id="1_s5l77"]
+[ext_resource type="PackedScene" uid="uid://d0huti4y4hma4" path="res://sin_sack_wind.tscn" id="2_s5l77"]
+[ext_resource type="PackedScene" uid="uid://dmtalsa3xwxjt" path="res://move_in_out.tscn" id="3_3f8mh"]
+[ext_resource type="PackedScene" uid="uid://bw4duwrirbarn" path="res://bobbing.tscn" id="4_x88rv"]
+
+[node name="Wave06" unique_id=1715293201 instance=ExtResource("1_s5l77")]
+
+[node name="SinSackWind" parent="." index="0" unique_id=335368161 instance=ExtResource("2_s5l77")]
+position = Vector2(601, -52)
+
+[node name="Movement" parent="SinSackWind" index="4" unique_id=478085822 instance=ExtResource("3_3f8mh")]
+position = Vector2(-339, 175)
+exit_speed = 1.0
+wait_time = 3.0
+enter_wait_time = 0.6
+enter_direction = Vector2(0, 1)
+exit_direction = Vector2(0, 1)
+
+[node name="Bobbing" parent="SinSackWind" index="5" unique_id=302112819 instance=ExtResource("4_x88rv")]

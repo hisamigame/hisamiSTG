@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bwar8rfs1r6b4"]
+
+[ext_resource type="Script" uid="uid://d177qwfnp01e2" path="res://shoot_wind_subshot.gd" id="1_l81sm"]
+
+[node name="Shoot" type="Node" unique_id=1496199230]
+script = ExtResource("1_l81sm")
+speed = 2.0
+nbullets = 4

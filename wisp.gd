@@ -1,10 +1,15 @@
 extends Enemy
 
+@export var must_fire_to_die = false
+var can_really_die = true
+
 func _ready() -> void:
 	super._ready()
 	if get_node_or_null('Movement'):
 		$Movement.position = position
 	$AnimatedSprite2D.play('default')
+	if must_fire_to_die:
+		can_really_die = false
 	
 	
 func die():
@@ -18,9 +23,11 @@ func _physics_process(delta: float) -> void:
 		process_seen()
 		if has_been_seen:
 			can_fire = true
+			can_die = true
 	else:
 		if check_oob():
-			die_no_nothing()	
+			print('ooob')
+			die_no_nothing()
 	
 	if has_node('Movement'):
 		$Movement.advance(self, delta)
@@ -34,6 +41,16 @@ func _physics_process(delta: float) -> void:
 		else:
 			sealed = false
 		$Shoot.advance(self,delta)
-		
+		if must_fire_to_die:
+			if $Shoot.has_fired:
+				can_really_die = true
 	
 		
+func take_damage(hurtbox: Hurtbox):
+	if can_damage:
+		global.play_enemy_hurt()
+		hp = hp - hurtbox.damage
+		spawn_item(hurtbox.position)
+		if (hp <= 0) and can_die and can_really_die:
+			can_die = false
+			die()

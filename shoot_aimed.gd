@@ -10,8 +10,9 @@ var t = 0.0
 @export var oneshoot = false
 var this_fire_interval: float
 @export var randomize_phase = false
-
-
+@export var initial_phase = 0.0
+var has_fired = false
+var can_fire = true
 
 func random_interval():
 	return fire_interval + global.rng.randf_range(-fire_spread,fire_spread)
@@ -19,12 +20,14 @@ func random_interval():
 func _ready() -> void:
 	this_fire_interval = random_interval()
 	if randomize_phase:
-		t = global.rng.randf_range(0,this_fire_interval)
+		t = initial_phase + global.rng.randf_range(0,this_fire_interval)
+	else:
+		t = initial_phase
 
 func advance(node, delta):
 	if node.can_fire and not node.sealed:
 		t = t + delta
-		if t > this_fire_interval:
+		if t > this_fire_interval and can_fire:
 			fire(node)
 			this_fire_interval = random_interval()
 			t = 0.0
@@ -35,5 +38,6 @@ func fire(node):
 	tmp.position = node.position
 	tmp.direction = tmp.position.direction_to(global.player_position)
 	node.add_sibling(tmp)
+	has_fired = true
 	if oneshoot:
-		queue_free()
+		can_fire = false

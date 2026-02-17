@@ -14,6 +14,7 @@ var right = global.field_width + margin
 
 func _ready() -> void:
 	var tween = self.create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	var y  = $LabelLeft.position.y
 	$LabelLeft/LabelLeft.text = textleft
 	$LabelRight/LabelRight.text = textright

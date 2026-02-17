@@ -32,7 +32,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [node name="NormalShot" type="Area2D" unique_id=1007986334]
 modulate = Color(1, 1, 1, 0.53333336)
-z_index = 2
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_y7hu6")
