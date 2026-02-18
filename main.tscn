@@ -73,3 +73,13 @@ size = Vector2i(540, 500)
 render_target_update_mode = 4
 
 [node name="ComicPage1" parent="CenterContainer/ReferenceRect/SubViewportContainer/SubViewport" unique_id=1283768049 instance=ExtResource("2_1bvp3")]
+
+[node name="FadeStuff" type="ColorRect" parent="." unique_id=2129675926]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
