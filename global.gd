@@ -70,10 +70,10 @@ func win():
 	you_win.emit()
 
 func play_bgm():
-	pass
+	$BGM.play()
 	
 func stop_bgm():
-	pass
+	$BGM.stop()
 	
 func play_player_dead():
 	$PlayerDead.play()

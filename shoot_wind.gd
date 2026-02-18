@@ -15,16 +15,21 @@ var ndirections = 12
 @export var gap = 30.0
 @export var drift = 1.61803398875 * 5
 var random_offset
-
+@export var initial_phase = 0.0
 
 func random_interval():
 	return fire_interval + global.rng.randf_range(-fire_spread,fire_spread)
 
+func set_phase():
+	if randomize_phase:
+		t = initial_phase + global.rng.randf_range(0,this_fire_interval)
+	else:
+		t = initial_phase
+
 func _ready() -> void:
 	random_offset = global.rng.randf_range(-5,5)
 	this_fire_interval = random_interval()
-	if randomize_phase:
-		t = global.rng.randf_range(0,this_fire_interval)
+	set_phase()
 	
 
 func cycle_directions(node : Node2D):

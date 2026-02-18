@@ -5,6 +5,7 @@
 
 [node name="SinSackLightning" unique_id=335368161 instance=ExtResource("1_x1ks1")]
 flavor = 3
+initial_phase = 4.0
 hp = 80
 seal_distance2 = 0.0
 

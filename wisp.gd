@@ -59,7 +59,8 @@ func take_damage(hurtbox: Hurtbox):
 	if can_damage:
 		global.play_enemy_hurt()
 		hp = hp - hurtbox.damage
-		spawn_item(hurtbox.position)
+		if not marked_for_death:
+			spawn_item(hurtbox.position)
 		if (hp <= 0):
 			if can_die and can_really_die:
 				can_die = false

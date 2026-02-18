@@ -41,7 +41,7 @@ func spawn_one_tick(node):
 		tmp.speed = velocity.length()
 		
 		node.add_sibling(tmp)
-		node.died.connect(tmp.become_item_and_die)
+		node.violent_death.connect(tmp.become_item_and_die)
 	
 func take_aim(node : Node2D):
 	direction = node.position.direction_to(global.player_position)
@@ -50,12 +50,15 @@ func take_aim(node : Node2D):
 func random_interval():
 	return fire_interval + global.rng.randf_range(-fire_spread,fire_spread)
 
-func _ready() -> void:
-	this_fire_interval = random_interval()
+func set_phase():
 	if randomize_phase:
 		t = initial_phase + global.rng.randf_range(0,this_fire_interval)
 	else:
 		t = initial_phase
+
+func _ready() -> void:
+	this_fire_interval = random_interval()
+	set_phase()
 	
 
 func advance(node, delta):

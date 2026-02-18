@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dubu5dnrant4w"]
+
+[ext_resource type="PackedScene" uid="uid://dokqaqwb1ej8m" path="res://wave.tscn" id="1_vem8i"]
+[ext_resource type="PackedScene" uid="uid://dijb8mkxysrq4" path="res://sin_sack_lightning.tscn" id="2_bd6ee"]
+[ext_resource type="PackedScene" uid="uid://dv4o2jrgrd3s1" path="res://sin_sack_water.tscn" id="2_jwt2r"]
+[ext_resource type="PackedScene" uid="uid://cgotu23gkuq17" path="res://linear_movement.tscn" id="3_8625n"]
+[ext_resource type="PackedScene" uid="uid://bw4duwrirbarn" path="res://bobbing.tscn" id="4_28c3p"]
+
+[node name="Wave20" unique_id=1715293201 instance=ExtResource("1_vem8i")]
+wave_timer = 8.0
+
+[node name="SinSackWater" parent="." index="0" unique_id=335368161 instance=ExtResource("2_jwt2r")]
+position = Vector2(102, -197)
+
+[node name="Movement" parent="SinSackWater" index="4" unique_id=1635703868 instance=ExtResource("3_8625n")]
+
+[node name="Bobbing" parent="SinSackWater" index="5" unique_id=302112819 instance=ExtResource("4_28c3p")]
+bob_freq = 5.0
+amplitude = 2
+direction = Vector2(1, -1)
+randomize_phase = true
+
+[node name="SinSackLightning" parent="." index="1" unique_id=91419491 instance=ExtResource("2_bd6ee")]
+position = Vector2(452, -59)
+
+[node name="Movement" parent="SinSackLightning" index="4" unique_id=1217048354 instance=ExtResource("3_8625n")]
+
+[node name="Bobbing" parent="SinSackLightning" index="5" unique_id=712458309 instance=ExtResource("4_28c3p")]
+bob_freq = 5.0
+amplitude = 2
+direction = Vector2(1, -1)
+randomize_phase = true
+
+[node name="SinSackLightning2" parent="." index="2" unique_id=678225195 instance=ExtResource("2_bd6ee")]
+position = Vector2(278, -113)
+
+[node name="Movement" parent="SinSackLightning2" index="4" unique_id=1408694613 instance=ExtResource("3_8625n")]
+
+[node name="Bobbing" parent="SinSackLightning2" index="5" unique_id=1967796563 instance=ExtResource("4_28c3p")]
+bob_freq = 5.0
+amplitude = 2
+direction = Vector2(1, -1)
+randomize_phase = true

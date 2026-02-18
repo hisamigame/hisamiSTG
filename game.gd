@@ -3,8 +3,9 @@ extends Node2D
 enum {SPAWN_WAVE, NORMAL, BOSS}
 var state = SPAWN_WAVE
 
+var active_wave
 
-const wave_order = [ 18]#[1,2,3,4,5,6, 7,8,9,10, 11, 12, 13, 14, 15, 16, 17, 18, 19]  #[14]
+const wave_order = [ 18, 19, 20, 21, 22, 23]#[1,2,3,4,5,6, 7,8,9,10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 var nwaves: int
 var substages = Dictionary()
 var wave_index = -1
@@ -126,9 +127,15 @@ func spawn_next_wave():
 		trigger_boss()
 		
 	if not global.boss_spawned:
-		var tmp = next_wave.instantiate()
-		tmp.wave_done.connect(wave_cleared)
-		add_child.call_deferred(tmp)
+		if active_wave:
+			# sometimes weird race condition happens
+			# when old wave emits as it is free'd
+			# causing two new waves to appear
+			active_wave.disconnect('wave_done',wave_cleared)
+		
+		active_wave = next_wave.instantiate()
+		active_wave.wave_done.connect(wave_cleared)
+		add_child.call_deferred(active_wave)
 	
 func wave_cleared():
 	state = SPAWN_WAVE

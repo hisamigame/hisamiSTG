@@ -4,6 +4,4 @@
 
 [node name="Shoot" type="Node" unique_id=615523025]
 script = ExtResource("1_pu25k")
-fire_interval = 4.0
-speed = 5.0
 initial_phase = 4.0

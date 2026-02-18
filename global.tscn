@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://ckdpmjxkucmlw" path="res://se_Explosion_03.wav" id="4_8tbuy"]
 [ext_resource type="AudioStream" uid="uid://c052d2geteff7" path="res://se_item.wav" id="5_hhif3"]
 [ext_resource type="AudioStream" uid="uid://qfat6rj170f5" path="res://se_lifeup.wav" id="6_74nqk"]
+[ext_resource type="AudioStream" uid="uid://k1dujg2hgle4" path="res://path2.ogg" id="7_ol57v"]
 
 [node name="Global" type="Node" unique_id=2061416878]
 process_mode = 3
@@ -17,10 +18,12 @@ bus = &"SE"
 
 [node name="EnemyHurt" type="AudioStreamPlayer" parent="." unique_id=1911034153]
 stream = ExtResource("3_2wtbm")
+volume_db = -3.0
 bus = &"SE"
 
 [node name="EnemyDead" type="AudioStreamPlayer" parent="." unique_id=178390076]
 stream = ExtResource("4_8tbuy")
+volume_db = -6.0
 bus = &"SE"
 
 [node name="ItemGet" type="AudioStreamPlayer" parent="." unique_id=1852596710]
@@ -30,3 +33,6 @@ bus = &"SE"
 [node name="LifeGet" type="AudioStreamPlayer" parent="." unique_id=59995645]
 stream = ExtResource("6_74nqk")
 bus = &"SE"
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=989279312]
+stream = ExtResource("7_ol57v")

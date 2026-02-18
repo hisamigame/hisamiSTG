@@ -13,6 +13,9 @@ var flashed_frames = 0
 var flashing = false
 
 var movement_node = null
+@export var initial_phase: float
+
+signal violent_death
 
 func _ready():
 	super._ready()
@@ -21,9 +24,13 @@ func _ready():
 		# in one place in the codebase
 		movement_node = $Movement 
 		$Movement.position = position
+	if has_node('Shoot'):
+		$Shoot.initial_phase = initial_phase
+		$Shoot.set_phase()
 
 func die():
 	global.set_score(global.score + value)
+	violent_death.emit()
 	die_no_bonus()
 	
 func die_no_bonus():

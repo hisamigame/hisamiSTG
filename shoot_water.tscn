@@ -1,15 +1,7 @@
 [gd_scene format=3 uid="uid://dl1w3j5axyseb"]
 
-[ext_resource type="Script" uid="uid://cd1ogojgo42iv" path="res://shoot_fire.gd" id="1_vhvdg"]
-[ext_resource type="PackedScene" uid="uid://cgasrdfmn671d" path="res://shoot_fire_subshot.tscn" id="2_tlelw"]
+[ext_resource type="Script" uid="uid://ov37rr1hlo2x" path="res://shoot_water.gd" id="1_wok6r"]
 
 [node name="Shoot" type="Node" unique_id=1496199230]
-script = ExtResource("1_vhvdg")
-fire_spread = 0.0
-
-[node name="Shoot1" parent="." unique_id=1978732931 instance=ExtResource("2_tlelw")]
-offset = Vector2(40, -10)
-
-[node name="Shoot2" parent="." unique_id=1956882915 instance=ExtResource("2_tlelw")]
-start_angle = 3.142
-offset = Vector2(-40, -10)
+script = ExtResource("1_wok6r")
+jitter = 5

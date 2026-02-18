@@ -17,12 +17,15 @@ var can_fire = true
 func random_interval():
 	return fire_interval + global.rng.randf_range(-fire_spread,fire_spread)
 
-func _ready() -> void:
-	this_fire_interval = random_interval()
+func set_phase():
 	if randomize_phase:
 		t = initial_phase + global.rng.randf_range(0,this_fire_interval)
 	else:
 		t = initial_phase
+
+func _ready() -> void:
+	this_fire_interval = random_interval()
+	set_phase()
 
 func advance(node, delta):
 	if node.can_fire and not node.sealed:

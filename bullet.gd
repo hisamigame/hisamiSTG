@@ -46,7 +46,7 @@ func become_item(will_collect: bool = true):
 	tmp.will_collect = will_collect
 	add_sibling.call_deferred(tmp)
 	
-func become_item_and_die(_id):
+func become_item_and_die():
 	become_item()
 	just_die()
 	
