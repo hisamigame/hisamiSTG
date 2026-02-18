@@ -12,7 +12,8 @@ var time = 0.0
 var minimum_time = 0.25
 var do_switch = false
 
-var next_scene = preload('res://hiscore_screen.tscn')
+var win_scene = preload('res://win_screen.tscn')
+var lose_scene = preload('res://lose_screen.tscn')
 
 @onready var score_label = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer/Label3
 @onready var time_label = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer2/Label2
@@ -55,7 +56,11 @@ func _physics_process(delta: float) -> void:
 	time = time + delta
 	if do_switch and animation_finished:
 		global.score = total
-		global.switch_scene(next_scene)
+		match message:
+			'Winner!':
+				global.switch_scene(win_scene)
+			'Game Over', 'Time up':
+				global.switch_scene(lose_scene)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

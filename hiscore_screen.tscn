@@ -1,18 +1,25 @@
 [gd_scene format=3 uid="uid://b3mbficfk1mwa"]
 
-[ext_resource type="Script" uid="uid://c72eyju27lw47" path="res://hiscore_screen.gd" id="1_m1lgt"]
-[ext_resource type="Texture2D" uid="uid://bxsr277fcc0gn" path="res://Background_001_001.png" id="1_pmlaq"]
-[ext_resource type="Texture2D" uid="uid://g4oxnpl55t1w" path="res://9patch.png" id="2_8okh8"]
+[ext_resource type="Script" uid="uid://cd05m07jdx8jk" path="res://hiscore_screen.gd" id="1_m1lgt"]
+[ext_resource type="Texture2D" uid="uid://clrhqnchsvsi0" path="res://screen_hiscore.png" id="1_ny343"]
+[ext_resource type="Texture2D" uid="uid://viug55te4ydy" path="res://ui_hiscore.png" id="3_ny343"]
 [ext_resource type="Theme" uid="uid://cegr2r2u3pjgm" path="res://pixel_ui_theme.tres" id="4_ny343"]
 [ext_resource type="PackedScene" uid="uid://rkxopjpabnkg" path="res://hiscore_entry.tscn" id="5_ny343"]
 
 [node name="HiscoreScreen" type="TextureRect" unique_id=1015402111]
 offset_right = 540.0
-offset_bottom = 540.0
-texture = ExtResource("1_pmlaq")
+offset_bottom = 500.0
+texture = ExtResource("1_ny343")
 expand_mode = 1
 stretch_mode = 1
 script = ExtResource("1_m1lgt")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=207571875]
+modulate = Color(0.6784314, 0.29803923, 0.78431374, 1)
+layout_mode = 0
+offset_right = 540.0
+offset_bottom = 500.0
+texture = ExtResource("1_ny343")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=388644566]
 layout_mode = 1
@@ -28,12 +35,12 @@ layout_mode = 2
 [node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/MarginContainer" unique_id=1707843789]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-texture = ExtResource("2_8okh8")
-region_rect = Rect2(0, 0, 64, 64)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource("3_ny343")
+region_rect = Rect2(0, 0, 100, 100)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
