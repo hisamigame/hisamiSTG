@@ -44,6 +44,7 @@ func fire(node):
 		tmp.speed = speeds[i]
 		tmp.position = node.position
 		tmp.direction = tmp.position.direction_to(global.player_position)
+		tmp.set_anim('lightning')
 		node.add_sibling(tmp)
 	if oneshoot:
 		queue_free()

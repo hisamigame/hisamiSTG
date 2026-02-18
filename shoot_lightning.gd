@@ -31,6 +31,12 @@ func spawn_one_tick(node):
 	var start_pos = node.movement_node.position - line * width/2
 	var end_pos = node.movement_node.position + line * width/2
 	var velocity : Vector2
+	var do_acc
+	if node.movement_node.speed > 1:
+		do_acc = false
+	else:
+		do_acc = true
+	
 	for i in nbullets_width:
 		var tmp = bullet.instantiate()
 		tmp.accel = acc
@@ -39,6 +45,7 @@ func spawn_one_tick(node):
 		velocity = speed * direction + node.movement_node.speed *  node.movement_node.direction
 		tmp.direction = velocity.normalized()
 		tmp.speed = velocity.length()
+		tmp.do_acc = do_acc
 		
 		node.add_sibling(tmp)
 		node.violent_death.connect(tmp.become_item_and_die)

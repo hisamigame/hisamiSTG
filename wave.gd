@@ -42,6 +42,7 @@ func start_wave():
 
 func enemy_died(i):
 	living_enemies[i] = false
+	#print(living_enemies)
 	var sum =0
 	for le in living_enemies:
 		sum = sum + int(le)

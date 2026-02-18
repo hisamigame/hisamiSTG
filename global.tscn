@@ -18,7 +18,7 @@ bus = &"SE"
 
 [node name="EnemyHurt" type="AudioStreamPlayer" parent="." unique_id=1911034153]
 stream = ExtResource("3_2wtbm")
-volume_db = -3.0
+volume_db = -6.0
 bus = &"SE"
 
 [node name="EnemyDead" type="AudioStreamPlayer" parent="." unique_id=178390076]

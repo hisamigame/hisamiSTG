@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cgotu23gkuq17" path="res://linear_movement.tscn" id="4_ntay7"]
 
 [node name="Wave02" unique_id=1715293201 instance=ExtResource("1_ddcwb")]
+wave_timer = 5.0
 
 [node name="Wisp2" parent="." index="1" unique_id=335368161 instance=ExtResource("2_wq5lh")]
 position = Vector2(318, -305)

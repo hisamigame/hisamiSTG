@@ -2,17 +2,17 @@ extends Bullet
 
 @export var accel = 0.15
 var _speed = 0.0
-
+var do_acc = true
 
 func _ready():
 	super._ready()
 	$AnimatedSprite2D.play('lightning')
 
 func _physics_process(delta: float) -> void:
-	if _speed < speed:
+	if _speed < speed and do_acc:
 		_speed = _speed + delta * accel* global.target_FPS/2
 		position = position + delta * direction * _speed * global.target_FPS
 		_speed = _speed + delta * accel* global.target_FPS/2
 	else:
-		position = position + delta * direction * _speed * global.target_FPS
+		position = position + delta * direction * speed * global.target_FPS
 	check_oob()

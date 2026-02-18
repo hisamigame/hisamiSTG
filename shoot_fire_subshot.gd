@@ -37,12 +37,14 @@ func advance(node, delta):
 			
 func fire(node):
 	var angle
+	var velocity : Vector2
 	for i in nbullets:
 		angle = Tween.interpolate_value(start_angle,stop_angle - start_angle,i,nbullets-1,transition,Tween.EASE_IN_OUT)
 		var tmp = bullet.instantiate()
-		tmp.speed = speed
+		velocity = speed * Vector2.from_angle(angle) + node.movement_node.speed *  node.movement_node.direction
+		tmp.speed = velocity.length()
 		tmp.position = node.position + offset
-		tmp.direction = Vector2.from_angle(angle)
+		tmp.direction = velocity.normalized()
 		node.add_sibling(tmp)
 		await get_tree().create_timer(fire_interval).timeout
 	if oneshoot:

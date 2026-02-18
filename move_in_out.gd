@@ -6,6 +6,8 @@ extends Node2D
 @export var enter_wait_time = 0.0
 var enter_time: float
 var exit_time: float
+var speed = 0.0
+var direction = Vector2.ZERO
 var t = 0
 
 @export var enter_direction = Vector2.LEFT

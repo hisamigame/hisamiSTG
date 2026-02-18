@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://r12bdjp1qbn"]
+
+[ext_resource type="PackedScene" uid="uid://dokqaqwb1ej8m" path="res://wave.tscn" id="1_55g0j"]
+[ext_resource type="PackedScene" uid="uid://dq7q1ybloirhp" path="res://sin_sack_fire.tscn" id="2_55g0j"]
+[ext_resource type="PackedScene" uid="uid://bw4duwrirbarn" path="res://bobbing.tscn" id="3_xe3qu"]
+[ext_resource type="PackedScene" uid="uid://dmtalsa3xwxjt" path="res://move_in_out.tscn" id="4_wumus"]
+[ext_resource type="PackedScene" uid="uid://dijb8mkxysrq4" path="res://sin_sack_lightning.tscn" id="5_a6td5"]
+[ext_resource type="PackedScene" uid="uid://bogcinxiqw2p3" path="res://sin_sack_default.tscn" id="6_8g22m"]
+
+[node name="Wave28" unique_id=1715293201 instance=ExtResource("1_55g0j")]
+
+[node name="SinSackFire" parent="." index="1" unique_id=335368161 instance=ExtResource("2_55g0j")]
+position = Vector2(382, -64)
+
+[node name="Bobbing" parent="SinSackFire" index="0" unique_id=302112819 instance=ExtResource("3_xe3qu")]
+
+[node name="Movement" parent="SinSackFire" index="5" unique_id=478085822 instance=ExtResource("4_wumus")]
+position = Vector2(-195, 325)
+wait_time = 3.0
+enter_direction = Vector2(-1, 3)
+exit_direction = Vector2(-1, 0)
+
+[node name="SinSackDefault" parent="." index="2" unique_id=646142985 instance=ExtResource("6_8g22m")]
+position = Vector2(266, -118)
+initial_phase = 1.0
+optional = true
+
+[node name="Movement" parent="SinSackDefault" index="4" unique_id=467880859 instance=ExtResource("4_wumus")]
+position = Vector2(6, 212)
+enter_speed = 3.0
+wait_time = 2.0
+enter_wait_time = 3.0
+enter_direction = Vector2(0.1, 1)
+exit_direction = Vector2(0.1, -1)
+
+[node name="Bobbing" parent="SinSackDefault" index="5" unique_id=6207257 instance=ExtResource("3_xe3qu")]
+
+[node name="SinSackLightning" parent="." index="3" unique_id=1339008541 instance=ExtResource("5_a6td5")]
+position = Vector2(136, -58)
+
+[node name="Bobbing" parent="SinSackLightning" index="4" unique_id=1738866662 instance=ExtResource("3_xe3qu")]
+
+[node name="Movement" parent="SinSackLightning" index="5" unique_id=131311418 instance=ExtResource("4_wumus")]
+position = Vector2(223, 322)
+wait_time = 3.0
+enter_wait_time = 1.0
+enter_direction = Vector2(1, 3)

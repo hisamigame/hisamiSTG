@@ -11,6 +11,7 @@ var this_fire_interval: float
 @export var nbullets = 3
 @export var speeds = [4,3,2]
 @export var initial_phase = 0.0
+@export var frame_hack = true
 
 
 func random_interval():

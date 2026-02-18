@@ -3,7 +3,8 @@ extends Bullet
 @export var accel = 0.15
 var _speed = 0.0
 
-
+func _ready():
+	pass
 
 func _physics_process(delta: float) -> void:
 	if _speed < speed:

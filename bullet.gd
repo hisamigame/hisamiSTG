@@ -34,6 +34,9 @@ func _physics_process(delta: float) -> void:
 func just_die():
 	queue_free()
 	
+func set_anim(name):
+	$AnimatedSprite2D.play(name)
+	
 func die():
 	#var tmp = remove_effect.instantiate()
 	#tmp.position = position

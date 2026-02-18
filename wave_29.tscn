@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bg8d0e8k0u74k"]
+
+[ext_resource type="PackedScene" uid="uid://dokqaqwb1ej8m" path="res://wave.tscn" id="1_om2l2"]
+[ext_resource type="PackedScene" uid="uid://d0huti4y4hma4" path="res://sin_sack_wind.tscn" id="2_om2l2"]
+[ext_resource type="PackedScene" uid="uid://bw4duwrirbarn" path="res://bobbing.tscn" id="3_idsrb"]
+[ext_resource type="PackedScene" uid="uid://dmtalsa3xwxjt" path="res://move_in_out.tscn" id="4_pk88i"]
+[ext_resource type="PackedScene" uid="uid://dijb8mkxysrq4" path="res://sin_sack_lightning.tscn" id="5_vfmis"]
+[ext_resource type="PackedScene" uid="uid://bogcinxiqw2p3" path="res://sin_sack_default.tscn" id="6_5irft"]
+
+[node name="Wave28" unique_id=1715293201 instance=ExtResource("1_om2l2")]
+
+[node name="SinSackWind" parent="." index="1" unique_id=335368161 instance=ExtResource("2_om2l2")]
+position = Vector2(533, -109)
+
+[node name="Bobbing" parent="SinSackWind" index="4" unique_id=302112819 instance=ExtResource("3_idsrb")]
+
+[node name="Movement" parent="SinSackWind" index="5" unique_id=478085822 instance=ExtResource("4_pk88i")]
+position = Vector2(-265, 397)
+wait_time = 3.0
+enter_direction = Vector2(-1, 3)
+exit_direction = Vector2(-1, 0)
+
+[node name="SinSackLightning" parent="." index="2" unique_id=554579781 instance=ExtResource("5_vfmis")]
+position = Vector2(8, -111)
+
+[node name="Bobbing" parent="SinSackLightning" index="4" unique_id=1033699415 instance=ExtResource("3_idsrb")]
+
+[node name="Movement" parent="SinSackLightning" index="5" unique_id=445103883 instance=ExtResource("4_pk88i")]
+position = Vector2(177, 239)
+wait_time = 3.0
+enter_wait_time = 1.0
+enter_direction = Vector2(1, 3)
+exit_direction = Vector2(-1, 0)
+
+[node name="SinSackDefault" parent="." index="3" unique_id=646142985 instance=ExtResource("6_5irft")]
+position = Vector2(266, -118)
+initial_phase = 1.0
+optional = true
+
+[node name="Movement" parent="SinSackDefault" index="4" unique_id=467880859 instance=ExtResource("4_pk88i")]
+position = Vector2(84, 244)
+enter_speed = 3.0
+wait_time = 2.0
+enter_wait_time = 3.0
+enter_direction = Vector2(0.1, 1)
+exit_direction = Vector2(1, -1)
