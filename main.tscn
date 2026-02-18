@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://cb3ctebhekcku"]
 
-[ext_resource type="Texture2D" uid="uid://dew1unsv3025s" path="res://sinsack_fall.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dcfhcr3v5vdo3" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://ej71qk6e4t6c" path="res://comic_page_1.tscn" id="2_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://bnvbgeukfq5uh" path="res://spirit.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cvwuno1kv12wv" path="res://side_bg.png" id="2_h2yge"]
 
 [node name="Main" type="Control" unique_id=306247667]
 layout_mode = 3
@@ -13,6 +12,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1bvp3")
+
+[node name="Control" type="Control" parent="." unique_id=462555518]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=286234161]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_h2yge")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=852218438]
 layout_mode = 1
@@ -57,28 +73,3 @@ size = Vector2i(540, 500)
 render_target_update_mode = 4
 
 [node name="ComicPage1" parent="CenterContainer/ReferenceRect/SubViewportContainer/SubViewport" unique_id=1283768049 instance=ExtResource("2_1bvp3")]
-
-[node name="Decoration" type="Node2D" parent="CenterContainer" unique_id=1540143297]
-z_index = -1
-position = Vector2(210, 0)
-
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/Decoration" unique_id=1389135187]
-offset_left = -400.0
-offset_right = 790.0
-offset_bottom = 500.0
-color = Color(1, 0.28235295, 1, 1)
-
-[node name="SinsackFall" type="Sprite2D" parent="CenterContainer/Decoration" unique_id=1207009301]
-position = Vector2(-156, 299.5)
-scale = Vector2(3.1, 1.03)
-texture = ExtResource("1_0xm2m")
-
-[node name="Spirit" type="Sprite2D" parent="CenterContainer/Decoration" unique_id=1744888744]
-position = Vector2(584, 97.5)
-scale = Vector2(1, 4.796296)
-texture = ExtResource("2_h2yge")
-
-[node name="Spirit2" type="Sprite2D" parent="CenterContainer/Decoration" unique_id=687788723]
-position = Vector2(623.99994, 272)
-scale = Vector2(2.1296296, 1)
-texture = ExtResource("2_h2yge")
