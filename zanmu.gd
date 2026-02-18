@@ -16,6 +16,10 @@ const item = preload('res://item.tscn')
 var prev_position : Vector2
 var velocity : Vector2
 
+var flashed_frames = 0
+var flashing = false
+const enemy_hit_material = preload("res://enemy_hit_shader.tres")
+
 
 func enter_phase(i):
 	phase = i
@@ -47,6 +51,12 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play('default')
 	velocity = (position - prev_position)/(delta * global.target_FPS)
 	prev_position = position
+	
+	if flashing:
+		if flashed_frames >= 1:
+			unset_enemy_material()
+			flashing = false
+		flashed_frames = flashed_frames + 1
 	
 
 func switch_phase():
@@ -81,6 +91,10 @@ func take_damage(dmg):
 		if hp < 0.0:
 			switch_phase()
 			#can_take_damage = false
+			
+		$AnimatedSprite2D.material = enemy_hit_material
+		flashed_frames = 0
+		flashing = true
 
 func spawn_item(spawn_position):
 	var tmp = item.instantiate()
@@ -90,3 +104,6 @@ func spawn_item(spawn_position):
 func _on_hitbox_took_damage(hurtbox: Variant) -> void:
 	spawn_item(hurtbox.position)
 	take_damage(hurtbox.damage)
+
+func unset_enemy_material():
+	$AnimatedSprite2D.material = null
