@@ -32,7 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func fade_in_panel():
 	current_state = State.READING
 	tween = self.create_tween()
-	tween.tween_property(panels[current_panel], "modulate", Color.WHITE, 1.0)
+	tween.tween_property(panels[current_panel], "modulate", Color.WHITE, 0.5)
 	tween.tween_callback(next_panel_num)
 
 func show_full_panel():
