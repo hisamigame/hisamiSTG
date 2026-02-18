@@ -30,6 +30,7 @@ func _ready():
 	global.emit_clear_bullets(true, true)
 	fired_position = global.player_position
 	
+	global.play_break()
 	tween = self.create_tween()
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_callback(create_visual)

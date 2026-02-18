@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://qfat6rj170f5" path="res://se_lifeup.wav" id="6_74nqk"]
 [ext_resource type="AudioStream" uid="uid://k1dujg2hgle4" path="res://path2.ogg" id="7_ol57v"]
 [ext_resource type="AudioStream" uid="uid://cqw4b5erehq4o" path="res://zan.ogg" id="8_gfa4i"]
+[ext_resource type="AudioStream" uid="uid://2hflm17ndwbw" path="res://18_Thunder_02_EDIT.wav" id="9_snwe2"]
+[ext_resource type="AudioStream" uid="uid://cqkgibt3vnxob" path="res://25_Wind_01_EDIT.wav" id="10_dbr38"]
+[ext_resource type="AudioStream" uid="uid://4ee2kblav0an" path="res://BottleBreakEdit.wav" id="10_htqha"]
 
 [node name="Global" type="Node" unique_id=2061416878]
 process_mode = 3
@@ -40,3 +43,18 @@ stream = ExtResource("7_ol57v")
 
 [node name="BGMboss" type="AudioStreamPlayer" parent="." unique_id=100593121]
 stream = ExtResource("8_gfa4i")
+
+[node name="Break" type="AudioStreamPlayer" parent="." unique_id=1809810560]
+stream = ExtResource("9_snwe2")
+bus = &"SE"
+
+[node name="Unbreak" type="AudioStreamPlayer" parent="." unique_id=1805313733]
+stream = ExtResource("10_htqha")
+volume_db = -4.0
+pitch_scale = 0.7
+bus = &"SE"
+
+[node name="Thunder" type="AudioStreamPlayer" parent="." unique_id=1151046689]
+stream = ExtResource("10_dbr38")
+volume_db = -12.0
+bus = &"SE"

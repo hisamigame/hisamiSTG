@@ -97,6 +97,15 @@ func play_enemy_dead():
 func play_item():
 	$ItemGet.play()
 	
+func play_break():
+	$Break.play()
+	
+func play_unbreak():
+	$Unbreak.play()
+	
+func play_thunder():
+	$Thunder.play()
+	
 func play_lifeget():
 	$LifeGet.play()
 
@@ -180,6 +189,8 @@ func set_ammo(val):
 	has_ammo_changed = true
 	
 func set_hyperlevel(val):
+	if val == 0 and global.hyperlevel > 0:
+		play_unbreak()
 	global.hyperlevel = min(val, global.max_hyperlevel)
 	if global.hyperlevel == 1:
 		Item.reset_n_items()

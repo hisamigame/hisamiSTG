@@ -81,6 +81,7 @@ func fire(node):
 	tmp.duration = start_up_time
 	node.add_child(tmp)
 	take_aim(node)
+	global.play_thunder()
 	tween = self.create_tween()
 	tween.tween_interval(start_up_time)
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
