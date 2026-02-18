@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://b0fdafeba1xtt"]
 
-[ext_resource type="Texture2D" uid="uid://8i5p6of5t7x7" path="res://screen_lose.png" id="1_cbtnu"]
-[ext_resource type="Script" uid="uid://caypvydpnxbqs" path="res://win_lose_screen.gd" id="2_7hir2"]
+[ext_resource type="Texture2D" uid="uid://cu6hc8s30y0ut" path="res://screen_lose.png" id="1_7hir2"]
+[ext_resource type="Script" uid="uid://d4eysh6yc2utv" path="res://win_lose_screen.gd" id="2_7hir2"]
 [ext_resource type="FontFile" uid="uid://bsjpu7jack7jw" path="res://DigitalDisco.ttf" id="2_h3ym8"]
 
 [node name="LoseScreen" type="TextureRect" unique_id=194991628]
 offset_right = 540.0
 offset_bottom = 500.0
-texture = ExtResource("1_cbtnu")
+texture = ExtResource("1_7hir2")
 script = ExtResource("2_7hir2")
 
 [node name="Label" type="Label" parent="." unique_id=1432831579]

@@ -5,11 +5,11 @@ var state = SPAWN_WAVE
 
 var active_wave
 
-const wave_order = [666]#[1,2,3,4,5,6, 7,8,9,10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+const wave_order = [1,2,3,4,5,6, 7,8,9,10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
 var nwaves: int
 var substages = Dictionary()
 var wave_index = -1
-const wave_index_loop = 0#6
+const wave_index_loop = 6
 #var next_wave_number = 1
 #var wave_repeats = 0
 
@@ -79,6 +79,11 @@ func spawn_boss():
 	#tmp.wave_done.connect(wave_cleared)
 	add_child.call_deferred(tmp)
 
+func slow_parallax():
+	var tween = self.create_tween()
+	tween.tween_property($Node/ParallaxBG,'autoscroll:y',100,10.0)
+	tween.parallel().tween_property($Node/ParallaxMist,'autoscroll:y',100,10.0)
+
 func _ready():
 	global.clear_bullets.connect(clear_bullets)
 	global.clear_enemies.connect(clear_enemies)
@@ -88,6 +93,7 @@ func _ready():
 	global.you_win.connect(win)
 	global.spawn_boss.connect(spawn_boss)
 	global.collect_items.connect(collect_items)
+	global.soon_boss.connect(slow_parallax)
 	nwaves = len(wave_order)
 	global.play_bgm()
 	$Hisami.got_hurt.connect(hurtflash)

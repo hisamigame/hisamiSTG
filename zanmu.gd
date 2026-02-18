@@ -9,7 +9,7 @@ var max_hp = 100
 var hp = 100
 
 var phase = -1
-var hp_phases = [10.0, 100.0, 100] #[200,200,200]
+var hp_phases = [250.0, 350.0] #[200,200,200]
 const item = preload('res://item.tscn')
 @export var animation_change_movement_threshold = 3.0
 
@@ -27,9 +27,7 @@ func enter_phase(i):
 		1:
 			$Phase0.queue_free()
 			$Phase1.run(self)
-		2:
-			$Phase1.queue_free()
-			$Phase2.run(self)
+
 
 func start_fight():
 	enter_phase(0)

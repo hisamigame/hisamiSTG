@@ -19,8 +19,13 @@ func collect_items():
 	global.emit_collect_items()
 	
 func flash_love_text():
-	global.flash_love_message("OVER|LOVE")
-
+	match global.hyperlevel:
+		1:
+			global.flash_love_message("HEART|BREAK")
+		2:
+			global.flash_love_message("DOU\nHEART|BLE\nBREAK")
+		3:
+			global.flash_love_message("MAX \nBRE|HEART\nAK!")
 func _ready():
 	global.emit_clear_bullets(true, true)
 	fired_position = global.player_position

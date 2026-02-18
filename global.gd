@@ -24,13 +24,14 @@ signal collect_items
 signal love_message(String)
 signal hyperlevel_changed
 signal hypertime_changed
+signal soon_boss
 
 const ui_hide_margin = 60
 #const hyper_cost = 1000
 const hyper_cost = 650
 const max_ammo = hyper_cost
 var ui_visible = true
-var stop_timer: bool
+var stop_timer: bool = true
 var time_left = 0.0
 var second = 180
 var boss_spawned=false
@@ -158,6 +159,7 @@ func set_defaults():
 	global.hyper_t = 0.0
 	global.hyperlevel = 0
 	global.awarded_extends = 0
+	$BGM.volume_db=0.0
 	
 func set_lives(val):
 	global.lives = val
@@ -264,12 +266,19 @@ func get_movement_direction():
 
 
 
+func fade_to_boss():
+	var tween = self.create_tween()
+	tween.tween_property($BGM,'volume_db',-40,10.0)
+	soon_boss.emit()
+
 func _physics_process(delta: float) -> void:
 	
 	if not stop_timer:
 		
 		time_left = time_left - delta
 		var new_second = ceili(time_left)
+		if time_left < 40.0:
+			global.fade_to_boss()
 		
 		if time_left < boss_spawn_time and !boss_spawned:
 			spawn_boss.emit()

@@ -14,21 +14,25 @@ const bullet = preload('res://fire_bullet.tscn')
 @export var transition_x = Tween.TRANS_SINE
 @export var transition_y = Tween.TRANS_QUAD
 
-@export var nfire = 100
+@export var fire_time = 1.0
+@export var nfire = 30
 @export var start_angle = 0.0
 @export var stop_angle = PI/2
 @export var offset = Vector2.ZERO
 @export var transition = Tween.TRANS_SINE
 @export var speed = 4.0
-@export var fire_interval = 0.01
+@export var fire_jitter = 5
+@export var nneedles = 30
+@export var needle_spread_x = 140.0
+@export var needle_spread_y = 20.0
+@export var wait_time = 1.0
 
+var fire_interval = fire_time/nfire
 var precision = 100.0
-var bullet_interval = fire_interval * nfire * 2
 
 var phase_done = false
-var tween
-var bullet_tween
-var patrol_tween
+var control_tween
+var homing_tween
 
 func _ready():
 	original_position = position
@@ -49,57 +53,91 @@ func spiral_arm(node: Node2D, angle1, angle2, positive):
 		var tmp = bullet.instantiate()
 		velocity = speed * Vector2.from_angle(angle) + node.velocity
 		tmp.speed = velocity.length()
-		tmp.position = node.position + offset
+		tmp.position = node.position + offset + fire_jitter * Vector2(1,0) * global.rng.randf()
 		tmp.direction = velocity.normalized()
 		node.add_sibling(tmp)
 		await get_tree().create_timer(fire_interval).timeout
 	
 	
-func fire(node: Node2D):
+func fire1(node: Node2D):
 	var angle_stop = node.position.angle_to_point(Vector2(0,global.field_height))
 	spiral_arm(node,0, angle_stop, true)
-	angle_stop = node.position.angle_to_point(Vector2(global.field_width,global.field_height))
-	await get_tree().create_timer(1.0).timeout
+
+	
+func fire2(node: Node2D):
+	var angle_stop = node.position.angle_to_point(Vector2(global.field_width,global.field_height))
 	spiral_arm(node, PI, angle_stop , false)
 
 
-func spawn_bullet(node : Node2D):
+	
+var home_time = 0.25
+
+func home_player(node : Node2D):
+	var ttween = self.create_tween()
+	ttween.tween_property(node, 'position:x', global.player_position.x, home_time)
+	ttween.parallel().tween_property(node, 'position:y', 60.0, home_time)
+
+
+func spawn_needles(node : Node2D):
+	for i in nneedles:
+		var tmp = needle_bullet.instantiate()
+		tmp.position = node.position
+		tmp.position.x = tmp.position.x + global.rng.randf_range(-needle_spread_x,needle_spread_x)
+		tmp.position.y = tmp.position.y + global.rng.randf_range(-needle_spread_y,needle_spread_y)
+		node.add_sibling(tmp)
+		
+func aimed_needles(node : Node2D):
 	var tmp = needle_bullet.instantiate()
-	tmp.position = node.position
+	tmp.position.y = 40.0
+	tmp.position.x = global.player_position.x
 	node.add_sibling(tmp)
 	
-func start_bullet_spawn():
-	bullet_tween.play()
+func aimed_bullet(node : Node2D):
+	var tmp = needle_bullet.instantiate()
+	tmp.position.y = 40.0
+	tmp.position.x = global.player_position
+	node.add_sibling(tmp)
 	
-func stop_bullet_spawn():
-	bullet_tween.stop()
+
+func home_center(node : Node2D):
+	var ttween = self.create_tween()
+	ttween.tween_property(node, 'position:x', global.field_width/2.0, home_time)
+	ttween.parallel().tween_property(node, 'position:y', global.field_width/3.0, home_time)
+
+
+func stop_homing():
+	homing_tween.stop()
 	
-func start_patrol():
-	patrol_tween.play()
+func start_homing():
+	homing_tween.play()
 	
-func stop_patrol():
-	patrol_tween.stop()
 
 func run(node: Node2D):
-	tween = self.create_tween()
-	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	bullet_tween = self.create_tween()
-	bullet_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	bullet_tween.set_loops()
 	
-	patrol_tween = self.create_tween()
-	patrol_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	patrol_tween.set_loops()
+	homing_tween = self.create_tween()
+	homing_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	homing_tween.set_loops()
+	homing_tween.tween_callback(aimed_needles.bind(node))
+	homing_tween.tween_interval(1.0)
+	homing_tween.stop()
+
+	control_tween = self.create_tween()
+	control_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	control_tween.set_loops()
+	control_tween.tween_callback(home_center.bind(node))
+	control_tween.tween_interval(home_time+0.1)
+	control_tween.tween_callback(fire1.bind(node))
+	control_tween.tween_interval(fire_time + wait_time)
+	control_tween.tween_callback(home_player.bind(node))
+	control_tween.tween_interval(home_time)
+	control_tween.tween_callback(spawn_needles.bind(node))
 	
-	patrol_tween.tween_property(node, 'position',target_position2, patrol_time).set_trans(Tween.TRANS_SINE)
-	patrol_tween.tween_property(node, 'position',target_position1, patrol_time).set_trans(Tween.TRANS_SINE)
+	control_tween.tween_callback(home_center.bind(node))
+	control_tween.tween_interval(home_time+0.1)
+	control_tween.tween_callback(fire2.bind(node))
+	control_tween.tween_interval(fire_time + wait_time)
+	control_tween.tween_callback(home_player.bind(node))
+	control_tween.tween_interval(home_time)
+	control_tween.tween_callback(spawn_needles.bind(node))
+	control_tween.tween_callback(start_homing)
 	
-	bullet_tween.tween_callback(fire.bind(node))
-	bullet_tween.tween_interval(bullet_interval)
-	
-	tween.tween_callback(stop_bullet_spawn)
-	tween.tween_callback(stop_patrol)
-	tween.tween_property(node, 'position',target_position, patrol_time/2).set_trans(Tween.TRANS_SINE)
-	tween.tween_callback(start_bullet_spawn)
-	#tween.tween_property(node, 'position',target_position1, patrol_time/2).set_trans(Tween.TRANS_SINE)
-	#tween.tween_callback(start_patrol)
