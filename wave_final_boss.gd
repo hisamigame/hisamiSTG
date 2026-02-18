@@ -1,11 +1,21 @@
 extends Wave
 
 func _ready() -> void:
-	print('Zanmu!')
+	print('boss wave!')
+	
+	spawn_zanmu()
+	
+func spawn_zanmu():
+	print('Zanmu spawn')
+	global.stop_bgm()
+	global.play_bgm_boss()
 	$Zanmu.boss_dead.connect(boss_dead)
-	# $Zanmu.position = 
-	#var parent = get_parent()
 	$Zanmu.reparent.call_deferred(parent,true)
+	$Zanmu.start_fight()
+	
+func miniboss_dead():
+	# TODO this is where we could spawn in Zanmu
+	pass
 	
 func boss_dead():
 	print('wave boss dead')

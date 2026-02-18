@@ -75,6 +75,12 @@ func play_bgm():
 func stop_bgm():
 	$BGM.stop()
 	
+func play_bgm_boss():
+	$BGMboss.play()
+	
+func stop_bgm_boss():
+	$BGMboss.stop()
+	
 func play_player_dead():
 	$PlayerDead.play()
 	
@@ -151,6 +157,7 @@ func set_defaults():
 	global.boss_spawned = false
 	global.hyper_t = 0.0
 	global.hyperlevel = 0
+	global.awarded_extends = 0
 	
 func set_lives(val):
 	global.lives = val

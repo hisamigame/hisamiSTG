@@ -5,7 +5,11 @@
 [ext_resource type="Script" uid="uid://c0148w36m323f" path="res://hurtbox.gd" id="2_0bf80"]
 [ext_resource type="Texture2D" uid="uid://ekumwnb2u45v" path="res://zanmu_2.png" id="3_7s7qw"]
 [ext_resource type="Script" uid="uid://bfin0v5wfjh05" path="res://hitbox.gd" id="3_fj3wy"]
+[ext_resource type="Texture2D" uid="uid://b7vje8q8kjpwm" path="res://zanmu_move.png" id="4_l2dal"]
 [ext_resource type="Texture2D" uid="uid://8nq0f3x5ibwi" path="res://ammo_bar_fill.png" id="5_n12pi"]
+[ext_resource type="Script" uid="uid://3ovgohivp5yt" path="res://phase_0.gd" id="7_lookm"]
+[ext_resource type="Script" uid="uid://dtbi5ir2e8h0r" path="res://phase_1.gd" id="8_88x8s"]
+[ext_resource type="Script" uid="uid://c8q0ha2y2dq3s" path="res://phase_2.gd" id="9_hdap5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e5xoy"]
 atlas = ExtResource("1_e7hus")
@@ -13,6 +17,10 @@ region = Rect2(0, 0, 80, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lookm"]
 atlas = ExtResource("3_7s7qw")
+region = Rect2(0, 0, 80, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncdjn"]
+atlas = ExtResource("4_l2dal")
 region = Rect2(0, 0, 80, 120)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0bf80"]
@@ -27,6 +35,14 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncdjn")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n12pi"]
@@ -39,7 +55,7 @@ script = ExtResource("1_fj3wy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=241979405]
 sprite_frames = SubResource("SpriteFrames_0bf80")
-frame_progress = 0.013020325
+animation = &"move"
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1904810238]
 collision_layer = 2
@@ -66,6 +82,15 @@ offset_left = 526.0
 offset_right = 543.0
 offset_bottom = 532.0
 texture_progress = ExtResource("5_n12pi")
+
+[node name="Phase0" type="Node" parent="." unique_id=1178691232]
+script = ExtResource("7_lookm")
+
+[node name="Phase1" type="Node" parent="." unique_id=120163424]
+script = ExtResource("8_88x8s")
+
+[node name="Phase2" type="Node" parent="." unique_id=327025094]
+script = ExtResource("9_hdap5")
 
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
 [connection signal="took_damage" from="Hitbox" to="." method="_on_hitbox_took_damage"]

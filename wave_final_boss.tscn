@@ -8,4 +8,4 @@
 script = ExtResource("2_pa1un")
 
 [node name="Zanmu" parent="." index="1" unique_id=1810475383 instance=ExtResource("3_nh0ef")]
-position = Vector2(223, 129)
+position = Vector2(270, -117)

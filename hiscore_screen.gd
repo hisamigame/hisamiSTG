@@ -49,6 +49,7 @@ func setup():
 
 func _ready() -> void:
 	global.stop_bgm()
+	global.stop_bgm_boss()
 	get_scores_and_names()
 	# can override scores here for testing
 	#global.score = 1000001

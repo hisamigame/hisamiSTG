@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cyj68md5wp81y"]
+
+[ext_resource type="Script" uid="uid://bt37pnats8c5j" path="res://needle_bullet.gd" id="1_n8ymx"]
+[ext_resource type="Texture2D" uid="uid://dorf206guyswn" path="res://bullet_needle.png" id="2_hxih6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxih6"]
+size = Vector2(6, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y858d"]
+atlas = ExtResource("2_hxih6")
+region = Rect2(0, 0, 22, 125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t4icj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y858d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="NeedleBullet" type="Area2D" unique_id=1760756084]
+z_index = 2
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_n8ymx")
+direction = Vector2(0, 1)
+metadata/_custom_type_script = "uid://ve7jcwmwecs3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=706336195]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_hxih6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=302212327]
+sprite_frames = SubResource("SpriteFrames_t4icj")

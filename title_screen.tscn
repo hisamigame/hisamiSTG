@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dnh2rs3gsch7w"]
 
-[ext_resource type="Texture2D" uid="uid://cfu3anj47qw2d" path="res://title_screen_art.png" id="1_ak2if"]
-[ext_resource type="Script" uid="uid://cwuy4nyle3t8g" path="res://title_screen.gd" id="1_v6p8y"]
+[ext_resource type="Texture2D" uid="uid://cpna7e1jhvsj8" path="res://title_screen_art.png" id="1_ak2if"]
+[ext_resource type="Script" uid="uid://c4uamncv18rwp" path="res://title_screen.gd" id="1_v6p8y"]
 
 [node name="TitleScreen" type="TextureRect" unique_id=1045298283]
 offset_right = 540.0

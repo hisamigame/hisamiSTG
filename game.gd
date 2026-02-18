@@ -5,11 +5,11 @@ var state = SPAWN_WAVE
 
 var active_wave
 
-const wave_order = [1,2,3,4,5,6, 7,8,9,10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+const wave_order = [666]#[1,2,3,4,5,6, 7,8,9,10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
 var nwaves: int
 var substages = Dictionary()
 var wave_index = -1
-const wave_index_loop = 6
+const wave_index_loop = 0#6
 #var next_wave_number = 1
 #var wave_repeats = 0
 

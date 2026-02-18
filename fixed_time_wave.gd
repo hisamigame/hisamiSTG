@@ -6,7 +6,6 @@ const bonus_movement = preload("res://linear_movement.tscn")
 
 func enemy_died(i):
 	living_enemies[i] = false
-	print(living_enemies)
 	var sum =0
 	for le in living_enemies:
 		sum = sum + int(le)
@@ -17,7 +16,7 @@ func enemy_died(i):
 func spawn_extra():
 	var tmp = bonus_enemy.instantiate()
 	var movement = bonus_movement.instantiate()
-	movement.position = Vector2(global.player_position.x,-30.0)
+	tmp.position = Vector2(global.player_position.x,-30.0)
 	movement.speed = bonus_speed
 	tmp.add_child(movement)
 	tmp.enemy_index = 0
