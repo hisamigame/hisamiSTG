@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b0fdafeba1xtt"]
+
+[ext_resource type="Texture2D" uid="uid://8i5p6of5t7x7" path="res://screen_lose.png" id="1_cbtnu"]
+[ext_resource type="Script" uid="uid://caypvydpnxbqs" path="res://win_lose_screen.gd" id="2_7hir2"]
+[ext_resource type="FontFile" uid="uid://bsjpu7jack7jw" path="res://DigitalDisco.ttf" id="2_h3ym8"]
+
+[node name="LoseScreen" type="TextureRect" unique_id=194991628]
+offset_right = 540.0
+offset_bottom = 500.0
+texture = ExtResource("1_cbtnu")
+script = ExtResource("2_7hir2")
+
+[node name="Label" type="Label" parent="." unique_id=1432831579]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.028
+anchor_bottom = 0.033
+offset_left = 102.0
+offset_top = 108.0
+offset_right = 423.88
+offset_bottom = 146.5
+theme_override_colors/font_color = Color(0.89010674, 8.663535e-07, 0.49724817, 1)
+theme_override_colors/font_shadow_color = Color(0.13725491, 0, 0.25882354, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 11
+theme_override_constants/outline_size = 18
+theme_override_constants/shadow_outline_size = 18
+theme_override_fonts/font = ExtResource("2_h3ym8")
+theme_override_font_sizes/font_size = 54
+text = "GAME OVER"
+horizontal_alignment = 1

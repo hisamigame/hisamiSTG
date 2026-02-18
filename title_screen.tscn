@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cfu3anj47qw2d" path="res://screen_title.png" id="1_ak2if"]
 [ext_resource type="Script" uid="uid://cwuy4nyle3t8g" path="res://title_screen.gd" id="1_v6p8y"]
 [ext_resource type="FontFile" uid="uid://bsjpu7jack7jw" path="res://DigitalDisco.ttf" id="3_ig5kc"]
-[ext_resource type="FontFile" uid="uid://cbckngevjnfo6" path="res://Pixelout Personal Use Only.ttf" id="4_05l2w"]
+[ext_resource type="FontFile" uid="uid://ytplr5vut6ii" path="res://RootBeer.ttf" id="4_05l2w"]
 
 [node name="TitleScreen" type="TextureRect" unique_id=1045298283]
 offset_right = 540.0
@@ -38,9 +38,9 @@ anchors_preset = -1
 anchor_right = 0.028
 anchor_bottom = 0.033
 offset_left = 159.0
-offset_top = 77.0
+offset_top = 61.0
 offset_right = 470.88
-offset_bottom = 127.5
+offset_bottom = 135.5
 theme_override_colors/font_color = Color(0.89010674, 8.663535e-07, 0.49724817, 1)
 theme_override_colors/font_shadow_color = Color(0.13725491, 0, 0.25882354, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -49,7 +49,7 @@ theme_override_constants/shadow_offset_y = 11
 theme_override_constants/outline_size = 18
 theme_override_constants/shadow_outline_size = 18
 theme_override_fonts/font = ExtResource("4_05l2w")
-theme_override_font_sizes/font_size = 66
+theme_override_font_sizes/font_size = 90
 text = "SHOOTING"
 horizontal_alignment = 1
 
