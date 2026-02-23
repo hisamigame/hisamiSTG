@@ -1,6 +1,6 @@
-extends Sprite2D
+extends Node2D
 
-@export var duration = 0.20
+@export var duration = 0.25
 var tween
 
 func _ready():

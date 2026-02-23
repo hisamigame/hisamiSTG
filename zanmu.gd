@@ -9,8 +9,9 @@ var max_hp = 100
 var hp = 100
 
 var phase = -1
-var hp_phases = [250.0, 350.0] #[200,200,200]
+var hp_phases = [5.0,5.0]#[250.0, 350.0]
 const item = preload('res://item.tscn')
+const death_anim = preload('res://fallen_zanmu.tscn')
 @export var animation_change_movement_threshold = 3.0
 
 var prev_position : Vector2
@@ -79,8 +80,15 @@ func set_hp_bar_value(val):
 
 func die():
 	clear_bullets()
+	global.stop_timer = true
+	var tmp = death_anim.instantiate()
+	tmp.position = position
+	add_sibling(tmp)
+	print('Boss defeated')
+	visible = false
+	can_take_damage = false
+	await get_tree().create_timer(0.3).timeout
 	boss_dead.emit()
-	print('die')
 	queue_free()
 
 func take_damage(dmg):

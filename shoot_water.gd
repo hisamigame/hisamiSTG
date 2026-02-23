@@ -1,7 +1,7 @@
 extends Node
 
 const bullet = preload("res://accel_bullet.tscn")
-const charge_effect = preload('res://lightning_charge_visuals.tscn')
+const charge_effect = preload('res://water_charge_visuals.tscn')
 
 var t = 0.0
 @export var fire_interval = 3.0

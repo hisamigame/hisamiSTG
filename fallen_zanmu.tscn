@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ctin6ubidk6wb"]
+
+[ext_resource type="Texture2D" uid="uid://ekumwnb2u45v" path="res://zanmu_2.png" id="1_yyr67"]
+[ext_resource type="Script" uid="uid://dta8d115kjwn5" path="res://fallen_zanmu.gd" id="2_kisg0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp30u"]
+atlas = ExtResource("1_yyr67")
+region = Rect2(0, 0, 80, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x02h4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp30u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FallenZanmu" type="AnimatedSprite2D" unique_id=76867056]
+sprite_frames = SubResource("SpriteFrames_x02h4")
+script = ExtResource("2_kisg0")

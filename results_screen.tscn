@@ -103,7 +103,7 @@ theme = ExtResource("5_f01ui")
 text = "Score"
 horizontal_alignment = 2
 
-[node name="Label3" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer" unique_id=1500042895]
+[node name="Label2" type="Label" parent="SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer" unique_id=1500042895]
 layout_mode = 2
 theme = ExtResource("5_f01ui")
 text = "99999999"

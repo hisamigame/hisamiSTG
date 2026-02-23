@@ -5,46 +5,80 @@ var total
 var time_left
 var lives_left
 var bonus
-var message
+var message = 'default'
 
 var animation_finished = false
 var time = 0.0
 var minimum_time = 0.25
 var do_switch = false
 
+var delay = 0.1
+
 var win_scene = preload('res://win_screen.tscn')
 var lose_scene = preload('res://lose_screen.tscn')
 
-@onready var score_label = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer/Label3
+@onready var score_label = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer/Label2
 @onready var time_label = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer2/Label2
 @onready var lives_label = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer3/Label2
 @onready var bonus_label = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer4/Label2
 @onready var total_label = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer5/Label2
 @onready var message_label = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/Label
 
+@onready var score_cont = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer
+@onready var time_cont = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer2
+@onready var lives_cont = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer3
+@onready var bonus_cont = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer4
+@onready var total_cont = $SubViewport/CenterContainer/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/HSplitContainer5
+
+func splashy_show(l : Node):
+	l.modulate = Color(1,1,1,1)
+	global.play_item()
+	
+func splashy_show2(l : Node):
+	l.modulate = Color(1,1,1,1)
+	global.play_enemy_hurt()
+
 func _ready() -> void:
 	message_label.text = message
 	score = roundi(global.score)
 	time_left = snappedf(max(0.0, global.time_left), 0.01)
 	lives_left = max(global.lives,0)
-	#bonus = roundi(global.bonus)
-	#total = roundi(global.score + global.bonus)
-	total = global.score
+	bonus = roundi(global.bonus)
+	total = roundi(global.score + global.bonus)
 	# if funny rounding errors happen
 	# add or subtract to score to make it add up
-	#if bonus + score < total:
-	#	score = score+1
-	#elif bonus + score > total:
-	#	score = score - 1
-	
+	if bonus + score < total:
+		score = score+1
+	elif bonus + score > total:
+		score = score - 1
 	score_label.text = str(score)
 	time_label.text = str(time_left)
 	lives_label.text = str(lives_left)
+	bonus_label.text = str(bonus)
+	total_label.text = str(total)
+	
+	# to save the score + bonus in the hiscore
+	score = total
+	
+	score_cont.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	time_cont.modulate= Color(1.0, 1.0, 1.0, 0.0)
+	lives_cont.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	bonus_cont.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	total_cont.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	var tween = self.create_tween()
+	tween.tween_callback(splashy_show.bind(score_cont))
+	tween.tween_interval(delay)
+	tween.tween_callback(splashy_show.bind(time_cont))
+	tween.tween_interval(delay)
+	tween.tween_callback(splashy_show.bind(lives_cont))
+	tween.tween_interval(delay)
+	tween.tween_callback(splashy_show.bind(bonus_cont))
+	tween.tween_interval(delay)
+	tween.tween_callback(splashy_show2.bind(total_cont))
 	#if bonus > 0:
 	#	bonus_label.text = str(bonus)
 	#else:
 	#	bonus_label.text = 'No bonus'
-	total_label.text = str(total)
 	
 	$AnimationPlayer.play("fadeOut")
 	

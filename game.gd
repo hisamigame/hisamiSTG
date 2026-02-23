@@ -62,6 +62,7 @@ func lives_up():
 	
 func win():
 	print('WIN')
+	
 	var tmp = result_screen.instantiate()
 	tmp.message = 'Winner!'
 	add_child(tmp)

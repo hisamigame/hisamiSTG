@@ -48,6 +48,8 @@ const item_collect_time = 0.7
 var item_value = 100
 var mid_item_value = 500
 var big_item_value = 10000
+var fade_to_boss_tween
+var is_fading_to_boss = false
 
 const default_hypertime = 10.0
 var hypertime = default_hypertime
@@ -62,12 +64,13 @@ var hiscores : Array
 const data_file = 'user://data.json'
 
 var score: float
+var bonus: float
 var lives: int
 var wave: int
 var ammo : int
 
 func win():
-	stop_timer = true
+	bonus = global.time_left * (global.lives+1.0) * 10000.0
 	you_win.emit()
 
 func play_bgm():
@@ -168,7 +171,10 @@ func set_defaults():
 	global.hyper_t = 0.0
 	global.hyperlevel = 0
 	global.awarded_extends = 0
+	if fade_to_boss_tween:
+		fade_to_boss_tween.kill()
 	$BGM.volume_db=0.0
+	is_fading_to_boss = false
 	
 func set_lives(val):
 	global.lives = val
@@ -278,8 +284,8 @@ func get_movement_direction():
 
 
 func fade_to_boss():
-	var tween = self.create_tween()
-	tween.tween_property($BGM,'volume_db',-40,10.0)
+	fade_to_boss_tween = self.create_tween()
+	fade_to_boss_tween.tween_property($BGM,'volume_db',-40,10.0).set_trans(Tween.TRANS_LINEAR)
 	soon_boss.emit()
 
 func _physics_process(delta: float) -> void:
@@ -288,7 +294,8 @@ func _physics_process(delta: float) -> void:
 		
 		time_left = time_left - delta
 		var new_second = ceili(time_left)
-		if time_left < 40.0:
+		if time_left < 40.0 and !is_fading_to_boss:
+			is_fading_to_boss = true
 			global.fade_to_boss()
 		
 		if time_left < boss_spawn_time and !boss_spawned:

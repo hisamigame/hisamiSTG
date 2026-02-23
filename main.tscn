@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cb3ctebhekcku"]
 
-[ext_resource type="Script" uid="uid://dcfhcr3v5vdo3" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://bjj0df3g3yc82" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://ej71qk6e4t6c" path="res://comic_page_1.tscn" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cvwuno1kv12wv" path="res://side_bg.png" id="2_h2yge"]
 

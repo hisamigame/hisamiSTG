@@ -16,6 +16,8 @@ var edge_margin = 20
 var xupper = global.field_width - edge_margin
 var xlower = edge_margin
 var margin = 60
+var Lscale = 40.0
+
 
 @export var bounce_limit = 5
 var n_bounce = 0
@@ -51,7 +53,9 @@ func apply_knockback():
 		for i in 8:
 			spawn_item(position)
 		var angle = fired_position.angle_to_point(position)
-		velocity = Vector2.from_angle(angle) * knockspeed
+		# always same upward speed
+		#var d = (position.x- fired_position.x)/Lscale
+		velocity = Vector2(cos(angle),-1.0) * knockspeed
 		var tmp2 = big_impact.instantiate()
 		tmp2.position = position
 		add_sibling(tmp2)

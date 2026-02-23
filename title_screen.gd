@@ -6,6 +6,8 @@ var can_proceed = false
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('fire') and !event.is_echo() and can_proceed:
 		global.switch_scene(nextScene)
+		can_proceed = false
+		global.set_defaults()
 
 
 func _on_timer_timeout() -> void:

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dnh2rs3gsch7w"]
 
-[ext_resource type="Texture2D" uid="uid://cfu3anj47qw2d" path="res://screen_title.png" id="1_ak2if"]
-[ext_resource type="Script" uid="uid://cwuy4nyle3t8g" path="res://title_screen.gd" id="1_v6p8y"]
+[ext_resource type="Texture2D" uid="uid://bwk6ybrrqjcxt" path="res://screen_title.png" id="1_ak2if"]
+[ext_resource type="Script" uid="uid://c4uamncv18rwp" path="res://title_screen.gd" id="1_v6p8y"]
 [ext_resource type="FontFile" uid="uid://bsjpu7jack7jw" path="res://DigitalDisco.ttf" id="3_ig5kc"]
 [ext_resource type="FontFile" uid="uid://ytplr5vut6ii" path="res://RootBeer.ttf" id="4_05l2w"]
+[ext_resource type="PackedScene" uid="uid://ca4lg4qd7dvhk" path="res://version_label.tscn" id="5_hafda"]
 
 [node name="TitleScreen" type="TextureRect" unique_id=1045298283]
 offset_right = 540.0
@@ -57,5 +58,8 @@ horizontal_alignment = 1
 wait_time = 0.1
 one_shot = true
 autostart = true
+
+[node name="VersionLabel" parent="." unique_id=1288056779 instance=ExtResource("5_hafda")]
+layout_mode = 0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://crkajtixxxl0x"]
+
+[ext_resource type="Theme" uid="uid://cegr2r2u3pjgm" path="res://pixel_ui_theme.tres" id="1_gtxtr"]
+[ext_resource type="Script" uid="uid://ctu2sluppp3mc" path="res://item_pickup_visuals.gd" id="2_gtxtr"]
+
+[node name="ItemPickupVisuals" type="Node2D" unique_id=1450407856]
+script = ExtResource("2_gtxtr")
+
+[node name="Label" type="Label" parent="." unique_id=1573506891]
+anchors_preset = -1
+offset_left = -48.0
+offset_top = -57.0
+offset_right = 49.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+localize_numeral_system = false
+theme = ExtResource("1_gtxtr")
+text = "10 000"
+horizontal_alignment = 1
+vertical_alignment = 1

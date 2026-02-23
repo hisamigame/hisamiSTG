@@ -7,6 +7,9 @@ var direction : Vector2
 var speed = 10.0
 var threshold = 20.0*2
 
+const big_item_visuals = preload("res://big_item_visuals.tscn")
+const pickup_text = preload("res://item_pickup_visuals.tscn")
+
 static var n_items = 0
 
 var value = global.item_value
@@ -23,6 +26,8 @@ var will_collect = false
 
 var buffer = 40.0
 
+var show_value_on_pickup = false
+
 func die():
 	queue_free()
 	
@@ -32,10 +37,14 @@ static func reset_n_items():
 func turn_mid():
 	$AnimatedSprite2D.play('mid')
 	value = global.mid_item_value
+	show_value_on_pickup = false
 	
 func turn_big():
 	$AnimatedSprite2D.play('big')
 	value = global.big_item_value
+	show_value_on_pickup = true
+	var tmp = big_item_visuals.instantiate()
+	add_child(tmp)
 	
 func _ready():
 	n_items = n_items + 1
@@ -59,17 +68,25 @@ func _ready():
 	#if collect_time > 0.0:
 	#	$Timer.start(collect_time)
 
+func show_value():
+	var tmp = pickup_text.instantiate()
+	tmp.position = tmp.position  + position
+	add_sibling(tmp)
+
 func start_collect():
 	if state == WAIT:
 		state = SUCK
 	elif state == SPAWN:
 		will_collect = true
+		
 func collect():
 	global.set_score(global.score + value)
 	#global.combo = global.combo + 1
 	#global.combo_timer = combo_time
 	global.set_ammo(global.ammo + 1)
 	global.play_item()
+	if show_value_on_pickup:
+		show_value()
 	die()
 
 func _physics_process(delta: float) -> void:

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b1knoytptqqwl"]
+
+[ext_resource type="Script" uid="uid://gmxs0yjflv2k" path="res://hyper_broken_visuals.gd" id="2_qsgoj"]
+[ext_resource type="Texture2D" uid="uid://bb7x5iu2cyagh" path="res://debris_2.png" id="3_l4wll"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l4wll"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_qsgoj"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D" unique_id=2094074790]
+material = SubResource("CanvasItemMaterial_l4wll")
+emitting = false
+texture = ExtResource("3_l4wll")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 84.03
+initial_velocity_max = 126.05
+radial_accel_min = 8.4
+radial_accel_max = 8.4
+color_ramp = SubResource("Gradient_qsgoj")
+anim_speed_min = 0.5
+anim_speed_max = 0.5
+anim_offset_max = 1.0
+script = ExtResource("2_qsgoj")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

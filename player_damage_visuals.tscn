@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dd2rd64fprnyc"]
+
+[ext_resource type="Texture2D" uid="uid://c51mqwigki6jm" path="res://player_damage_effect.png" id="1_vxkl8"]
+[ext_resource type="Script" uid="uid://dwupxfrixadcb" path="res://lightning_charge_visuals.gd" id="2_dpjbg"]
+
+[node name="PlayerDamageVisuals" type="Sprite2D" unique_id=277071418]
+texture = ExtResource("1_vxkl8")
+script = ExtResource("2_dpjbg")

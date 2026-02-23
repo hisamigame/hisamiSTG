@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://b3mbficfk1mwa"]
 
-[ext_resource type="Script" uid="uid://cd05m07jdx8jk" path="res://hiscore_screen.gd" id="1_m1lgt"]
+[ext_resource type="Script" uid="uid://c72eyju27lw47" path="res://hiscore_screen.gd" id="1_m1lgt"]
 [ext_resource type="Texture2D" uid="uid://clrhqnchsvsi0" path="res://screen_hiscore.png" id="1_ny343"]
-[ext_resource type="Texture2D" uid="uid://viug55te4ydy" path="res://ui_hiscore.png" id="3_ny343"]
+[ext_resource type="Texture2D" uid="uid://ctil1u3rg8p4t" path="res://ui_hiscore.png" id="3_ny343"]
 [ext_resource type="Theme" uid="uid://cegr2r2u3pjgm" path="res://pixel_ui_theme.tres" id="4_ny343"]
 [ext_resource type="PackedScene" uid="uid://rkxopjpabnkg" path="res://hiscore_entry.tscn" id="5_ny343"]
+[ext_resource type="PackedScene" uid="uid://ca4lg4qd7dvhk" path="res://version_label.tscn" id="6_bvtwl"]
 
 [node name="HiscoreScreen" type="TextureRect" unique_id=1015402111]
 offset_right = 540.0
@@ -58,6 +59,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/MarginContainer/MarginContainer/CenterContainer/VSplitContainer" unique_id=987912988]
+self_modulate = Color(1, 0.40784314, 0.7372549, 1)
 custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 theme = ExtResource("4_ny343")
@@ -95,3 +97,5 @@ layout_mode = 2
 
 [node name="HiscoreEntry10" parent="CenterContainer/MarginContainer/MarginContainer/CenterContainer/VSplitContainer" unique_id=1304353720 instance=ExtResource("5_ny343")]
 layout_mode = 2
+
+[node name="VersionLabel" parent="." unique_id=1288056779 instance=ExtResource("6_bvtwl")]

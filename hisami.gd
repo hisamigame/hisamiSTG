@@ -2,6 +2,7 @@ extends Node2D
 
 @export var unfocused_speed = 8.0
 @export var focus_speed = 5.0
+@export var knockback_speed = 20.0
 var speed = unfocused_speed
 
 @export var margin = 10
@@ -18,7 +19,12 @@ enum {NORMAL, ENTERING, HYPER}
 var hyperstate = NORMAL
 var enter_hyper_time = 1.2
 var t = 0
+var direction = Vector2.ZERO
 
+enum MOVEMENT{NORMAL, KNOCKBACK}
+var movestate = NORMAL
+var knockback_t
+var knockback_time = 0.3
 
 var n_shots = 4
 var n_hyper_shots = 8
@@ -34,6 +40,8 @@ signal got_hurt
 const attack = preload("res://normal_shot.tscn")
 const hyper_attack = preload("res://hyper_shot.tscn")
 const bomb_effect = preload('res://bomb_effect.tscn')
+const player_damage_effect = preload('res://player_damage_visuals.tscn')
+const broke_hyper_effect = preload('res://hyper_broken_visuals.tscn')
 
 const damage_invul_time = 3.5
 var can_take_damage = true
@@ -44,8 +52,16 @@ func focused_shot():
 func hyper_focused_shot():
 	hyper_unfocused_shot(false)
 
+func win():
+	# long invul timer
+	# since we are not supposed to take damage
+	# ever again until the game is over
+	$InvulTimer.start(666.0)
+	damage_invul()
+
 func _ready():
 	$Hitbox.took_damage.connect(take_damage)
+	global.you_win.connect(win)
 	global.player_position = position
 
 func damage_invul():
@@ -113,11 +129,19 @@ func process_animation(delta, direction):
 		
 
 func _physics_process(delta: float) -> void:
-	var direction = global.get_movement_direction()
-	if global.focus:
-		speed = focus_speed
-	else:
-		speed = unfocused_speed
+	match movestate:
+		MOVEMENT.NORMAL:
+			direction = global.get_movement_direction()
+			if global.focus:
+				speed = focus_speed
+			else:
+				speed = unfocused_speed
+		MOVEMENT.KNOCKBACK:
+			direction = Vector2.DOWN
+			speed = knockback_speed
+			knockback_t = knockback_t + delta
+			if knockback_t > knockback_time:
+				exit_knockback()
 	process_animation(delta, direction)
 
 	
@@ -149,6 +173,9 @@ func leave_hyper():
 	global.hypertime = global.default_hypertime
 	hyperstate = NORMAL
 	global.set_hyperlevel(0)
+	var tmp = broke_hyper_effect.instantiate()
+	tmp.position = position
+	add_sibling(tmp)
 	
 	
 func take_damage(_hurtbox: Hurtbox):
@@ -157,12 +184,25 @@ func take_damage(_hurtbox: Hurtbox):
 		$InvulTimer.start(damage_invul_time)
 		damage_invul()
 		got_hurt.emit()
+		var tmp = player_damage_effect.instantiate()
+		tmp.position =position
+		add_sibling(tmp)
 		if global.lives >= 0:
+			enter_knockback()
 			global.emit_clear_bullets(true, true)
 			global.emit_collect_items()
 			global.play_player_hurt()
+			leave_hyper()
 		else:
+			leave_hyper()
 			global.play_player_dead()
+	
+func enter_knockback():
+	knockback_t = 0.0
+	movestate = MOVEMENT.KNOCKBACK
+	
+func exit_knockback():
+	movestate = MOVEMENT.NORMAL
 	
 func die():
 	modulate =Color(18.892, 18.892, 18.892, 1.0)

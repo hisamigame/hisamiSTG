@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ca4lg4qd7dvhk"]
+
+[ext_resource type="Theme" uid="uid://cegr2r2u3pjgm" path="res://pixel_ui_theme.tres" id="1_ip8ot"]
+
+[node name="Node2D" type="Node2D" unique_id=729110472]
+
+[node name="VersionLabel" type="Label" parent="." unique_id=1288056779]
+offset_left = 8.0
+offset_top = 476.0
+offset_right = 58.0
+offset_bottom = 495.0
+theme = ExtResource("1_ip8ot")
+theme_override_font_sizes/font_size = 24
+text = "v1.1"
