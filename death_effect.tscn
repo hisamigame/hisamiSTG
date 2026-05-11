@@ -57,6 +57,8 @@ shader_parameter/max_time = 0.0
 radius = 22.0
 
 [node name="Hurtbox" type="Area2D" unique_id=2136290639]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_p1lmi")
 metadata/_custom_type_script = "uid://c0148w36m323f"
 

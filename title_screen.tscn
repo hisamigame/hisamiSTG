@@ -60,6 +60,5 @@ one_shot = true
 autostart = true
 
 [node name="VersionLabel" parent="." unique_id=1288056779 instance=ExtResource("5_hafda")]
-layout_mode = 0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

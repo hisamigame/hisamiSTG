@@ -100,6 +100,15 @@ func play_enemy_dead():
 func play_item():
 	$ItemGet.play()
 	
+func play_big_item():
+	$ItemGet.play()
+	
+func play_waveclear():
+	$WaveClear.play()
+	
+func play_refill_item():
+	$ItemGet.play()
+	
 func play_break():
 	$Break.play()
 	
@@ -270,7 +279,13 @@ func process_hyper(event):
 	elif event.is_action_released('hyper'):
 		hyper = false
 		
-func _input(event):		
+func process_reset(event):
+	if event.is_action_pressed('reset') and !event.is_echo():
+		var next_scene: PackedScene = load("res://game.tscn")
+		global.switch_scene(next_scene)
+		
+func _input(event):	
+	process_reset(event)
 	process_direction_input_buffer(event)
 	process_focus(event)
 	process_fire(event)

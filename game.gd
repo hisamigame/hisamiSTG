@@ -118,6 +118,8 @@ func spawn_next_wave():
 	var path_to_scene: String
 	var next_wave_number: int
 	wave_index = wave_index + 1
+	if wave_index >0:
+		global.play_waveclear()
 	if wave_index >= nwaves:
 		wave_index = wave_index_loop
 		substages = Dictionary()

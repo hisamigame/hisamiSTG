@@ -42,6 +42,7 @@ const hyper_attack = preload("res://hyper_shot.tscn")
 const bomb_effect = preload('res://bomb_effect.tscn')
 const player_damage_effect = preload('res://player_damage_visuals.tscn')
 const broke_hyper_effect = preload('res://hyper_broken_visuals.tscn')
+const gauge_refill_item = preload("res://gauge_refill_item.tscn")
 
 const damage_invul_time = 3.5
 var can_take_damage = true
@@ -192,6 +193,43 @@ func take_damage(_hurtbox: Hurtbox):
 			global.emit_clear_bullets(true, true)
 			global.emit_collect_items()
 			global.play_player_hurt()
+			match global.hyperlevel:
+				0:
+					pass
+				1:
+					var tmp2 = gauge_refill_item.instantiate()
+					tmp2.position = position
+					tmp2.flavor = tmp2.HALF
+					add_sibling.call_deferred(tmp2)
+				2:
+					var tmp2 = gauge_refill_item.instantiate()
+					tmp2.position = position
+					tmp2.flavor = tmp2.FULL
+					add_sibling.call_deferred(tmp2)
+				3:
+					
+					var tmp2 = gauge_refill_item.instantiate()
+					tmp2.position = position
+					var i = [0,1].pick_random()
+					var flavor1
+					var flavor2
+					match i:
+						0:
+							flavor1 = tmp2.FULL
+							flavor2 = tmp2.HALF
+						1:
+							flavor1 = tmp2.HALF
+							flavor2 = tmp2.FULL
+					tmp2.flavor = flavor1
+					tmp2.angle_min = -PI
+					tmp2.angle_max = -PI/2.0
+					add_sibling.call_deferred(tmp2)
+					var tmp3 = gauge_refill_item.instantiate()
+					tmp3.position = position
+					tmp3.flavor = flavor2
+					tmp3.angle_min = -PI/2.0
+					tmp3.angle_max = 0.0
+					add_sibling.call_deferred(tmp3)
 			leave_hyper()
 		else:
 			leave_hyper()

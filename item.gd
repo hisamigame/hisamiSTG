@@ -84,9 +84,12 @@ func collect():
 	#global.combo = global.combo + 1
 	#global.combo_timer = combo_time
 	global.set_ammo(global.ammo + 1)
-	global.play_item()
+	
 	if show_value_on_pickup:
 		show_value()
+		global.play_big_item()
+	else:
+		global.play_item()
 	die()
 
 func _physics_process(delta: float) -> void:
