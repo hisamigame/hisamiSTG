@@ -35,6 +35,7 @@ func _ready() -> void:
 		FULL:
 			ammo_value = global.max_ammo
 			$AnimatedSprite2D.play('full')
+	$AnimationPlayer.play('idle')
 
 func _on_area_entered(_area: Area2D) -> void:
 	#var tmp = item_grab_scene.instantiate()
