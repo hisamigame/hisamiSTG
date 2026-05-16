@@ -5,13 +5,15 @@ var dead = false
 
 var can_take_damage = true
 
-var max_hp = 100
-var hp = 100
+# set by hp_phases
+var max_hp: int 
+var hp: int
 
 var phase = -1
-var hp_phases = [5.0,5.0]#[250.0, 350.0]
+var hp_phases = [175.0, 350.0]
 const item = preload('res://item.tscn')
 const death_anim = preload('res://fallen_zanmu.tscn')
+const player_damage_effect = preload('res://player_damage_visuals.tscn')
 @export var animation_change_movement_threshold = 3.0
 
 var prev_position : Vector2
@@ -61,8 +63,13 @@ func _process(delta: float) -> void:
 	
 
 func switch_phase():
+	global.play_enemy_dead()
+	var tmp = player_damage_effect.instantiate()
+	tmp.position =position
+	add_sibling(tmp)
 	#play_serious_hurt()
 	clear_bullets()
+	global.emit_collect_items()
 	# need to know if dead before await is done
 	dead = ((phase+1) >= len(hp_phases))
 	
@@ -72,14 +79,15 @@ func switch_phase():
 		die()
 
 func clear_bullets():
-	global.emit_clear_bullets(true, false)
+	global.emit_clear_bullets(true, true)
 	global.emit_clear_enemies()
 
 func set_hp_bar_value(val):
 	$CanvasLayer/TextureProgressBar.value = 100 * val/max_hp
 
 func die():
-	clear_bullets()
+	$Phase1.queue_free()
+	global.emit_player_invul()
 	global.stop_timer = true
 	var tmp = death_anim.instantiate()
 	tmp.position = position
@@ -87,7 +95,8 @@ func die():
 	print('Boss defeated')
 	visible = false
 	can_take_damage = false
-	await get_tree().create_timer(0.3).timeout
+	global.stop_bgm_boss()
+	await get_tree().create_timer(2.0).timeout
 	boss_dead.emit()
 	queue_free()
 
@@ -110,7 +119,8 @@ func spawn_item(spawn_position):
 	add_sibling.call_deferred(tmp)
 
 func _on_hitbox_took_damage(hurtbox: Variant) -> void:
-	spawn_item(hurtbox.position)
+	if visible:
+		spawn_item(hurtbox.position)
 	take_damage(hurtbox.damage)
 
 func unset_enemy_material():

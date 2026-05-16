@@ -1,14 +1,22 @@
 [gd_scene format=3 uid="uid://den07dceylm8b"]
 
-[ext_resource type="Script" uid="uid://dnwo008pg1cq7" path="res://gauge_refill_item.gd" id="1_4gni0"]
-[ext_resource type="Texture2D" uid="uid://dusjxwsigq2xa" path="res://half.png" id="2_6wchg"]
-[ext_resource type="Texture2D" uid="uid://b8rfg2uc5hlm" path="res://full.png" id="3_x6lru"]
+[ext_resource type="Script" uid="uid://fpwgokbb731d" path="res://gauge_refill_item.gd" id="1_4gni0"]
+[ext_resource type="Texture2D" uid="uid://dusjxwsigq2xa" path="res://full.png" id="2_6wchg"]
+[ext_resource type="Texture2D" uid="uid://b8rfg2uc5hlm" path="res://half.png" id="3_x6lru"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wchg"]
+atlas = ExtResource("2_6wchg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6lru"]
+atlas = ExtResource("3_x6lru")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x6lru"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_x6lru")
+"texture": SubResource("AtlasTexture_6wchg")
 }],
 "loop": true,
 "name": &"full",
@@ -16,7 +24,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_6wchg")
+"texture": SubResource("AtlasTexture_x6lru")
 }],
 "loop": true,
 "name": &"half",
@@ -55,7 +63,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_x6lru"]
 resource_name = "idle"
-length = 0.6
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -64,10 +72,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
+"times": PackedFloat32Array(0, 0.6, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.5235987755982988, -0.5235987755982988, 0.5235987755982988]
+"values": [0.17453292519943295, -0.17453292519943295, 0.17453292519943295]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -76,10 +84,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.49803922), Color(1, 1, 1, 1), Color(1, 1, 1, 0.49803922), Color(1, 1, 1, 1), Color(1, 1, 1, 0.49803922), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.49803922), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ye65q"]
@@ -93,6 +101,7 @@ collision_layer = 0
 script = ExtResource("1_4gni0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1653337333]
+z_index = 3
 sprite_frames = SubResource("SpriteFrames_x6lru")
 animation = &"half"
 

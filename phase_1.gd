@@ -5,6 +5,7 @@ var position : Vector2
 
 const needle_bullet = preload('res://needle_bullet.tscn')
 const bullet = preload('res://fire_bullet.tscn')
+const bullet2 = preload('res://accel_bullet.tscn')
 
 @export var target_position = Vector2(global.field_width/2.0, global.field_height/3.0)
 @export var target_position1 = Vector2(global.field_width * 0.97, global.field_height/3.0)
@@ -14,7 +15,7 @@ const bullet = preload('res://fire_bullet.tscn')
 @export var transition_x = Tween.TRANS_SINE
 @export var transition_y = Tween.TRANS_QUAD
 
-@export var fire_time = 1.0
+@export var fire_time = 0.5
 @export var nfire = 30
 @export var start_angle = 0.0
 @export var stop_angle = PI/2
@@ -25,7 +26,9 @@ const bullet = preload('res://fire_bullet.tscn')
 @export var nneedles = 30
 @export var needle_spread_x = 140.0
 @export var needle_spread_y = 20.0
-@export var wait_time = 1.0
+@export var wait_time = 0.5
+
+const field_width_home_time = 0.3
 
 var fire_interval = fire_time/nfire
 var precision = 100.0
@@ -50,6 +53,13 @@ func spiral_arm(node: Node2D, angle1, angle2, positive):
 		
 	for i in nfire:
 		angle = Tween.interpolate_value(angle1,angle2 - angle1,i,nfire-1,transition,Tween.EASE_IN)
+		var player_angle = node.position.angle_to_point(global.player_position)
+		if positive:	
+			if angle > player_angle:
+				angle = player_angle
+		else:
+			if angle < player_angle:
+				angle = player_angle
 		var tmp = bullet.instantiate()
 		velocity = speed * Vector2.from_angle(angle) + node.velocity
 		tmp.speed = velocity.length()
@@ -68,14 +78,13 @@ func fire2(node: Node2D):
 	var angle_stop = node.position.angle_to_point(Vector2(global.field_width,global.field_height))
 	spiral_arm(node, PI, angle_stop , false)
 
-
-	
-var home_time = 0.25
-
 func home_player(node : Node2D):
 	var ttween = self.create_tween()
-	ttween.tween_property(node, 'position:x', global.player_position.x, home_time)
-	ttween.parallel().tween_property(node, 'position:y', 60.0, home_time)
+	var target_x = clampf(global.player_position.x,needle_spread_x,global.field_width - needle_spread_x)
+	var target_y = 60.0
+	var home_time = node.position.distance_to(Vector2(target_x,target_y)) * field_width_home_time/global.field_width
+	ttween.tween_property(node, 'position:x', target_x, home_time)
+	ttween.parallel().tween_property(node, 'position:y', target_y, home_time)
 
 
 func spawn_needles(node : Node2D):
@@ -87,22 +96,45 @@ func spawn_needles(node : Node2D):
 		node.add_sibling(tmp)
 		
 func aimed_needles(node : Node2D):
-	var tmp = needle_bullet.instantiate()
-	tmp.position.y = 40.0
-	tmp.position.x = global.player_position.x
-	node.add_sibling(tmp)
-	
-func aimed_bullet(node : Node2D):
-	var tmp = needle_bullet.instantiate()
-	tmp.position.y = 40.0
-	tmp.position.x = global.player_position
-	node.add_sibling(tmp)
-	
+	var angle = node.position.angle_to_point(global.player_position)
+	var n_bullets = 14
+	for i in n_bullets:
+		# bullet 1
+		var tmp = bullet2.instantiate()
+		tmp.direction = Vector2.from_angle(angle + 2*PI * i/n_bullets)
+		tmp.position = node.position + tmp.direction * 40
+		tmp.z_index = 4
+		tmp.speed = 6.0
+		tmp.accel = 0.30
+		node.add_sibling(tmp)
+		tmp.set_anim('lightning')
+		# bullet 2
+		tmp = bullet2.instantiate()
+		tmp.direction = Vector2.from_angle(angle + 2*PI * i/n_bullets)
+		tmp.position = node.position + tmp.direction * 20
+		tmp.z_index = 4
+		tmp.speed = 6.0
+		tmp.accel = 0.30
+		node.add_sibling(tmp)
+		tmp.set_anim('lightning')
+		# bullet 3
+		tmp = bullet2.instantiate()
+		tmp.direction = Vector2.from_angle(angle + 2*PI * i/n_bullets)
+		tmp.position = node.position #+ tmp.direction * 20
+		tmp.z_index = 4
+		tmp.speed = 6.0
+		tmp.accel = 0.30
+		node.add_sibling(tmp)
+		tmp.set_anim('lightning')
+		
 
 func home_center(node : Node2D):
 	var ttween = self.create_tween()
-	ttween.tween_property(node, 'position:x', global.field_width/2.0, home_time)
-	ttween.parallel().tween_property(node, 'position:y', global.field_width/3.0, home_time)
+	var target_x = global.field_width/2.0
+	var target_y = global.field_width/3.0
+	var home_time = node.position.distance_to(Vector2(target_x,target_y)) * field_width_home_time/global.field_width
+	ttween.tween_property(node, 'position:x', target_x , home_time)
+	ttween.parallel().tween_property(node, 'position:y', target_y, home_time)
 
 
 func stop_homing():
@@ -118,26 +150,27 @@ func run(node: Node2D):
 	homing_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	homing_tween.set_loops()
 	homing_tween.tween_callback(aimed_needles.bind(node))
-	homing_tween.tween_interval(1.0)
+	homing_tween.tween_interval(1.618 * fire_time)
 	homing_tween.stop()
 
 	control_tween = self.create_tween()
 	control_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	control_tween.set_loops()
 	control_tween.tween_callback(home_center.bind(node))
-	control_tween.tween_interval(home_time+0.1)
+	control_tween.tween_interval(field_width_home_time+0.1)
 	control_tween.tween_callback(fire1.bind(node))
 	control_tween.tween_interval(fire_time + wait_time)
 	control_tween.tween_callback(home_player.bind(node))
-	control_tween.tween_interval(home_time)
+	control_tween.tween_interval(field_width_home_time)
 	control_tween.tween_callback(spawn_needles.bind(node))
 	
 	control_tween.tween_callback(home_center.bind(node))
-	control_tween.tween_interval(home_time+0.1)
+	control_tween.tween_interval(field_width_home_time+0.1)
+	control_tween.tween_callback(start_homing)
 	control_tween.tween_callback(fire2.bind(node))
 	control_tween.tween_interval(fire_time + wait_time)
 	control_tween.tween_callback(home_player.bind(node))
-	control_tween.tween_interval(home_time)
+	control_tween.tween_interval(field_width_home_time)
 	control_tween.tween_callback(spawn_needles.bind(node))
-	control_tween.tween_callback(start_homing)
+	
 	

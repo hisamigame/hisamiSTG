@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://8nq0f3x5ibwi" path="res://ammo_bar_fill.png" id="5_n12pi"]
 [ext_resource type="Script" uid="uid://3ovgohivp5yt" path="res://phase_0.gd" id="7_lookm"]
 [ext_resource type="Script" uid="uid://dtbi5ir2e8h0r" path="res://phase_1.gd" id="8_88x8s"]
-[ext_resource type="Script" uid="uid://c8q0ha2y2dq3s" path="res://phase_2.gd" id="9_hdap5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e5xoy"]
 atlas = ExtResource("1_e7hus")
@@ -88,9 +87,6 @@ script = ExtResource("7_lookm")
 
 [node name="Phase1" type="Node" parent="." unique_id=120163424]
 script = ExtResource("8_88x8s")
-
-[node name="Phase2" type="Node" parent="." unique_id=327025094]
-script = ExtResource("9_hdap5")
 
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
 [connection signal="took_damage" from="Hitbox" to="." method="_on_hitbox_took_damage"]

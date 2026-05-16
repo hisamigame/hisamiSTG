@@ -64,6 +64,7 @@ func _ready():
 	$Hitbox.took_damage.connect(take_damage)
 	global.you_win.connect(win)
 	global.player_position = position
+	global.player_invul.connect(damage_invul)
 
 func damage_invul():
 	can_take_damage = false

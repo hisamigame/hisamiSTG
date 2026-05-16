@@ -23,6 +23,10 @@ var angle_max = 0.0
 
 var initial_y = 0.0
 
+var text = 'tmp'
+
+const pickup_text = preload("res://item_pickup_visuals.tscn")
+
 func _ready() -> void:
 	initial_y = position.y
 	var angle = global.rng.randf_range(angle_min, angle_max)
@@ -32,10 +36,18 @@ func _ready() -> void:
 			@warning_ignore("integer_division")
 			ammo_value = global.max_ammo/2
 			$AnimatedSprite2D.play('half')
+			text = '+HALF GAUGE'
 		FULL:
 			ammo_value = global.max_ammo
 			$AnimatedSprite2D.play('full')
+			text = '+FULL GAUGE'
 	$AnimationPlayer.play('idle')
+
+func show_value():
+	var tmp = pickup_text.instantiate()
+	tmp.position = tmp.position  + position
+	tmp.set_text(text)
+	add_sibling(tmp)
 
 func _on_area_entered(_area: Area2D) -> void:
 	#var tmp = item_grab_scene.instantiate()
@@ -45,7 +57,9 @@ func _on_area_entered(_area: Area2D) -> void:
 	if collectible:
 		global.play_refill_item()
 		global.set_ammo(global.ammo + ammo_value)
+		show_value()
 		queue_free()
+
 
 func _physics_process(delta: float) -> void:
 	if move:

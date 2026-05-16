@@ -10,3 +10,6 @@ func _ready():
 	tween.tween_property(self,'scale',Vector2.ONE,duration).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self,'modulate',Color(1.0, 1.0, 1.0, 0.0),duration).set_trans(Tween.TRANS_SINE)
 	tween.tween_callback(queue_free)
+
+func set_text(t):
+	$Label.text = t

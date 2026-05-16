@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://ckdpmjxkucmlw" path="res://se_Explosion_03.wav" id="4_8tbuy"]
 [ext_resource type="AudioStream" uid="uid://c052d2geteff7" path="res://se_item.wav" id="5_hhif3"]
 [ext_resource type="AudioStream" uid="uid://qfat6rj170f5" path="res://se_lifeup.wav" id="6_74nqk"]
+[ext_resource type="AudioStream" uid="uid://c1aqolpka7voe" path="res://power_up_02.wav" id="6_jgphs"]
 [ext_resource type="AudioStream" uid="uid://bvobuhlixxcsc" path="res://se_old_kira00.wav" id="7_5h7wf"]
 [ext_resource type="AudioStream" uid="uid://k1dujg2hgle4" path="res://path2.ogg" id="7_ol57v"]
 [ext_resource type="AudioStream" uid="uid://cqw4b5erehq4o" path="res://zan.ogg" id="8_gfa4i"]
@@ -33,6 +34,10 @@ bus = &"SE"
 
 [node name="ItemGet" type="AudioStreamPlayer" parent="." unique_id=1852596710]
 stream = ExtResource("5_hhif3")
+bus = &"SE"
+
+[node name="ItemGetRefill" type="AudioStreamPlayer" parent="." unique_id=1519418476]
+stream = ExtResource("6_jgphs")
 bus = &"SE"
 
 [node name="LifeGet" type="AudioStreamPlayer" parent="." unique_id=59995645]

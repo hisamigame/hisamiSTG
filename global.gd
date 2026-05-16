@@ -25,10 +25,11 @@ signal love_message(String)
 signal hyperlevel_changed
 signal hypertime_changed
 signal soon_boss
+signal player_invul
 
 const ui_hide_margin = 60
 #const hyper_cost = 1000
-const hyper_cost = 650
+const hyper_cost = 768
 const max_ammo = hyper_cost
 var ui_visible = true
 var stop_timer: bool = true
@@ -107,7 +108,7 @@ func play_waveclear():
 	$WaveClear.play()
 	
 func play_refill_item():
-	$ItemGet.play()
+	$ItemGetRefill.play()
 	
 func play_break():
 	$Break.play()
@@ -169,6 +170,7 @@ func load_data():
 	hiscores = dict['hiscores']
 	
 func set_defaults():
+	global.bonus = 0.0
 	global.score = 0.0
 	global.lives = 2
 	global.wave = 0
@@ -220,6 +222,8 @@ func emit_clear_enemies():
 func emit_collect_items():
 	collect_items.emit()
 
+func emit_player_invul():
+	player_invul.emit()
 
 func screen_flash():
 	flash_screen.emit(Color("ff8cceff"))
@@ -326,13 +330,6 @@ func _physics_process(delta: float) -> void:
 			second = new_second
 			timer_changed.emit()
 			
-		if has_score_changed:
-			score_changed.emit()
-			has_score_changed = false
-			if global.score > (awarded_extends + 1) * extend_every:
-				awarded_extends = awarded_extends + 1
-				set_lives(global.lives + 1)
-				global.play_lifeget()
 			
 		if has_ammo_changed:
 			ammo_changed.emit()
@@ -341,6 +338,15 @@ func _physics_process(delta: float) -> void:
 		if hyper_t > 0:
 			hypertime_changed.emit()
 			
+	if has_score_changed:
+			score_changed.emit()
+			has_score_changed = false
+			if global.score > (awarded_extends + 1) * extend_every:
+				awarded_extends = awarded_extends + 1
+				set_lives(global.lives + 1)
+				global.play_lifeget()
+				
+				
 func set_player_position(v):
 	global.player_position = v
 	if (global.player_position.y < ui_hide_margin) and ui_visible:
